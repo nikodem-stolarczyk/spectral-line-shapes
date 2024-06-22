@@ -1,0 +1,9 @@
+import mHT
+print(mHT.profile(1,1,1,1,1,1,1,1,1))
+
+
+import time
+tic = time.time()
+for i in range(10000): mHT.profile(1,1,1,1,1,1,1,1,1)
+toc=time.time()
+print(toc-tic)
