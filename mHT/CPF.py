@@ -4,7 +4,7 @@ def cpf_accurate(x,y):
     #      Computes the complex probability function using a rational series 
     #      with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0.
     #      A series was simplified to 37 terms introducing less than 10^(-17)
-    #      deviations on mHT progfile.
+    #      deviations on mHT profile.
     #
     #      Input/Output Parameters of Routine
     #      --------------------------------- 
