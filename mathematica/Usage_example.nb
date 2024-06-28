@@ -1,19 +1,17 @@
 (* Content-type: application/vnd.wolfram.mathematica *)
-
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
+(* CreatedBy = 'Mathematica 14.0' *)
+(* CacheID: 234*)
 
-(* CreatedBy='Mathematica 14.0' *)
-
-(*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[      2915,         86]
-NotebookOptionsPosition[      2141,         66]
-NotebookOutlinePosition[      2752,         85]
-CellTagsIndexPosition[      2709,         82]
+NotebookDataPosition   [158,    7]
+NotebookDataLength     [2915,  86]
+NotebookOptionsPosition[2141,  66]
+NotebookOutlinePosition[2752,  85]
+CellTagsIndexPosition  [2709,  82]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,12 +34,11 @@ StyleDefinitions     -> FrontEnd`FileName[{$RootDirectory, "C:", "Users", "Ms", 
 ExpressionUUID       -> "a89d22d9-c174-1e47-84b0-d11d26101b37"
 ]
 (* End of Notebook Content *)
-
 (* Internal cache information *)
-(*CellTagsOutline
+(* CellTagsOutline
 CellTagsIndex->{}
 *)
-(*CellTagsIndex
+(* CellTagsIndex
 CellTagsIndex->{}
 *)
 (*NotebookFileOutline
