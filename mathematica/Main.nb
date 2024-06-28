@@ -1,0 +1,96 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3663,         88]
+NotebookOptionsPosition[      3008,         70]
+NotebookOutlinePosition[      3589,         88]
+CellTagsIndexPosition[      3546,         85]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", 
+  RowBox[{"\"\<CPFLib`\>\"", ",", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "\"\<CPFLib.m\>\""}],
+      "}"}], "]"}]}], "]"}]], "Input",
+ InitializationCell->False,
+ CellChangeTimes->{{3.927947106220766*^9, 3.927947128443107*^9}, {
+   3.927948179906767*^9, 3.927948184480329*^9}, {3.927948218242185*^9, 
+   3.927948226433155*^9}, {3.927948635639104*^9, 3.927948636283165*^9}, {
+   3.927948675812239*^9, 3.927948681348495*^9}, {3.9279488201259565`*^9, 
+   3.927948828977267*^9}, {3.92794886274135*^9, 3.9279488869858303`*^9}, {
+   3.927948977540409*^9, 3.9279489854205265`*^9}, 3.9279491089939466`*^9, {
+   3.928560230993914*^9, 3.928560236017931*^9}, {3.92856028149876*^9, 
+   3.928560283953913*^9}, {3.9285606269465218`*^9, 3.928560707793722*^9}, {
+   3.928561036194607*^9, 3.928561036417607*^9}, {3.928562684218649*^9, 
+   3.928562684473936*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"2990fa3d-9b24-8a41-b13f-6ec81ca8b0da"],
+
+Cell[BoxData[{
+ RowBox[{"mHT", "[", 
+  RowBox[{
+  "1", ",", "10000000", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",",
+    "1", ",", "1"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"mHT", "[", 
+  RowBox[{
+  "1", ",", ".000000000000000000001", ",", "1", ",", "1", ",", "1", ",", "1", 
+   ",", "1", ",", "1", ",", "1"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"mHT", "[", 
+  RowBox[{
+  "1", ",", "1", ",", "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", "1", 
+   ",", "1"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"mHT", "[", 
+  RowBox[{
+  "1", ",", "1", ",", "1", ",", "0.0000001", ",", "1", ",", "0", ",", "1", 
+   ",", "1", ",", "1"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.928563801686489*^9, 3.9285638184904537`*^9}, {
+   3.928563889130438*^9, 3.928563892193863*^9}, 3.928565119587017*^9, 
+   3.9285656232593784`*^9, {3.928565947763344*^9, 3.928565948627247*^9}, {
+   3.9285663992908745`*^9, 3.928566403658787*^9}, {3.9285665373477077`*^9, 
+   3.928566537506708*^9}, {3.9285668554831047`*^9, 3.9285668556423016`*^9}, {
+   3.928566894026602*^9, 3.928566894186802*^9}, {3.928567817063284*^9, 
+   3.9285678808831234`*^9}, {3.9285686224840565`*^9, 
+   3.9285686485548935`*^9}, {3.928568885723322*^9, 3.9285689136188583`*^9}, {
+   3.9285690487089863`*^9, 3.928569050363407*^9}, {3.9285690826671543`*^9, 
+   3.928569106899172*^9}},ExpressionUUID->"7137a18a-fe9f-994f-a52d-\
+cf935650e6e1"]
+},
+WindowSize->{1440, 747.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->FrontEnd`FileName[{$RootDirectory, "C:", "Users", "Ms", 
+   "AppData", "Roaming", "Mathematica", "SystemFiles", "FrontEnd", 
+   "StyleSheets"}, "myStyle.nb", CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"a89d22d9-c174-1e47-84b0-d11d26101b37"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1045, 19, 24, "Input",ExpressionUUID->"2990fa3d-9b24-8a41-b13f-6ec81ca8b0da",
+ InitializationCell->False],
+Cell[1606, 41, 1398, 27, 72, "Input",ExpressionUUID->"7137a18a-fe9f-994f-a52d-cf935650e6e1"]
+}
+]
+*)
+
