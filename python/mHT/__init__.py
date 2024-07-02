@@ -13,11 +13,11 @@ def beta(GamD,NuOptRe,alpha):
     #      values correction neglected. 
     #      Source: 10.1016/j.jqsrt.2019.106784
     #
-    #      Input/Output Parameters of Routine (Arguments or Common)
+    #      Input Parameters of Routine (Arguments or Common)
     #      ---------------------------------
-    #      GamD      : Doppler HWHM in cm-1 (Input) 
-    #      NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
-    #      alpha     : Mass ratio in the molecule. Applicable up to alpha=5.
+    #      GamD      : Doppler HWHM in cm-1. 
+    #      NuOptRe   : Real part of the Dicke parameter in cm-1.
+    #      alpha     : Mass ratio in the molecule, applicable up to alpha=5.
     #
     #      The function has one output:
     #      -----------------
@@ -38,24 +38,23 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     """
     #-------------------------------------------------
     #      "PROFILE_mHT": modified Hartman Tran profile
-    #      Subroutine to compute the complex normalized spectral shape of an 
-    #      isolated line by the mHT model
+    #      Subroutine to compute the complex normalized spectral-line shape using mHT model
     #
-    #      Input/Output Parameters of Routine (Arguments or Common)
+    #      Input Parameters of Routine (Arguments or Common)
     #      ---------------------------------
-    #      nu0       : Unperturbed line position in cm-1 (Input).
-    #      GamD      : Doppler HWHM in cm-1 (Input)
-    #      Gam0      : Speed-averaged line-width in cm-1 (Input).       
-    #      Gam2      : Speed dependence of the line-width in cm-1 (Input).
-    #      Shift0    : Speed-averaged line-shift in cm-1 (Input).
-    #      Shift2    : Speed dependence of the line-shift in cm-1 (Input)   
-    #      NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
-    #      NuOptIm   : Imaginary part of the Dicke parameter in cm-1 (Input).    
-    #      nu        : Current WaveNumber of the Computation in cm-1 (Input).
-    #	   Sw		 : Statistical weight 
-    #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
-    #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
-    #      alpha     : Mass ratio in the molecule for calculating beta-correction. Applicable up to alpha=5.
+    #      nu0       : Unperturbed line position in cm-1.
+    #      GamD      : Doppler HWHM in cm-1.
+    #      Gam0      : Speed-averaged line-width in cm-1.       
+    #      Gam2      : Speed dependence of the line-width in cm-1.
+    #      Shift0    : Speed-averaged line-shift in cm-1.
+    #      Shift2    : Speed dependence of the line-shift in cm-1.   
+    #      NuOptRe   : Real part of the Dicke parameter in cm-1.
+    #      NuOptIm   : Imaginary part of the Dicke parameter in cm-1.    
+    #      nu        : Current WaveNumber of the Computation in cm-1.
+    #	   Sw		 : Statistical weight.
+    #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients in cm-1.
+    #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients in cm-1.
+    #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5.
     #
     #      The function has two outputs:
     #      -----------------
