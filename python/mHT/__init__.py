@@ -2,7 +2,8 @@ from mHT.CPF import cpf_fast as cpf
 from math import log10, tanh
 e  = 2.718281828459045
 pi = 3.141592653589793
-rp = 1.772453850905516
+rp = 1.772453850905516 # root square of pi
+sqrt_ln2 = 0.8325546111576977
 
 def beta(GamD,NuOptRe,alpha):
     """
@@ -25,7 +26,8 @@ def beta(GamD,NuOptRe,alpha):
     
     #-------------------------------------------------
     """
-    if alpha<5.0:
+    max_alpha = 5.0 # the mass ratio for which the beta correction becomes negligible
+    if alpha < max_alpha:
         a = 0.0534 + 0.1585*e**(-0.4510*alpha)
         b = 1.9595 - 0.1258*alpha + 0.0056*alpha**2 + 0.0050*alpha**3
         c =-0.0546 + 0.0672*alpha - 0.0125*alpha**2 + 0.0003*alpha**3
@@ -63,7 +65,7 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     #
     #-------------------------------------------------
     """
-    nuD = GamD/0.8325546111576977
+    nuD = GamD/sqrt_ln2
     nuR = NuOptRe*beta(GamD,NuOptRe,alpha)
     c2  = Gam2 + Shift2*1j
     c0  = Gam0 + Shift0*1j - 1.5*c2 + nuR + NuOptIm*1j
