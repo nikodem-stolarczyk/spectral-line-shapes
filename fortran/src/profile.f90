@@ -11,7 +11,10 @@ module spectral_module
 !----------------------------------------------------------------------!
    real(dp), parameter :: e  = 2.718281828459045_dp
    real(dp), parameter :: pi = 3.141592653589793_dp
-   real(dp), parameter :: rp = 1.772453850905516_dp
+   real(dp), parameter :: square_root_pi = 1.772453850905516_dp
+   real(dp), parameter :: sqrt_ln2 = 0.8325546111576977_dp
+   real(dp), parameter :: numerical_zero = 1e-15_dp
+   real(dp), parameter :: numerical_infty = 4e3_dp
 !----------------------------------------------------------------------!
    contains
 !----------------------------------------------------------------------!
@@ -37,9 +40,13 @@ module spectral_module
       real(dp), intent(in) :: GamD, NuOptRe, alpha
       real(dp) :: beta_result
       !----------------------------------------------------------------!
+      ! the mass ratio for which the beta correction becomes negligible
+      !----------------------------------------------------------------!
+      real(dp), parameter :: max_alpha = 5.0_dp
+      !----------------------------------------------------------------!   
       real(dp) :: a, b, c, d
       !----------------------------------------------------------------!
-      if (alpha < 5.0_dp) then
+      if (alpha < max_alpha) then
          !-------------------------------------------------------------!
          a =  0.0534_dp + 0.1585_dp * exp(-0.4510_dp * alpha)
          b =  1.9595_dp - 0.1258_dp * alpha + 0.0056_dp * alpha**2.0_dp&
@@ -94,10 +101,7 @@ module spectral_module
          alpha_opt
       complex(dp) :: mHT_profile
       !----------------------------------------------------------------!
-      real(dp), parameter :: a_constant = 0.8325546111576977_dp
-      real(dp), parameter :: zero_tolerance  = 1e-15_dp
       real(dp), parameter :: small_threshold = 3e-8_dp
-      real(dp), parameter :: big_threshold = 4e3_dp
       !----------------------------------------------------------------!
       real(dp) :: Sw, Ylm, Xlm, alpha
       real(dp) :: nuD, nuR
@@ -128,20 +132,20 @@ module spectral_module
          alpha = 10.0_dp
       endif 
       !----------------------------------------------------------------!
-      nuD = GamD / a_constant
+      nuD = GamD / sqrt_ln2
       nuR = NuOptRe*beta(GamD,NuOptRe,alpha)
       c2  = cmplx(Gam2, Shift2, kind=dp)
       c0  = cmplx(Gam0, Shift0, kind=dp) - 1.5_dp*c2 + nuR             &
           + cmplx(0.0_dp, NuOptIm, kind=dp)
       LM  = cmplx(1.0_dp + Xlm, Ylm, kind=dp)
       !----------------------------------------------------------------!
-      if ( abs(c2) > zero_tolerance ) then
+      if ( abs(c2) > numerical_zero ) then
          !-------------------------------------------------------------!
          X    = (cmplx(0_dp, nu0-nu, kind=dp) + c0) / c2
          Y    = 0.25_dp*(nuD/c2)**2.0_dp
          csqY = 0.5_dp*nuD*cmplx(Gam2, -Shift2, kind=dp)               &
               /(Gam2**2.0_dp + Shift2**2.0_dp)
-         if ( abs( Y )  > abs( X  ) * zero_tolerance ) then
+         if ( abs( Y )  > abs( X  ) * numerical_zero ) then
             !----------------------------------------------------------!
             z2 = (X+Y)**0.5_dp + csqY
             if  ( abs(X)  > abs(Y)  * small_threshold ) then
@@ -151,14 +155,14 @@ module spectral_module
             endif
             w1 = cpf_fast(-aimag(z1),real(z1))
             w2 = cpf_fast(-aimag(z2),real(z2))
-            A  = rp/nuD*(w1-w2)
+            A  = square_root_pi/nuD*(w1-w2)
             !----------------------------------------------------------!
          else
             !----------------------------------------------------------!
             X_sqrt = (X)**0.5_dp
-            if (  abs(X) < big_threshold ) then
+            if (  abs(X) < numerical_infty ) then
                wX = cpf_fast(-aimag(X_sqrt),real(X_sqrt))
-               A  = 2.0_dp*(1.0_dp - rp*X_sqrt*wX)/c2
+               A  = 2.0_dp*(1.0_dp - square_root_pi*X_sqrt*wX)/c2
             else
                A  = (1.0_dp/X - 1.5_dp/X**2.0_dp)/c2
             endif
@@ -169,7 +173,7 @@ module spectral_module
          !-------------------------------------------------------------!
          z = (cmplx(0.0_dp, nu0-nu, kind=dp) + c0) / nuD
          w = cpf_fast(-aimag(z),real(z))
-         A = w*rp/nuD
+         A = w*square_root_pi/nuD
          !-------------------------------------------------------------!
       endif
       
