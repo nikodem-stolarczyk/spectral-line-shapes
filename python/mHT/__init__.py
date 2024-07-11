@@ -4,6 +4,8 @@ e  = 2.718281828459045
 pi = 3.141592653589793
 rp = 1.772453850905516 # root square of pi
 sqrt_ln2 = 0.8325546111576977
+numerical_zero = 1.0e-15
+numerical_infty = 4.0e3
 
 def beta(GamD,NuOptRe,alpha):
     """
@@ -71,18 +73,18 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     c0  = Gam0 + Shift0*1j - 1.5*c2 + nuR + NuOptIm*1j
     LM  = 1 + Xlm + Ylm*1j
     
-    if abs(c2) != 0.0: # checking if c2 tends towards zero, i.e., if either correlation or complex speed dependence is zero
+    if abs(c2) > numerical_zero:
         X    = ((nu0-nu)*1j + c0) / c2
         Y    = 0.25*(nuD/c2)**2
         csqY = 0.50*nuD*(Gam2 - Shift2*1j)/(Gam2**2 + Shift2**2)
-        if abs(Y)>abs(X)*1.0e-15: # if Y is much larger than X, Z1 is replaced by the first order development
+        if abs(Y)>abs(X)*numerical_zero:
             z2 = (X+Y)**0.5 + csqY   
             z1 = z2 - 2*csqY if abs(X)>abs(Y)*3e-8 else ((nu0-nu)*1j + c0) / nuD    
             w1 = cpf(-z1.imag,z1.real)
             w2 = cpf(-z2.imag,z2.real)
             A  = rp/nuD*(w1-w2)
         else:
-            if abs(X**0.5) < 4.0e3: # if X dominates, Y can be neglected
+            if abs(X**0.5) < numerical_infty:
                 rX = X**0.5
                 wX = cpf(-rX.imag,rX.real)
                 A  = 2*(1 - rp*rX*wX)/c2
