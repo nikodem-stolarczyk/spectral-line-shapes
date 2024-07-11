@@ -28,7 +28,7 @@ def beta(GamD,NuOptRe,alpha):
     
     #-------------------------------------------------
     """
-    max_alpha = 5.0 # the mass ratio for which the beta correction becomes negligible
+    max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
     if alpha < max_alpha:
         a = 0.0534 + 0.1585*e**(-0.4510*alpha)
         b = 1.9595 - 0.1258*alpha + 0.0056*alpha**2 + 0.0050*alpha**3
