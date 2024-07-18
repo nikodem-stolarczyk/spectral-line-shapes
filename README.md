@@ -11,14 +11,14 @@ At the moment, the python, fortran and matlab implementations have been develope
 Clone the repository using:
 
 ```
-git clone https://github.com/hjozwiak-umk/spectral-line-shapes/
+git clone https://github.com/nikodem-stolarczyk/spectral-line-shapes/
 ```
 This will clone all the implementations.
 
 Alternatively, one can clone only one implementation. For instance, if one desires to clone the matlab implementation, they should use:
 
 ```
-git clone https://github.com/hjozwiak-umk/spectral-line-shapes/matlab/
+git clone https://github.com/nikodem-stolarczyk/spectral-line-shapes/matlab/
 ```
  
 ## Dependencies
