@@ -2,7 +2,7 @@
 
 The spectral-line-shapes repository hosts the implementations of the modified Hartman-Tran (`mHT`) spectral line-shape profile. The mHT is a variation of the Hartman-Tran profile (HT or HTP, introduced in 10.1016/j.jqsrt.2013.06.015). The article describing the mHT spectral lineshape function is currently under preparation.
 
-The spectral-line-shapes repository features the implementations of the complex problability function (cpf), which are used to calculate the mHT. Though optimized specifically to work with the mHT, the cpf functions can also be used separately. The repository features two cpf functions: `cpf_accurate` (maintaining high accuracy, based on highly-modified 64-term Weideman algorithm jstor.org/stable/2158232), and `cpf_fast` (faster but less accurate, utilizing Humlicek's aproach in its first suberegion, 10.1016/0022-4073(82)90078-4, and 24-term Weideman approach elsewhere jstor.org/stable/2158232). The detailed description of the modifications of the cpf functions will be summarized in the upcoming article.
+The spectral-line-shapes repository features the implementations of the complex problability function (cpf), which are used to calculate the mHT. Though optimized specifically to work with the mHT, the cpf functions can also be used separately. The repository features two cpf functions: `cpf_accurate` (maintaining high accuracy, based on highly-modified 64-term Weideman algorithm jstor.org/stable/2158232), and `cpf_fast` (faster but less accurate, utilizing Humlicek's aproach in its first subregion, 10.1016/0022-4073(82)90078-4, and 24-term Weideman approach elsewhere jstor.org/stable/2158232). The detailed description of the modifications of the cpf functions will be summarized in the upcoming article.
 
 At the moment, the python, fortran and matlab implementations have been developed, while the mathematica and labview implementations are under preparation.
 
@@ -23,12 +23,14 @@ git clone https://github.com/nikodem-stolarczyk/spectral-line-shapes/matlab/
  
 ## Dependencies
 
-Depending on the implementation, the following programs are required
+Depending on the implementation, the following program versions are required
 
 ### python
 - Python 3.X
 ### fortran
-
+- [Make](https://www.gnu.org/software/make/)
+- A modern Fortran compiler, such as [GNU Fortran Compiler](https://gcc.gnu.org/wiki/GFortran) (gfortran) or
+ [Intel Fortran Compiler](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html) (ifort)
 ### matlab
 
 ### mathematica
