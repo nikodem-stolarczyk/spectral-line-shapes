@@ -85,9 +85,9 @@ module spectral_module
       ! nu        : Current WaveNumber of the Computation in cm-1 (Input).
       ! Sw  		: Statistical weight 
       ! Ylm       : Imaginary part of the 1st order (Rosenkranz) line
-      !             mixing coefficients in cm-1 (Input)
+      !             mixing coefficients, dimensionless (Input)
       ! Xlm       : Real part of the 1st order (Rosenkranz) line mixing
-      !             coefficients in cm-1 (Input)
+      !             coefficients, dimensionless (Input)
       ! alpha     : Mass ratio in the molecule for calculating
       !             beta-correction. Applicable up to alpha=5.
       !
