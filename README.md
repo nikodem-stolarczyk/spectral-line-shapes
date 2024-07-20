@@ -34,13 +34,12 @@ Depending on the implementation, the following program versions are required
 ### matlab
 
 ### mathematica
-Wolfram Mathematica 13 or higher 
 
 ### labview
 
 ## Usage
 
-The `usage_example.x` (x stands for the extension depending on the implementation) provides examples of using the mHT, cpf_accurate and cpf_fast functions in each of the programing languages. For specific description, consult the 
+The `usage_example.x` (x stands for the extension depending on the implementation) provides examples of using the mHT, cpf_accurate and cpf_fast functions in each of the programing languages.
 
 ## Data Format
 
