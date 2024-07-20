@@ -10,7 +10,7 @@ print(cpf_accurate(x,y))
 print("the output of the cpf_fast function")
 print(cpf_fast(x,y))
 
-#example parameters of the S(1) 3-0 line od H2 perturbed by Ar (reference 10.1063/5.0139229)
+#example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
 nu0 = 112265.5949;#cm-1
 GamD = 35.1e-3;#cm-1
 Gam0_Ar = 11.3e-3;#cm-1
@@ -33,7 +33,7 @@ alpha_Ar = 20; #dimensionless
 print("the output of the mHT function with optional parameters")
 print(mHT.profile(nu0,GamD,Gam0_Ar,Gam2_Ar,Shift0_Ar,Shift2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Sw,Ylm,Xlm,alpha_Ar))
 
-#example parameters of the S(1) 3-0 line od H2 perturbed by He (reference 10.1103/PhysRevA.101.052705)
+#example parameters of the S(1) 3-0 line of H2 perturbed by He (reference 10.1103/PhysRevA.101.052705)
 Gam0_He = 11.7e-3;#cm-1
 Gam2_He = 5.4e-3;#cm-1
 Shift0_He = 30.5e-3;#cm-1
