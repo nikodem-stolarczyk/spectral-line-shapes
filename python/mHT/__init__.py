@@ -1,4 +1,4 @@
-from mHT.CPF import cpf_accurate as cpf
+from mHT.CPF import cpf_fast as cpf
 from math import log10, tanh
 e      = 2.718281828459045   # Euler constant
 pi     = 3.141592653589793   # Pi number
