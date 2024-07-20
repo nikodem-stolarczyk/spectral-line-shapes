@@ -59,7 +59,7 @@ The following arguments are optional:
 - `Sw` - Statistical weight.
 - `Ylm` - Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 - `Xlm` - Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
-- `alpha` - Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5.
+- `alpha` - Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless.
 
 ### cpf
 
