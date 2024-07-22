@@ -1,2 +1,6 @@
+22/7/2024:
+# Merged nikodem-stolarczyk-patch-3 with main:
+#  - fixed description mistakes (Fortran, Python)
+#  - change default CPF subroutine to cpf_accurate (Fortran, Python)
 2/7/2024:
 # Fortran implementation added (commit c18469b)
