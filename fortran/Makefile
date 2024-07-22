@@ -3,7 +3,7 @@ F90 = gfortran  # compile with gfortran
 MOD_DIR   = mod
 SRC_DIR   = src
 SRC_FILES = ${SRC_DIR}/cpf.o ${SRC_DIR}/profile.o
-PROGRAM   = test.o
+PROGRAM   = usage_example.o
 #
 TOTAL = $(SRC_FILES) $(PROGRAM)
 #
