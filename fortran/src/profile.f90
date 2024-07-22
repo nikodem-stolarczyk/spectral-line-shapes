@@ -6,7 +6,7 @@ module spectral_module
 ! 2. profile - computes the modified Hartmann-Tran (mHT) profile
 !----------------------------------------------------------------------!
    use, intrinsic :: iso_fortran_env, only: int32, dp => real64
-   use cpf_module, only: cpf_fast
+   use cpf_module, only: cpf_accurate
    implicit none
 !----------------------------------------------------------------------!
    real(dp), parameter :: e  = 2.718281828459045_dp
@@ -85,9 +85,9 @@ module spectral_module
       ! nu        : Current WaveNumber of the Computation in cm-1 (Input).
       ! Sw  		: Statistical weight 
       ! Ylm       : Imaginary part of the 1st order (Rosenkranz) line
-      !             mixing coefficients in cm-1 (Input)
+      !             mixing coefficients, dimensionless (Input)
       ! Xlm       : Real part of the 1st order (Rosenkranz) line mixing
-      !             coefficients in cm-1 (Input)
+      !             coefficients, dimensionless (Input)
       ! alpha     : Mass ratio in the molecule for calculating
       !             beta-correction. Applicable up to alpha=5.
       !
@@ -153,15 +153,15 @@ module spectral_module
             else
                z1 = (cmplx(0.0_dp, nu0-nu, kind=dp) + c0) / nuD    
             endif
-            w1 = cpf_fast(-aimag(z1),real(z1))
-            w2 = cpf_fast(-aimag(z2),real(z2))
+            w1 = cpf_accurate(-aimag(z1),real(z1))
+            w2 = cpf_accurate(-aimag(z2),real(z2))
             A  = square_root_pi/nuD*(w1-w2)
             !----------------------------------------------------------!
          else
             !----------------------------------------------------------!
             X_sqrt = (X)**0.5_dp
             if (  abs(X) < numerical_infty ) then
-               wX = cpf_fast(-aimag(X_sqrt),real(X_sqrt))
+               wX = cpf_accurate(-aimag(X_sqrt),real(X_sqrt))
                A  = 2.0_dp*(1.0_dp - square_root_pi*X_sqrt*wX)/c2
             else
                A  = (1.0_dp/X - 1.5_dp/X**2.0_dp)/c2
@@ -172,7 +172,7 @@ module spectral_module
       else
          !-------------------------------------------------------------!
          z = (cmplx(0.0_dp, nu0-nu, kind=dp) + c0) / nuD
-         w = cpf_fast(-aimag(z),real(z))
+         w = cpf_accurate(-aimag(z),real(z))
          A = w*square_root_pi/nuD
          !-------------------------------------------------------------!
       endif

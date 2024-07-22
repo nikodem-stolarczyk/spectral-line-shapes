@@ -56,8 +56,8 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     #      NuOptIm   : Imaginary part of the Dicke parameter in cm-1.    
     #      nu        : Current WaveNumber of the Computation in cm-1.
     #	   Sw		 : Statistical weight.
-    #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients in cm-1.
-    #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients in cm-1.
+    #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
+    #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
     #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5.
     #
     #      The function has two outputs:
