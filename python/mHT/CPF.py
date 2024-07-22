@@ -55,7 +55,7 @@ def cpf_fast(x,y):
     #-------------------------------------------------
     """
     hum1_threshold = 15.0 # the border of the first Humlicek's region
-    if abs(x)+y<hum1_threshold:
+    if abs(x)+y>hum1_threshold:
         t = y-x*1j
         return inverse_sqrt_pi*t/(0.5+t**2)
     else: 
