@@ -1,5 +1,6 @@
 import mHT 
 from mHT.CPF import cpf_fast, cpf_accurate
+import numpy as np
 from matplotlib import pyplot as plt
 
 x=1; #dimensionless
@@ -51,7 +52,7 @@ print("the output of the mHT function with optional parameters")
 print(mHT.profile(nu0,GamD,Gam0_He,Gam2_He,Shift0_He,Shift2_He,NuOptRe_He,NuOptIm_He,nu,Sw,Ylm,Xlm,alpha_He))
 
 # Preparing tables for plotting
-x    = nu0 + np_linspace(-5*GamD,+5*GamD,1001)
+x    = nu0 + np.linspace(-5*GamD,+5*GamD,1001)
 y_Ar = [mHT.profile(nu0,GamD,Gam0_Ar,Gam2_Ar,Shift0_Ar,Shift2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Sw,Ylm,Xlm,alpha_Ar) for nu in x]
 y_He = [mHT.profile(nu0,GamD,Gam0_He,Gam2_He,Shift0_He,Shift2_He,NuOptRe_He,NuOptIm_He,nu,Sw,Ylm,Xlm,alpha_He) for nu in x]
 
