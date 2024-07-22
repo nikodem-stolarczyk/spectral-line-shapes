@@ -1,6 +1,8 @@
 22/7/2024:
+# Merged nikodem-stolarczyk-patch-4 with main
+#  - prepared usage example file (Python)
 # Merged SuoWick-patch-1 with main
-#  - Corrected sign for Humlicek mask (Fortran, Python)
+#  - corrected sign for Humlicek mask (Fortran, Python)
 # Merged nikodem-stolarczyk-patch-3 with main:
 #  - fixed description mistakes (Fortran, Python)
 #  - change default CPF subroutine to cpf_accurate (Fortran, Python)
