@@ -89,6 +89,7 @@ module cpf_module
       complex(dp) :: cpf_z
       ! ---------------------------------------------------------------!
       integer(int32), parameter :: number_of_fft_terms = 24
+      real(dp), parameter :: hum1_threshold = 15.0_dp
       real(dp), parameter :: weidemann_constant_24 = 4.119534287814236_dp
       real(dp), dimension(number_of_fft_terms) :: fft_constant_terms=(/&
          -1.513747622620502e-10_dp, 4.904820407381768e-9_dp,           &
@@ -107,7 +108,7 @@ module cpf_module
       complex(dp) :: t, z, z_ratio
       integer(int32) :: i
       !----------------------------------------------------------------!
-      if (abs(x) + y < 15.0_dp) then
+      if (abs(x) + y > hum1_threshold) then
          !-------------------------------------------------------------!
          t = cmplx(y, -x, kind=dp)
          cpf_z = inverse_sqrt_pi * t / (0.5_dp + t**2.0_dp)
