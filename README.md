@@ -27,6 +27,7 @@ Depending on the implementation, the following program versions are required
 
 ### python
 - Python 3.X
+- numpy and matplotlib (used solely in usage_example.py, the mHT and cpf functions do not need these libraries)
 ### fortran
 - [Make](https://www.gnu.org/software/make/)
 - A modern Fortran compiler, such as [GNU Fortran Compiler](https://gcc.gnu.org/wiki/GFortran) (gfortran) or
