@@ -3,8 +3,10 @@ from mHT.CPF import cpf_fast, cpf_accurate
 import numpy as np
 from matplotlib import pyplot as plt
 
+#example parametersfor the cpf functions
 x=1; #dimensionless
 y=1; #dimensionless
+
 print("the output of the cpf_accurate function")
 print(cpf_accurate(x,y))
 
