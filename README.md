@@ -51,6 +51,7 @@ The `usage_example.x` (x stands for the extension depending on the implementatio
 
 The `mHT` function requires the following arguments:
 - `nu0` - Unperturbed line position in cm-1.
+- 'GamD' - Doppler broadening in cm-1
 - `Gam0` - Speed-averaged line-width in cm-1.
 - `Gam2` - Speed dependence of the line-width in cm-1.
 - `Shift0` - Speed-averaged line-shift in cm-1.
