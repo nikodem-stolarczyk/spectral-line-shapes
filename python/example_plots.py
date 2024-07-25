@@ -31,8 +31,8 @@ alpha_He = 2; # perturber-to-absorber mass ratio, dimensionless.
 
 # Preparing tables for plotting 
 x    = nu0 + np.linspace(-5*GamD,+5*GamD,1001)
-y_Ar = [mHT.profile(nu0,GamD,Gam0_Ar,Gam2_Ar,Shift0_Ar,Shift2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Sw,Ylm,Xlm,alpha_Ar) for nu in x]
-y_He = [mHT.profile(nu0,GamD,Gam0_He,Gam2_He,Shift0_He,Shift2_He,NuOptRe_He,NuOptIm_He,nu,Sw,Ylm,Xlm,alpha_He) for nu in x]
+y_Ar = [mHT.profile(nu0,GamD,Gam0_Ar,Gam2_Ar,Shift0_Ar,Shift2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Ylm,Xlm,alpha_Ar) for nu in x]
+y_He = [mHT.profile(nu0,GamD,Gam0_He,Gam2_He,Shift0_He,Shift2_He,NuOptRe_He,NuOptIm_He,nu,Ylm,Xlm,alpha_He) for nu in x]
 
 # Plotting absorption and dispersion of the H2-Ar system 
 plt.plot(x,list(map(list,zip(*y_Ar)))[0])
