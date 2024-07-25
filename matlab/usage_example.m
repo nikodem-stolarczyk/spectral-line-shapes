@@ -44,12 +44,12 @@ disp('The output of the mHT function with optional parameters:');
 disp([outRe, outIm]);
 
 % Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference 10.1103/PhysRevA.101.052705)
-Gam0_He    =  11.7e-3; % cm-1
-Gam2_He    =   5.4e-3; % cm-1
-Shift0_He  =  30.5e-3; % cm-1
-Shift2_He  =  12.4e-3; % cm-1
-NuOptRe_He =  38.0e-3; % cm-1
-NuOptIm_He = -17.5e-3; % cm-1
+Gam0_He    =  11.7e-3; % Speed-averaged line-width in  cm-1
+Gam2_He    =   5.4e-3; % Speed dependence of the line-width in cm-1
+Shift0_He  =  30.5e-3; % Speed-averaged line-shift in cm-1
+Shift2_He  =  12.4e-3; % Speed dependence of the line-shift in cm-1
+NuOptRe_He =  38.0e-3; % Real part of the Dicke parameter in cm-1
+NuOptIm_He = -17.5e-3; % Imaginary part of the Dicke parameter in cm-1
 
 % Displaying mHT function output
 [outRe, outIm] = profile(nu0, GamD, Gam0_He, Gam2_He, Shift0_He, Shift2_He, NuOptRe_He, NuOptIm_He, nu);
