@@ -1,4 +1,4 @@
-function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu, Sw, Ylm, Xlm, alpha)
+function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha)
     % PROFILE_mHT: modified Hartman Tran profile
     % Subroutine to compute the complex normalized spectral shape of an 
     % isolated line by the mHT model
@@ -13,7 +13,6 @@ function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2,
     % NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
     % NuOptIm   : Imaginary part of the Dicke parameter in cm-1 (Input).    
     % nu        : Current WaveNumber of the Computation in cm-1 (Input).
-    % Sw        : Statistical weight 
     % Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
     % Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
     % alpha     : Mass ratio in the molecule for calculating beta-correction. Applicable up to alpha=5.
@@ -22,15 +21,12 @@ function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2,
     % (1): Real part of the normalized spectral shape (cm)
     % (2): Imaginary part of the normalized spectral shape (cm)
     global e pi rp sln2 num0 numinf
-    if nargin < 14
+    if nargin < 13
         alpha = 10.0;
-        if nargin < 13
+        if nargin < 12
             Xlm = 0.0;
-            if nargin < 12
+            if nargin < 11
                 Ylm = 0.0;
-                if nargin < 11
-                    Sw = 1.0;
-                end
             end
         end
     end
@@ -68,7 +64,7 @@ function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2,
         w = cpf(-imag(z), real(z));
         A = w*rp/nuD;
     end
-    I = Sw*LM/pi*A/(1-(nuR+NuOptIm*1i)*A);
+    I = LM/pi*A/(1-(nuR+NuOptIm*1i)*A);
 
     real_part = real(I);
     imag_part = imag(I);
