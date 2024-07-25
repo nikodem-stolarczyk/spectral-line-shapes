@@ -1,17 +1,6 @@
 import mHT 
-from mHT.CPF import cpf_fast, cpf_accurate
 import numpy as np
 from matplotlib import pyplot as plt
-
-#example parametersfor the cpf functions
-x=1; #dimensionless
-y=1; #dimensionless
-
-print("the output of the cpf_accurate function")
-print(cpf_accurate(x,y))
-
-print("the output of the cpf_fast function")
-print(cpf_fast(x,y))
 
 #example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
 nu0 = 112265.5949;# Unperturbed line position in cm-1.
