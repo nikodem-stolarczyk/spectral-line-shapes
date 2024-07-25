@@ -18,7 +18,7 @@ def beta(GamD,NuOptRe,alpha):
     #
     #      Input Parameters of Routine (Arguments or Common)
     #      ---------------------------------
-    #      GamD      : Doppler HWHM in cm-1. 
+    #      GamD      : Doppler broadening in cm-1. 
     #      NuOptRe   : Real part of the Dicke parameter in cm-1.
     #      alpha     : Mass ratio in the molecule, applicable up to alpha=5.
     #
@@ -38,7 +38,7 @@ def beta(GamD,NuOptRe,alpha):
     else:
         return 1.0
 
-def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,Xlm=0.0,alpha=10.0):
+def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Ylm=0.0,Xlm=0.0,alpha=10.0):
     """
     #-------------------------------------------------
     #      "PROFILE_mHT": modified Hartman Tran profile
@@ -47,7 +47,7 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     #      Input Parameters of Routine (Arguments or Common)
     #      ---------------------------------
     #      nu0       : Unperturbed line position in cm-1.
-    #      GamD      : Doppler HWHM in cm-1.
+    #      GamD      : Doppler broadening in cm-1.
     #      Gam0      : Speed-averaged line-width in cm-1.       
     #      Gam2      : Speed dependence of the line-width in cm-1.
     #      Shift0    : Speed-averaged line-shift in cm-1.
@@ -55,7 +55,6 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
     #      NuOptRe   : Real part of the Dicke parameter in cm-1.
     #      NuOptIm   : Imaginary part of the Dicke parameter in cm-1.    
     #      nu        : Current WaveNumber of the Computation in cm-1.
-    #	   Sw		 : Statistical weight.
     #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
     #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
     #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5.
@@ -94,5 +93,5 @@ def profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,Sw=1.0,Ylm=0.0,X
         z = ((nu0-nu)*1j + c0) / nuD
         w = cpf(-z.imag,z.real)
         A = w*rp/nuD
-    I = Sw*LM/pi*A/(1-(nuR + NuOptIm*1j)*A)
+    I = LM/pi*A/(1-(nuR + NuOptIm*1j)*A)
     return I.real, I.imag
