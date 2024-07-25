@@ -1,6 +1,5 @@
 from mHT.CPF import cpf_fast, cpf_accurate
 
-
 #example parameters for the cpf functions
 x=1; #dimensionless
 y=1; #dimensionless
