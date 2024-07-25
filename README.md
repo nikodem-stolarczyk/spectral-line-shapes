@@ -27,7 +27,7 @@ Depending on the implementation, the following program versions are required
 
 ### python
 - Python 3.X
-- numpy and matplotlib (used solely in usage_example.py, the mHT and cpf functions do not need these libraries)
+- numpy and matplotlib (used solely in example_plots.py, the mHT and cpf functions do not need these libraries)
 ### Fortran
 - **Fortran Standard**: The code is written in Fortran 90 (compatible with later standards). It's important to use a compiler that supports at least Fortran 90.
 - **Recommended Compilers**: 
