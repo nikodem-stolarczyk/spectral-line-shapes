@@ -75,7 +75,7 @@ The following arguments are optional:
 
 ### cpf
 
-Both `cpf_accurate` and `cpf_fast` functions require two arguments, `x` and `y`. The meaning of `x` and `y` input values varies, depending on the application of the cpf. In the spectral line-shape context, `y` is the ratio between Lorentian and Doppler broadening (y=sqrt(log(2))*Gamma_L/Gamma_D), and `x` is the normalized detuning from the line center (x=sqrt(log(2))*(nu-nu_0)/Gamma_D). The `x` and `y` values are dimensionless.    
+Both `cpf_accurate` and `cpf_fast` functions require two arguments, `x` and `y`. The meaning of `x` and `y` input values varies, depending on the application of the cpf. In the spectral line-shape context, `y` is the ratio between Lorentian and Doppler broadening (y=sqrt(log(2))*Gam0/GamD), and `x` is the normalized detuning from the line center (x=sqrt(log(2))*(nu-nu0)/GamD). The `x` and `y` values are dimensionless.    
 
 ## Contributing
 
