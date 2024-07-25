@@ -43,15 +43,23 @@ Depending on the implementation, the following program versions are required
 
 ## Usage
 
-The `usage_example.x` (x stands for the extension depending on the implementation) provides examples of using the mHT, cpf_accurate and cpf_fast functions in each of the programing languages.
+### python
+The `example_absorption.py` and `example_dispersion.py` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.py` presents the syntax with the optional parameters and the `example_plots.py` file presents the plots of the spectral lines. The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
 
+### Fortran
+
+### matlab
+
+### mathematica
+
+### labview
 ## Data Format
 
 ### mHT 
 
 The `mHT` function requires the following arguments:
 - `nu0` - Unperturbed line position in cm-1.
-- 'GamD' - Doppler broadening in cm-1
+- `GamD` - Doppler broadening in cm-1
 - `Gam0` - Speed-averaged line-width in cm-1.
 - `Gam2` - Speed dependence of the line-width in cm-1.
 - `Shift0` - Speed-averaged line-shift in cm-1.
