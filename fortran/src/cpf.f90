@@ -120,7 +120,7 @@ module cpf_module
          cpf_z   = (0.0_dp, 0.0_dp)
          do i = 1, number_of_fft_terms
             cpf_z = cpf_z + fft_constant_terms(i)                      &
-               * Z**(number_of_fft_terms - i)
+               * z_ratio**(number_of_fft_terms - i)
          end do
          cpf_z = 2.0_dp * cpf_z / (weidemann_constant_24 - z)**2.0_dp  &
             + inverse_sqrt_pi / (weidemann_constant_24 - z)
