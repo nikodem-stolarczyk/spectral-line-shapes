@@ -66,7 +66,7 @@ module spectral_module
    end function beta
 !----------------------------------------------------------------------!
    function profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,&
-      Sw_opt,Ylm_opt,Xlm_opt,alpha_opt) result(mHT_profile)
+      Ylm_opt,Xlm_opt,alpha_opt) result(mHT_profile)
       !----------------------------------------------------------------!
       ! "PROFILE_mHT": modified Hartman Tran profile
       ! Subroutine to compute the complex normalized spectral shape of an 
@@ -83,7 +83,6 @@ module spectral_module
       ! NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
       ! NuOptIm   : Imaginary part of the Dicke parameter in cm-1 (Input).    
       ! nu        : Current WaveNumber of the Computation in cm-1 (Input).
-      ! Sw  		: Statistical weight 
       ! Ylm       : Imaginary part of the 1st order (Rosenkranz) line
       !             mixing coefficients, dimensionless (Input)
       ! Xlm       : Real part of the 1st order (Rosenkranz) line mixing
@@ -97,22 +96,15 @@ module spectral_module
       !----------------------------------------------------------------!
       real(dp), intent(in) :: nu0, GamD, Gam0, Gam2, Shift0, Shift2,   &
          NuOptRe, NuOptIm, nu
-      real(dp), intent(in), optional :: Sw_opt, Ylm_opt, Xlm_opt,      &
-         alpha_opt
+      real(dp), intent(in), optional :: Ylm_opt, Xlm_opt, alpha_opt
       complex(dp) :: mHT_profile
       !----------------------------------------------------------------!
       real(dp), parameter :: small_threshold = 3e-8_dp
       !----------------------------------------------------------------!
-      real(dp) :: Sw, Ylm, Xlm, alpha
+      real(dp) :: Ylm, Xlm, alpha
       real(dp) :: nuD, nuR
       complex(dp) :: c2, c0, LM, X, Y, csqY, z1, z2, w1, w2, wX, A,    &
          X_sqrt, z, w
-      !----------------------------------------------------------------!
-      if (present(Sw_opt)) then
-         Sw = Sw_opt
-      else
-         Sw = 1.0_dp
-      endif 
       !----------------------------------------------------------------!
       if (present(Ylm_opt)) then
          Ylm = Ylm_opt
@@ -177,7 +169,7 @@ module spectral_module
          !-------------------------------------------------------------!
       endif
       
-      mHT_profile = Sw*LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
+      mHT_profile = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
 
    end function profile 
 
