@@ -58,12 +58,12 @@ module cpf_module
       complex(dp) :: z, z_ratio
       integer(int32) :: i
       !----------------------------------------------------------------!
-      z       = cmplx(-y, x, kind=dp)
+      z       = cmplx(-y, x)
       z_ratio = (weidemann_constant_42 + z) / (weidemann_constant_42 - z)
       cpf_z   = (0.0_dp, 0.0_dp)
       do i = 1, number_of_fft_terms
          cpf_z = cpf_z + fft_constant_terms(i)                         &
-            * z_ratio**(real(number_of_fft_terms - i, kind = dp))
+            * z_ratio**(number_of_fft_terms - i)
       end do
       cpf_z = 2.0_dp * cpf_z / (weidemann_constant_42 - z)**2.0_dp     &
          + inverse_sqrt_pi / (weidemann_constant_42 - z)
@@ -110,17 +110,17 @@ module cpf_module
       !----------------------------------------------------------------!
       if (abs(x) + y > hum1_threshold) then
          !-------------------------------------------------------------!
-         t = cmplx(y, -x, kind=dp)
+         t = cmplx(y, -x)
          cpf_z = inverse_sqrt_pi * t / (0.5_dp + t**2.0_dp)
          !-------------------------------------------------------------!
       else
          !-------------------------------------------------------------!
-         z       = cmplx(-y, x, kind=dp)
+         z       = cmplx(-y, x)
          z_ratio = (weidemann_constant_24 + z) / (weidemann_constant_24 - z)
          cpf_z   = (0.0_dp, 0.0_dp)
          do i = 1, number_of_fft_terms
             cpf_z = cpf_z + fft_constant_terms(i)                      &
-               * Z**(real(number_of_fft_terms - i, kind = dp))
+               * Z**(number_of_fft_terms - i)
          end do
          cpf_z = 2.0_dp * cpf_z / (weidemann_constant_24 - z)**2.0_dp  &
             + inverse_sqrt_pi / (weidemann_constant_24 - z)
