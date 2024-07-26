@@ -47,13 +47,83 @@ Depending on the implementation, the following program versions are required
 The `example_absorption.py` and `example_dispersion.py` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.py` presents the syntax with the optional parameters.
 The `example_plots.py` file generates two plots:
 - the absorption and dispersion profiles of the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> (see [Stolarczyk et al.](https://doi.org/10.1063/5.0139229))
+
 ![plot1](media/example_plot_1.svg)
+
 - the comparison the absorption profiles of the Ar- and He-perturbed 3-0 S(1) line H<sub>2</sub> (see [Stolarczyk et al.](https://doi.org/10.1063/5.0139229) and [Slowinski et al.](https://doi.org/10.1103/PhysRevA.101.052705)).
+
 ![plot2](media/example_plot_2.svg)
 
 The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
 
 ### Fortran
+The following usage examples demonstrate the application of the Fortran implementation for purposes:
+
+#### Example: Absorption Profile
+
+**File:** `example_absorption.f90`
+
+This example demonstrates how to calculate the absorption profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Dispersion Profile
+
+**File:** `example_dispersion.f90`
+
+This example demonstrates how to calculate the absorption profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Complex Probability Function (CPF)
+
+**File:** `example_cpf.f90`
+
+This example provides two function calls for `cpf_accurate` and `cpf_fast` for trivial arguments (1, 1).
+
+#### Example: mHT with Optional Parameters
+
+**File:** `example_mHT_optional_parameters.f90`
+
+This example provides the absorption and dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> with additional parameters passed to the `profile` function: the real and imaginary parts of the line-mixing coefficient, and the perturber-to-absorber mass ratio.
+
+#### Example: Generating Profiles for Plotting
+
+**File:** `example_profiles.f90`
+
+Since Fortran lacks direct plotting capabilities, this example generates and exports data for spectral profiles of the Ar- and He-perturbed 3-0 S(1) lines in H<sub>2</sub> that can be plotted using external tools such as Python's Matplotlib or GNUplot. The output files (`mHT_profile_H2Ar.txt` and `mHT_profile_H2He.txt`) involve three columns, corresponding to the frequency, real (absorption) and imaginary (dispersion) parts of the mHT profile.
+
+#### Compilation Instructions
+
+Each example can be compiled individually or all together using the provided Makefile. Below are the instructions for both approaches:
+
+##### Compiling Individual Examples
+
+To compile a specific example, you can use the `make` command followed by the target name. Each target corresponds to an example as described above. For example, to compile the absorption profile example, you would use the following command:
+
+```bash
+make absorption
+```
+
+Here are the commands for compiling other specific examples:
+- Dispersion Profile
+```bash
+make dispersion
+```
+- Complex Probability Function (CPF)
+```bash
+make cpf
+```
+- mHT with Optional Parameters
+```bash
+make optional_parameters
+```
+- Generating Profiles for Plotting
+```bash
+make profiles
+```
+
+This command will compile the necessary source files and link them to produce an executable named `example_absorption.x`.
+
+##### Compiling All Examples
+If you wish to compile all the examples at once, you can use the `make all` command.
+This command will sequentially compile all the usage examples and create an executable for each one. Executables will be named according to their respective examples, as specified in the Makefile.
 
 ### matlab
 
