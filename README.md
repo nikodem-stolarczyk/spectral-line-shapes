@@ -41,8 +41,10 @@ Depending on the implementation, the following program versions are required
 The `example_absorption.py` and `example_dispersion.py` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.py` presents the syntax with the optional parameters.
 The `example_plots.py` file generates two plots:
 - the absorption and dispersion profiles of the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> (see [Stolarczyk et al.](https://doi.org/10.1063/5.0139229))
+
 ![plot1](media/example_plot_1.svg)
 - the comparison the absorption profiles of the Ar- and He-perturbed 3-0 S(1) line H<sub>2</sub> (see [Stolarczyk et al.](https://doi.org/10.1063/5.0139229) and [Slowinski et al.](https://doi.org/10.1103/PhysRevA.101.052705)).
+
 ![plot2](media/example_plot_2.svg)
 
 The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
