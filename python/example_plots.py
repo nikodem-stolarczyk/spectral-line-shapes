@@ -14,8 +14,8 @@ NuOptIm_Ar = -16.1e-3# Imaginary part of the Dicke parameter in cm-1.
 nu=nu0+1;# Current wavenumber of the computation in cm-1.
 
 #optional parameters
-Ylm = 1.0e-3; # Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
-Xlm = 0.5e-3; # Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
+Ylm = 1.0e-3; # Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
+Xlm = 0.5e-3; # Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 alpha_Ar = 20; # perturber-to-absorber mass ratio, dimensionless.
 
 #example parameters of the S(1) 3-0 line of H2 perturbed by He (reference 10.1103/PhysRevA.101.052705)
