@@ -15,12 +15,6 @@ git clone https://github.com/nikodem-stolarczyk/spectral-line-shapes/
 ```
 This will clone all the implementations.
 
-Alternatively, one can clone only one implementation. For instance, if one desires to clone the matlab implementation, they should use:
-
-```
-git clone https://github.com/nikodem-stolarczyk/spectral-line-shapes/matlab/
-```
- 
 ## Dependencies
 
 Depending on the implementation, the following program versions are required
@@ -146,8 +140,8 @@ The `mHT` function requires the following arguments:
 - `nu` - Current WaveNumber of the Computation in cm-1.
 
 The following arguments are optional:
-- `Ylm` - Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
-- `Xlm` - Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
+- `Ylm` - Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
+- `Xlm` - Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 - `alpha` - Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless.
 
 ### cpf
