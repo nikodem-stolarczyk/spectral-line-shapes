@@ -27,3 +27,6 @@ nu = nu0 + 1; % Current wavenumber of the computation in cm-1.
 outRe = profile(nu0, GamD, Gam0_Ar, Gam2_Ar, Shift0_Ar, Shift2_Ar, NuOptRe_Ar, NuOptIm_Ar, nu);
 disp('The output of the mHT function - absorption:');
 disp(outRe);
+
+% The mHT function output is a matrix of its real and imaginary part. 
+% Read as one parameter output returns only its real part, representing the absorption profile.
