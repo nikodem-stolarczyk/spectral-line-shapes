@@ -30,6 +30,7 @@ Depending on the implementation, the following program versions are required
 - **Build System**:
   - [Make](https://www.gnu.org/software/make/)
 ### matlab
+- minimum MATLAB version required still to be determined, tested in R2024a and R2022b
 
 ### mathematica
 
