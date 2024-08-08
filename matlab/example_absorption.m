@@ -1,3 +1,7 @@
+% Add subfolders to PATH variable (can be deleted if package is already in
+% folder within PATH or files are in the same catalog as this script).
+addpath(genpath(join([fileparts(which(mfilename)),"\mHT Package"],"")));
+
 % Importing global variables used in subfunctions
 global e pi rp sln2 num0 numinf
 load('mhtconstants.mat')
