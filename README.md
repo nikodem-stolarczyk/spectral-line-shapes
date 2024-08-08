@@ -4,7 +4,7 @@ The spectral-line-shapes repository hosts the implementations of the modified Ha
 
 The spectral-line-shapes repository features the implementations of the complex problability function (cpf), which are used to calculate the mHT. Though optimized specifically to work with the mHT, the cpf functions can also be used separately. The repository features two cpf functions: `cpf_accurate` (maintaining high accuracy, based on highly-modified 64-term Weideman algorithm jstor.org/stable/2158232), and `cpf_fast` (faster but less accurate, utilizing Humlicek's aproach in its first subregion, 10.1016/0022-4073(82)90078-4, and 24-term Weideman approach elsewhere jstor.org/stable/2158232). The detailed description of the modifications of the cpf functions will be summarized in the upcoming article.
 
-At the moment, the python, fortran and matlab implementations have been developed, while the mathematica and labview implementations are under preparation.
+At the moment, the python, fortran and MATLAB implementations have been developed, while the mathematica and labview implementations are under preparation.
 
 ## Installation
 
@@ -29,7 +29,7 @@ Depending on the implementation, the following program versions are required
   - [Intel Fortran Compiler (ifort)](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html)
 - **Build System**:
   - [Make](https://www.gnu.org/software/make/)
-### matlab
+### MATLAB
 - minimum MATLAB version required still to be determined, tested in R2024a and R2022b
 
 ### mathematica
@@ -120,7 +120,7 @@ This command will compile the necessary source files and link them to produce an
 If you wish to compile all the examples at once, you can use the `make all` command.
 This command will sequentially compile all the usage examples and create an executable for each one. Executables will be named according to their respective examples, as specified in the Makefile.
 
-### matlab
+### MATLAB
 The `example_*.m` files contains part that adds `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth need of moving the functions/package. After maing sure the catalog with the mHT Package is added to the PATH, this lines can be freely neglected. All files displaying the outputs in the terminal has also format specification to allow showcase of full double representation. It is not needed to actually reach that precision, it is only added to allow display the full precision in the terminal, the workspace variable is double either way. The `example_absorption.m` and `example_dispersion.m` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.m` presents the syntax with the optional parameters and how to add/call some or all of them at once. The `example_plots.m` file generates same plots as in `python` usage example and for the sake of the readability are not presented here. The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
 
 ### mathematica
