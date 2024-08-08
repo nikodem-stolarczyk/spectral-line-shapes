@@ -121,6 +121,7 @@ If you wish to compile all the examples at once, you can use the `make all` comm
 This command will sequentially compile all the usage examples and create an executable for each one. Executables will be named according to their respective examples, as specified in the Makefile.
 
 ### matlab
+The `example_*.m` files contains part that adds `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth need of moving the functions/package. The `example_absorption.m` and `example_dispersion.m` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.m` presents the syntax with the optional parameters and how to add/call some or all of them at once. The `example_plots.m` file generates same plots as in `python` usage example and for the sake of the readability are not presented here. The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
 
 ### mathematica
 
