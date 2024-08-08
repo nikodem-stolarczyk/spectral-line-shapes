@@ -6,6 +6,9 @@ addpath(genpath(join([fileparts(which(mfilename)),"\mHT Package"],"")));
 global e pi rp sln2 num0 numinf
 load('mhtconstants.mat')
 
+% Specifing format output to double precision
+format long;
+
 % Example parameters of the S(1) 3-0 line of H2 perturbed by Ar. 
 % Reference: 10.1063/5.0139229.
 nu0     = 112265.5949; % Unperturbed line position in cm-1.
