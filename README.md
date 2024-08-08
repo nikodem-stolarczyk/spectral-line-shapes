@@ -30,7 +30,7 @@ Depending on the implementation, the following program versions are required
 - **Build System**:
   - [Make](https://www.gnu.org/software/make/)
 ### MATLAB
-- minimum MATLAB version required still to be determined, tested in R2024a and R2022b
+- The minimum required MATLAB version is still to be determined. This project has been tested with MATLAB versions R2024a and R2022b
 
 ### mathematica
 
@@ -121,7 +121,9 @@ If you wish to compile all the examples at once, you can use the `make all` comm
 This command will sequentially compile all the usage examples and create an executable for each one. Executables will be named according to their respective examples, as specified in the Makefile.
 
 ### MATLAB
-The `example_*.m` files contains part that adds `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth need of moving the functions/package. After maing sure the catalog with the mHT Package is added to the PATH, this lines can be freely neglected. All files displaying the outputs in the terminal has also format specification to allow showcase of full double representation. It is not needed to actually reach that precision, it is only added to allow display the full precision in the terminal, the workspace variable is double either way. The `example_absorption.m` and `example_dispersion.m` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.m` presents the syntax with the optional parameters and how to add/call some or all of them at once. The `example_plots.m` file generates same plots as in `python` usage example and for the sake of the readability are not presented here. The `example_cpf` file presents the syntax for the `cpf_accurate` and `cpf_fast` functions.
+The `example_*.m` files contains sections that add `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth needing to move the functions or package. All files displaying outputs in the terminal include a format specification to showcase the full double representation. While it is not necessary to achieve this precision, it ensures the full precision is displayed in the terminal. The workspace variable is double-precision regardless.
+
+The `example_absorption.m` and `example_dispersion.m` files demonstrate the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.m` file presents the syntax with optional parameters and examples of calling some or all of them at simultaneously. The `example_plots.m` file generates the same plots as in `python` usage example. The `example_cpf` file demonstrates the syntax for the `cpf_accurate` and `cpf_fast` functions.
 
 ### mathematica
 
