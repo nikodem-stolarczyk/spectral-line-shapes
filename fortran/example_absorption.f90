@@ -5,9 +5,6 @@ program example_absorption
    use spectral_module, only: profile
    implicit none
    real(dp) :: mHT
-      ! Spectral line shape function (in cm); absorption profile is
-      ! obtained as the real part of the profile() function:
-      ! "real(profile(...))"
    real(dp) :: nu0 = 112265.5949_dp ! Unperturbed line position in cm-1.
    real(dp) :: GamD = 35.1e-3_dp ! Doppler broadening in cm-1.
    real(dp) :: Gam0 = 11.3e-3_dp ! Speed-averaged line-width in cm-1.
