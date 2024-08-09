@@ -28,12 +28,12 @@ Ylm   = 1.0e-3; % Dimensionless
 Xlm   = 0.5e-3; % Dimensionless
 alpha = 20;     % Dimensionless
 
-% Displaying mHT function output with optional parameters
-[outRe, outIm]  = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha);
+% Displaying mHT function output with no optional parameters
+[outRe, outIm]  = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu);
 disp('The output of the mHT function with optional parameters:');
 disp([outRe, outIm]);
 
-% Displaying mHT function output with optional parameters (all)
+% Displaying mHT function output with optional parameters
 [outRe, outIm]  = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha);
 disp('The output of the mHT function with optional parameters (all):');
 disp([outRe, outIm]);
