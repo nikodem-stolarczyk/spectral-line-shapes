@@ -3,6 +3,7 @@ program example_mHT_optional_parameters
    use spectral_module, only: profile
    implicit none
    complex(dp) :: mHT
+! example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
    real(dp) :: nu0 = 112265.5949_dp ! Unperturbed line position in cm-1.
    real(dp) :: GamD = 35.1e-3_dp ! Doppler broadening in cm-1.
    real(dp) :: Gam0 = 11.3e-3_dp ! Speed-averaged line-width in cm-1.
