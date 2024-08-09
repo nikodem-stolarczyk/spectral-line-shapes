@@ -16,14 +16,11 @@ program example_profiles
    real(dp) :: Xlm ! Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
    real(dp) :: alpha_He, alpha_Ar ! perturber-to-absorber mass ratio, dimensionless.
 
-   integer(int32) :: unit_ = 10
-      ! File unit number (fixed at 10)
-   integer(int32) :: point
-      ! A running index for iteration
-   integer(int32) :: number_of_points
-      ! Number of points on the frequency grid
-   real(dp) :: nu_step
-      ! Frequency step (in cm^(-1))
+   integer(int32) :: unit_ = 10 ! File unit number (fixed at 10)
+   integer(int32) :: point ! A running index for iteration
+   integer(int32) :: number_of_points ! Number of points on the frequency grid
+   real(dp) :: nu_step ! Frequency step (in cm^(-1))
+   
 ! example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
    nu0        = 112265.5949_dp
    GamD       = 35.1e-3_dp
@@ -39,7 +36,6 @@ program example_profiles
    alpha_Ar = 20.0_dp
    
 ! Generate the mHT profile from -5 GammaD to +5 GammaD and save to an external file
-
    write(*,*) "Generating the mHT profile for the Ar-perturbed 3-0 S(1) line in H2..."
    number_of_points = 1001
    
@@ -68,7 +64,6 @@ program example_profiles
    write(*,*) "The result has been saved to mHT_profile_H2Ar.txt"
    
 ! example parameters of the S(1) 3-0 line of H2 perturbed by He (reference 10.1103/PhysRevA.101.052705)
-
    write(*,*) "Generating the mHT profile for the He-perturbed 3-0 S(1) line in H2..."
    Gam0_He    = 11.7e-3_dp
    Gam2_He    = 5.4e-3_dp
@@ -76,7 +71,6 @@ program example_profiles
    Shift2_He  = 12.4e-3_dp
    NuOptRe_He = 38.0e-3_dp
    NuOptIm_He =-17.5e-3_dp
-
    alpha_He = 2.0_dp
 
    open(unit=unit_, file='mHT_profile_H2He.txt', status='replace',     &
