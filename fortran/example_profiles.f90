@@ -4,7 +4,6 @@ program example_profiles
    implicit none
    real(dp), allocatable :: nu_tabulated(:) ! Frequency grid in cm-1.
    complex(dp), allocatable :: mHT_tabulated(:)
-! example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
    real(dp) :: nu0 ! Unperturbed line position in cm-1.
    real(dp) :: GamD ! Doppler broadening in cm-1.
    real(dp) :: Gam0_He, Gam0_Ar ! Speed-averaged line-width in cm-1.
