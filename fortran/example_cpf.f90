@@ -15,5 +15,5 @@ program example_cpf
       real(cpf_accurate_output), aimag(cpf_accurate_output)
    write(*, '(A, 2F22.15)') 'the output of the cpf_fast function:     ',&
       real(cpf_fast_output), aimag(cpf_fast_output)
-!----------------------------------------------------------------------!
+
 end program example_cpf
