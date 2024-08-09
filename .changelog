@@ -1,3 +1,7 @@
+9/8/2024
+# Merged nikodem-stolarczyk-patch-8
+# - updated annotations in fortran implementation
+# - modified the structure of initializing the library with __init__.py
 2/8/2024:
 # Merged nikodem-stolarczyk-patch-8
 # - minor updates and fixes to usage examples and readme concerning python implementation
