@@ -1,18 +1,23 @@
 function w42 = cpf_accurate(x, y)
-    % CPF_ACCURATE: Computes the complex probability function using a rational series 
-    % with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0. (Source: jstor.org/stable/2158232)
-    % A series was simplified to 37 terms introducing less than 10^(-17)
-    % deviations on mHT profile.
+    % ---------------------------------------- 
+    %    CPF_ACCURATE: Computes the complex probability function using a rational series 
+    %    with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0. (Source: jstor.org/stable/2158232)
+    %    A series was simplified to 37 terms introducing less than 10^(-17)
+    %    deviations on mHT profile.
     %
-    % Input/Output Parameters of Routine
-    % x : Real part of input complex parameter
-    % y : Imaginary part of input complex parameter
+    %    Standard Input Parameters:
+    %    --------------------
+    %    x : Real part of input complex parameter
+    %    y : Imaginary part of input complex parameter
     %
-    % The function has one output:
-    % (1): Complex probability function
-    global rp
-    z   = -y + x*1i;
+    %    The function has one output:
+    %    --------------------
+    %    (1): Complex probability function
+    % ---------------------------------------- 
+
+    rp  = 1.772453850905516; % root square of pi 
     L   = 5.449631621480024; % the pre-calculated Weideman constant for N = 42
+    z   = -y + x*1i;
     Z   = (L + z) / (L - z);
     a   = [ -3.129493160727961E-14, -1.188364999909099E-14,  1.951777029849348E-13,  1.790586243645278E-13, ...
             -1.184560208678836E-12, -2.069163661083667E-12,  6.430136110306704E-12,  2.063579921011804E-11, ...
