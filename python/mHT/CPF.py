@@ -2,21 +2,21 @@ inverse_sqrt_pi = 0.5641895835477563
 
 def cpf_accurate(x,y):
     """    
-    #-------------------------------------------------
+    # ----------------------------------------
     #      Computes the complex probability function using a rational series 
     #      with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0. (Source: jstor.org/stable/2158232)
     #      A series was simplified to 37 terms introducing less than 10^(-17)
     #      deviations on mHT profile.
     #
-    #      Standard Input Parameters
-    #      --------------------------------- 
+    #      Standard Input Parameters:
+    #      -------------------- 
     #      x : Real part of input complex parameter
     #      y : Imaginary part of input complex parameter
     #
     #      The function has one output:
-    #      -----------------
+    #      --------------------
     #      (1): Complex probability function
-    #-------------------------------------------------
+    # ----------------------------------------
     """
     p = 0 
     z = -y + x*1j
@@ -37,20 +37,20 @@ def cpf_accurate(x,y):
 
 def cpf_fast(x,y):
     """    
-    #-------------------------------------------------
+    # ----------------------------------------
     #      Computes the complex probability function using Humlicek's 
     #      algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) 
     #      and using a rational series with 24 terms in other subregions. (Source: jstor.org/stable/2158232)
     #
-    #      Standard Input Parameters
-    #      --------------------------------- 
+    #      Standard Input Parameters:
+    #      -------------------- 
     #      x : Real part of input complex parameter
     #      y : Imaginary part of input complex parameter
     #
     #      The function has one output:
-    #      -----------------
+    #      --------------------
     #      (1): Complex probability function
-    #-------------------------------------------------
+    # ----------------------------------------
     """
     hum1_threshold = 15.0 # the border of the first Humlicek's region
     if abs(x)+y>hum1_threshold:
