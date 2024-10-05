@@ -9,7 +9,7 @@ numinf = 4.0e3               # numerical infinity
 
 def beta(GammaD,NuOptRe,alpha):
     """
-    #-------------------------------------------------
+    # ----------------------------------------
     #      "beta": Beta-Correction  
     #      Subroutine to compute beta-correction used for hard-collision based line-shape profiles
     #      To correct NuOptRe value in the profile . Applicable up to alpha = 5.0, for higher alpha
@@ -17,15 +17,15 @@ def beta(GammaD,NuOptRe,alpha):
     #      Source: 10.1016/j.jqsrt.2019.106784
     #
     #      Standard Input Parameters:
-    #      ---------------------------------
+    #      --------------------
     #      GammaD    : Doppler broadening in cm-1. 
     #      NuOptRe   : Real part of the Dicke parameter in cm-1.
     #      alpha     : Mass ratio in the molecule, applicable up to alpha=5, dimensionless.
     #
     #      The function has one output:
-    #      -----------------
+    #      --------------------
     #      (1): Value of the beta correction, dimensionless. 
-    #-------------------------------------------------
+    # ----------------------------------------
     """
     max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
     if alpha < max_alpha:
@@ -39,12 +39,12 @@ def beta(GammaD,NuOptRe,alpha):
 
 def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     """
-    #-------------------------------------------------
+    # ----------------------------------------
     #      "PROFILE_mHT": modified Hartman Tran profile
     #      Subroutine to compute the complex normalized spectral-line shape using mHT model
     #
     #      Standard Input Parameters
-    #      ---------------------------------
+    #      --------------------
     #      nu0       : Unperturbed line position in cm-1.
     #      GammaD    : Doppler broadening in cm-1.
     #      Gamma0    : Speed-averaged line-width in cm-1.       
@@ -56,18 +56,18 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     #      nu        : Current WaveNumber in cm-1.
     #
     #      Optional Dictionary Input Parameters
-    #      ---------------------------------
+    #      --------------------
     #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
     #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
     #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5 (default: 10.0).
     #      disp      : Boolean trigger for including dispersion profile in the output (default: False).
     #
     #      The function has two outputs, from which one is optional:
-    #      -----------------
+    #      --------------------
     #      (1):        Real part of the normalized spectral shape (cm)
     #      (Optional): Imaginary part of the normalized spectral shape (cm)
     #
-    #-------------------------------------------------
+    # ----------------------------------------
     """
     # Optional input parameters definition
     Xlm   = 0.0   if kwargs.get('Xlm')   == None or not(isinstance(kwargs.get('Xlm'),(float,int)))   else float(kwargs.get('Xlm'))
