@@ -59,13 +59,13 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     #      --------------------
     #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
     #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
-    #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5 (default: 10.0).
+    #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless (default: 10.0).
     #      disp      : Boolean trigger for including dispersion profile in the output (default: False).
     #
     #      The function has two outputs, from which one is optional:
     #      --------------------
-    #      (1):        Real part of the normalized spectral shape (cm)
-    #      (Optional): Imaginary part of the normalized spectral shape (cm)
+    #      (1):        Real part of the normalized spectral shape in cm.
+    #      (Optional): Imaginary part of the normalized spectral shape in cm.
     #
     # ----------------------------------------
     """
