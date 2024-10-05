@@ -9,7 +9,7 @@ Delta0 = -26.4e-3;# Speed-averaged line-shift in cm-1.
 Delta2 = 17.8e-3;# Speed dependence of the line-shift in cm-1.
 NuOptRe = 72.1e-3;# Real part of the Dicke parameter in cm-1.
 NuOptIm = -16.1e-3# Imaginary part of the Dicke parameter in cm-1.
-nu=nu0+1;# Current wavenumber of the computation in cm-1.
+nu=nu0+1;# Current wavenumber in cm-1.
 
 print("the output of the mHT function - absorption")
 print(mHT.profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu)) # The mHT function output is absorption part only by default.
