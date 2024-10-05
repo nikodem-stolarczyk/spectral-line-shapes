@@ -16,7 +16,7 @@ def beta(GammaD,NuOptRe,alpha):
     #      values correction neglected. 
     #      Source: 10.1016/j.jqsrt.2019.106784
     #
-    #      Input Parameters of Routine (Arguments or Common)
+    #      Standard Input Parameters
     #      ---------------------------------
     #      GammaD    : Doppler broadening in cm-1. 
     #      NuOptRe   : Real part of the Dicke parameter in cm-1.
@@ -24,7 +24,7 @@ def beta(GammaD,NuOptRe,alpha):
     #
     #      The function has one output:
     #      -----------------
-    #      (1): Value of the beta correction 
+    #      (1): Value of the beta correction, dimensionless. 
     #-------------------------------------------------
     """
     max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
