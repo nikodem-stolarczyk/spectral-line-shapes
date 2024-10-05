@@ -16,7 +16,7 @@ def beta(GammaD,NuOptRe,alpha):
     #      values correction neglected. 
     #      Source: 10.1016/j.jqsrt.2019.106784
     #
-    #      Standard Input Parameters
+    #      Standard Input Parameters:
     #      ---------------------------------
     #      GammaD    : Doppler broadening in cm-1. 
     #      NuOptRe   : Real part of the Dicke parameter in cm-1.
