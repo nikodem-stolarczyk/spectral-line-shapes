@@ -8,11 +8,10 @@ def cpf_accurate(x,y):
     #      A series was simplified to 37 terms introducing less than 10^(-17)
     #      deviations on mHT profile.
     #
-    #      Input/Output Parameters of Routine
+    #      Standard Input Parameters
     #      --------------------------------- 
     #      x : Real part of input complex parameter
     #      y : Imaginary part of input complex parameter
-    #
     #
     #      The function has one output:
     #      -----------------
@@ -43,11 +42,10 @@ def cpf_fast(x,y):
     #      algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) 
     #      and using a rational series with 24 terms in other subregions. (Source: jstor.org/stable/2158232)
     #
-    #      Input/Output Parameters of Routine
+    #      Standard Input Parameters
     #      --------------------------------- 
     #      x : Real part of input complex parameter
     #      y : Imaginary part of input complex parameter
-    #
     #
     #      The function has one output:
     #      -----------------
