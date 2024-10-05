@@ -1,15 +1,20 @@
 function res = cpf_fast(x, y)
-    % CPF_FAST: Computes the complex probability function using Humlicek's 
-    % algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) 
-    % and using a rational series with 24 terms in other subregions. (Source: jstor.org/stable/2158232)
+    % ---------------------------------------- 
+    %    CPF_FAST: Computes the complex probability function using Humlicek's 
+    %    algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) 
+    %    and using a rational series with 24 terms in other subregions. (Source: jstor.org/stable/2158232)
     %
-    % Input/Output Parameters of Routine
-    % x : Real part of input complex parameter
-    % y : Imaginary part of input complex parameter
+    %    Standard Input Parameters:
+    %    --------------------
+    %    x : Real part of input complex parameter.
+    %    y : Imaginary part of input complex parameter.
     %
-    % The function has one output:
-    % (1): Complex probability function
-    global rp
+    %    The function has one output:
+    %    --------------------
+    %    (1): Complex probability function.
+    % ---------------------------------------- 
+    
+    rp  = 1.772453850905516; % root square of pi 
     hum1_threshold = 15.0; % the border of the first Humlicek's region
 
     if abs(x) + y > hum1_threshold
