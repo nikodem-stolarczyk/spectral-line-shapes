@@ -12,7 +12,7 @@ NuOptIm = -16.1e-3# Imaginary part of the Dicke parameter in cm-1.
 nu=nu0+1;# Current wavenumber in cm-1.
 
 print("the output of the mHT function")
-print(mHT.profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu)) # The mHT function output is a table of its real and imaginary part, representing the absorption and dispersion profiles, respectively
+print(mHT.profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu)) # The mHT function output returns absorption profile by default. To display the dispersive profile see example_dispersion.py.
 
 #optional parameters
 newYlm = 1.0e-3; # Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
@@ -22,6 +22,7 @@ newdisp = True; # Boolean trigger for including dispersion profile in the output
 
 print("the output of the mHT function with optional parameters")
 print(mHT.profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,Ylm=newYlm,Xlm=newXlm,alpha=newalpha,disp=newdisp))
-# The function is designed with 4 optional parameters called as a dictionary inputs.
-# The parameters doesn't have to be called in same order and doesn't have to be called all at once, only one can be called if that's needed.
-# Optional parameters has to be called as last parameters in function and have to be called preceded by its keyworkd (e.g. "Ylm=").
+# This function accepts 4 optional parameters, provided as dictionary inputs.
+# Parameters can be specified in any order, and it is not necessary to provide all of them.
+# Optional parameters must be passed last in the function call, using their corresponding keyword (e.g., "Ylm=").
+
