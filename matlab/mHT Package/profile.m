@@ -27,18 +27,18 @@ function [real_part, imag_part] = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, D
     %    imag_part : Imaginary part of the normalized spectral shape in cm.
     % ---------------------------------------- 
     arguments (Input)
-        nu0     (1,1) double
-        GammaD  (1,1) double
-        Gamma0  (1,1) double
-        Gamma2  (1,1) double
-        Delta0  (1,1) double
-        Delta2  (1,1) double
-        NuOptRe (1,1) double
-        NuOptIm (1,1) double
-        nu      (1,1) double
-        Ylm     (1,1) double = 0.0
-        Xlm     (1,1) double = 0.0
-        alpha   (1,1) double = 10.0
+        nu0       (1,1) double
+        GammaD    (1,1) double
+        Gamma0    (1,1) double
+        Gamma2    (1,1) double
+        Delta0    (1,1) double
+        Delta2    (1,1) double
+        NuOptRe   (1,1) double
+        NuOptIm   (1,1) double
+        nu        (1,1) double
+        Ylm       (1,1) double = 0.0
+        Xlm       (1,1) double = 0.0
+        alpha     (1,1) double = 10.0
     end    
     arguments (Output)
         real_part (1,1) double
