@@ -3,15 +3,16 @@ inverse_sqrt_pi = 0.5641895835477563
 def cpf_accurate(x,y):
     """    
     # ----------------------------------------
+    #      "CPF_ACCURATE": Accurate CPF algorithm
     #      Computes the complex probability function using a rational series 
-    #      with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0. (Source: jstor.org/stable/2158232)
+    #      with 42 terms. It is assumed that Im(z) > 0 or Im(z) = 0. (reference: jstor.org/stable/2158232)
     #      A series was simplified to 37 terms introducing less than 10^(-17)
     #      deviations on mHT profile.
     #
     #      Standard Input Parameters:
     #      -------------------- 
-    #      x : Real part of input complex parameter
-    #      y : Imaginary part of input complex parameter
+    #      x  : Real part of input complex parameter
+    #      y  : Imaginary part of input complex parameter
     #
     #      The function has one output:
     #      --------------------
@@ -20,7 +21,7 @@ def cpf_accurate(x,y):
     """
     p = 0 
     z = -y + x*1j
-    L = 5.449631621480024 # the pre-calculated Weideman constant for N = 42
+    L = 5.449631621480024 # The pre-calculated Weideman constant for N = 42
     Z = (L+z)/(L-z)
     a = [ -3.129493160727961E-14, -1.188364999909099E-14,  1.951777029849348E-13,  1.790586243645278E-13, 
           -1.184560208678836E-12, -2.069163661083667E-12,  6.430136110306704E-12,  2.063579921011804E-11, 
@@ -31,21 +32,22 @@ def cpf_accurate(x,y):
            4.631075611097791E-03,  1.480296368764821E-02,  3.922970169744468E-02,  9.038744880336540E-02, 
            1.857036333535562E-01,  3.455278077566057E-01,  5.882708203344523E-01,  9.230959991941070E-01, 
            1.342044484596932E+00,  1.814714451499866E+00,  2.288734169675538E+00,  2.697763665856064E+00, 
-           2.975931371735470E+00] # the pre-calculated table of FFT constant terms (truncated from the begining)
+           2.975931371735470E+00] # The pre-calculated table of FFT constant terms (truncated from the begining)
     for i in range(37): p+=a[i]*Z**(36 - i)
     return 2*p/(L-z)**2 + inverse_sqrt_pi/(L-z)
 
 def cpf_fast(x,y):
     """    
     # ----------------------------------------
+    #      "CPF_FAST": Fast CPF algorithm
     #      Computes the complex probability function using Humlicek's 
     #      algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) 
-    #      and using a rational series with 24 terms in other subregions. (Source: jstor.org/stable/2158232)
+    #      and using a rational series with 24 terms in other subregions. (reference: jstor.org/stable/2158232)
     #
     #      Standard Input Parameters:
     #      -------------------- 
-    #      x : Real part of input complex parameter
-    #      y : Imaginary part of input complex parameter
+    #      x  : Real part of input complex parameter
+    #      y  : Imaginary part of input complex parameter
     #
     #      The function has one output:
     #      --------------------
