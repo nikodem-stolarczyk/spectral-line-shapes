@@ -2,7 +2,7 @@
 % folder within PATH or files are in the same catalog as this script).
 addpath(genpath(join([fileparts(which(mfilename)),"\mHT Package"],"")));
 
-% Specifing format output to double precision
+% Specifing display format output to double precision
 format long;
 
 % Example parameters of the S(1) 3-0 line of H2 perturbed by Ar. 
