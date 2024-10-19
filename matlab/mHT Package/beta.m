@@ -15,8 +15,16 @@ function res = beta(GammaD, NuOptRe, alpha)
     %    --------------------
     %    (1)       : Value of the beta correction, dimensionless.
     % ----------------------------------------
+    arguments (Input)
+        GammaD  (1,1) double
+        NuOptRe (1,1) double
+        alpha   (1,1) double
+    end
+    arguments (Output)
+        res (1,1) double
+    end
 
-    max_alpha = 5.0; % the mass ratio up to which the beta correction is applicable
+    max_alpha = 5.0; % The mass ratio up to which the beta correction is applicable
     if alpha<max_alpha
         a   =  0.0534 + 0.1585*exp(-0.4510*alpha);
         b   =  1.9595 - 0.1258*alpha + 0.0056*alpha^2 + 0.0050*alpha^3;
