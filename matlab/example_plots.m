@@ -1,5 +1,6 @@
-% Add subfolders to PATH variable
-addpath(genpath(fileparts(which(mfilename))));
+% Add subfolders to PATH variable (can be deleted if package is already in
+% folder within PATH or files are in the same catalog as this script).
+addpath(genpath(join([fileparts(which(mfilename)),"\mHT Package"],"")));
 
 % Example parameters of the S(1) 3-0 line of H2 perturbed by Ar. 
 % Reference: 10.1063/5.0139229.
@@ -39,7 +40,7 @@ plot(x,yR_Ar)
 hold on
 plot(x,yI_Ar)
 hold off
-title("Primary example","Real (blue) and imaginary (orange) part of the mHT output")
+title("Primary example","Absorption (blue) and dispersion (orange) part for mHT output for H_2-Ar")
 xlabel("Frequency [cm^-^1]")
 ylabel("mHT")
 grid on
@@ -51,7 +52,7 @@ plot(x,yR_Ar)
 hold on
 plot(x,yR_He)
 hold off
-title("Secondary example","Real part of the H_2-Ar (blue) and the H_2-He (orange) mHT output")
+title("Secondary example","Absorption mHT profiles for H_2-Ar (blue) and H_2-He (orange).")
 xlabel("Frequency [cm^-^1]")
 ylabel("mHT")
 grid on
