@@ -10,7 +10,7 @@ numinf = 4.0e3               # numerical infinity
 def beta(GammaD,NuOptRe,alpha):
     """
     # ----------------------------------------
-    #      "beta": Beta-Correction  
+    #      "BETA": Beta-Correction Function
     #      Subroutine to compute beta-correction used for hard-collision based line-shape profiles
     #      To correct NuOptRe value in the profile . Applicable up to alpha = 5.0, for higher alpha
     #      values correction neglected. 
@@ -24,7 +24,7 @@ def beta(GammaD,NuOptRe,alpha):
     #
     #      The function has one output:
     #      --------------------
-    #      (1): Value of the beta correction, dimensionless. 
+    #      (1)       : Value of the beta correction, dimensionless. 
     # ----------------------------------------
     """
     max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
@@ -40,10 +40,10 @@ def beta(GammaD,NuOptRe,alpha):
 def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     """
     # ----------------------------------------
-    #      "PROFILE_mHT": modified Hartman Tran profile
+    #      "PROFILE": modified Hartman Tran profile
     #      Subroutine to compute the complex normalized spectral-line shape using mHT model
     #
-    #      Standard Input Parameters
+    #      Standard Input Parameters:
     #      --------------------
     #      nu0       : Unperturbed line position in cm-1.
     #      GammaD    : Doppler broadening in cm-1.
@@ -55,17 +55,16 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     #      NuOptIm   : Imaginary part of the complex Dicke parameter in cm-1.    
     #      nu        : Current WaveNumber in cm-1.
     #
-    #      Optional Dictionary Input Parameters
+    #      Optional Input Parameters:
     #      --------------------
     #      Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
     #      Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
     #      alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless (default: 10.0).
     #      disp      : Boolean trigger for including dispersion profile in the output (default: False).
     #
-    #      The function has two outputs, from which one is optional:
+    #      The function has one outputs:
     #      --------------------
-    #      (1):        Real part of the normalized spectral shape in cm.
-    #      (Optional): Imaginary part of the normalized spectral shape in cm.
+    #      (1)       : Real or imaginary (depending on disp value) part of the normalized spectral shape in cm.
     #
     # ----------------------------------------
     """
@@ -103,4 +102,4 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
         w = cpf(-z.imag,z.real)
         A = w*rp/nuD
     I = LM/pi*A/(1-(nuR + NuOptIm*1j)*A)
-    return (I.real) if not(disp) else (I.real, I.imag)
+    return (I.real) if not(disp) else (I.imag)
