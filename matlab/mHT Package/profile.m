@@ -1,49 +1,71 @@
-function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha)
-    % PROFILE_mHT: modified Hartman Tran profile
-    % Subroutine to compute the complex normalized spectral shape of an 
-    % isolated line by the mHT model
+function [real_part, imag_part] = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha)
+    % ---------------------------------------- 
+    %    Subroutine to compute the complex normalized spectral shape of an 
+    %    isolated line by the modified Hartman Tran (mHT) model
     %
-    % Input/Output Parameters of Routine (Arguments or Common)
-    % nu0       : Unperturbed line position in cm-1 (Input).
-    % GamD      : Doppler HWHM in cm-1 (Input)
-    % Gam0      : Speed-averaged line-width in cm-1 (Input).       
-    % Gam2      : Speed dependence of the line-width in cm-1 (Input).
-    % Shift0    : Speed-averaged line-shift in cm-1 (Input).
-    % Shift2    : Speed dependence of the line-shift in cm-1 (Input)   
-    % NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
-    % NuOptIm   : Imaginary part of the Dicke parameter in cm-1 (Input).    
-    % nu        : Current WaveNumber of the Computation in cm-1 (Input).
-    % Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
-    % Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients in cm-1 (Input)
-    % alpha     : Mass ratio in the molecule for calculating beta-correction. Applicable up to alpha=5.
+    %    Standard Input Parameters:
+    %    --------------------
+    %    nu0       : Unperturbed line position in cm-1.
+    %    GammaD    : Doppler HWHM in cm-1.
+    %    Gamma0    : Speed-averaged line-width in cm-1.       
+    %    Gamma2    : Quadratic speed dependence parameter of the line-width in cm-1.
+    %    Delta0    : Speed-averaged line-shift in cm-1.
+    %    Delta2    : Quadratic speed dependence parameter of the line-shift in cm-1.   
+    %    NuOptRe   : Real part of the Dicke parameter in cm-1.
+    %    NuOptIm   : Imaginary part of the Dicke parameter in cm-1.    
+    %    nu        : Current wavenumber in cm-1.
     %
-    % The function has two outputs:
-    % (1): Real part of the normalized spectral shape (cm)
-    % (2): Imaginary part of the normalized spectral shape (cm)
-    global e pi rp sln2 num0 numinf
-    if nargin < 13
-        alpha = 10.0;
-        if nargin < 12
-            Xlm = 0.0;
-            if nargin < 11
-                Ylm = 0.0;
-            end
-        end
+    %    Optional Input Parameters:
+    %    --------------------
+    %    Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
+    %    Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
+    %    alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless (default: 10.0).
+    %
+    %    The function has two outputs:
+    %    --------------------
+    %    real_part : Real part of the normalized spectral shape in cm.
+    %    imag_part : Imaginary part of the normalized spectral shape in cm.
+    % ---------------------------------------- 
+    arguments (Input)
+        nu0       (1,1) double
+        GammaD    (1,1) double
+        Gamma0    (1,1) double
+        Gamma2    (1,1) double
+        Delta0    (1,1) double
+        Delta2    (1,1) double
+        NuOptRe   (1,1) double
+        NuOptIm   (1,1) double
+        nu        (1,1) double
+        Ylm       (1,1) double = 0.0
+        Xlm       (1,1) double = 0.0
+        alpha     (1,1) double = 10.0
+    end    
+    arguments (Output)
+        real_part (1,1) double
+        imag_part (1,1) double
     end
-    ternary = @(varargin) varargin{end - varargin{1}};
-    cpf     = @cpf_accurate;
     
+    % Define mathematical, numerical and function handles variables
+    pi      = 3.141592653589793;  % Pi number
+    rp      = 1.772453850905516;  % Root square of pi
+    sln2    = 0.8325546111576977; % Root square of natural logarithm of 2
+    num0    = 1.0e-15;            % Numerical zero
+    numinf  = 4000;               % Numerical infinity
+    cpf     = @cpf_accurate;      % CPF choice
 
-    nuD = GamD / sln2 ;
-    nuR = NuOptRe*beta(GamD, NuOptRe, alpha);
-    c2  = Gam2+Shift2*1i;
-    c0  = Gam0+Shift0*1i-1.5*c2+nuR+NuOptIm*1i;
+    % Ternary operator
+    ternary = @(varargin) varargin{length(varargin)-varargin{1}}; 
+    
+    % The function
+    nuD = GammaD / sln2 ;
+    nuR = NuOptRe*beta(GammaD, NuOptRe, alpha);
+    c2  = Gamma2+Delta2*1i;
+    c0  = Gamma0+Delta0*1i-1.5*c2+nuR+NuOptIm*1i;
     LM  = 1+Xlm+Ylm*1i;
-
     if abs(c2) ~= num0
         X    = ((nu0-nu)*1i+c0)/c2;
         Y    = 0.25*(nuD/c2)^2;
-        csqY = 0.50*nuD*(Gam2-Shift2*1i)/(Gam2^2+Shift2^2);
+        csqY = 0.50*nuD*(Gamma2-Delta2*1i)/(Gamma2^2+Delta2^2);
         if abs(Y)>abs(X)*num0
             z2 = sqrt(X+Y)+csqY;   
             z1 = ternary(abs(X)>abs(Y)*3e-8,z2-2*csqY, ((nu0-nu)*1i+c0)/nuD);
@@ -65,9 +87,9 @@ function [real_part, imag_part] = profile(nu0, GamD, Gam0, Gam2, Shift0, Shift2,
         A = w*rp/nuD;
     end
     I = LM/pi*A/(1-(nuR+NuOptIm*1i)*A);
-
+    
+    % Output
     real_part = real(I);
     imag_part = imag(I);
 end
-
 
