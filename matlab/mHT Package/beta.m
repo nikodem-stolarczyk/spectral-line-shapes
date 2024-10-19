@@ -1,10 +1,9 @@
 function res = beta(GammaD, NuOptRe, alpha)
     % ---------------------------------------- 
-    %    "beta": Beta-Correction  
     %    Subroutine to compute beta-correction used for hard-collision based line-shape profiles.
     %    To correct NuOptRe value in the profile. Applicable up to alpha = 5.0, for higher alpha
     %    values correction is neglected.
-    %    Source: 10.1016/j.jqsrt.2019.106784
+    %    Reference: 10.1016/j.jqsrt.2019.106784
     %
     %    Standard Input Parameters:
     %    --------------------
@@ -14,7 +13,7 @@ function res = beta(GammaD, NuOptRe, alpha)
     %
     %    The function has one output:
     %    --------------------
-    %    (1): Value of the beta correction, dimensionless.
+    %    (1)       : Value of the beta correction, dimensionless.
     % ----------------------------------------
 
     max_alpha = 5.0; % the mass ratio up to which the beta correction is applicable
