@@ -13,7 +13,7 @@ function [real_part, imag_part] = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, D
     %    Delta2    : Quadratic speed dependence parameter of the line-shift in cm-1.   
     %    NuOptRe   : Real part of the Dicke parameter in cm-1.
     %    NuOptIm   : Imaginary part of the Dicke parameter in cm-1.    
-    %    nu        : Current WaveNumber of the Computation in cm-1.
+    %    nu        : Current wavenumber in cm-1.
     %
     %    Optional Input Parameters:
     %    --------------------
