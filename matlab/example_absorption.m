@@ -16,7 +16,7 @@ Delta2  =     17.8e-3; % Quadratic speed dependence parameter of the line-shift 
 NuOptRe =     72.1e-3; % Real part of the Dicke parameter in cm-1.
 NuOptIm =    -16.1e-3; % Imaginary part of the Dicke parameter in cm-1.
 
-% Example frequency point:
+% Example frequency point
 nu = nu0 + 1; % Current wavenumber in cm-1.
 
 % Displaying mHT function output:
