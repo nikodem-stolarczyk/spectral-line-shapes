@@ -48,9 +48,9 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     #      nu0       : Unperturbed line position in cm-1.
     #      GammaD    : Doppler broadening in cm-1.
     #      Gamma0    : Speed-averaged line-width in cm-1.       
-    #      Gamma2    : Speed dependence of the line-width in cm-1.
+    #      Gamma2    : Quadratic speed dependence parameter of the line-width in cm-1.
     #      Delta0    : Speed-averaged line-shift in cm-1.
-    #      Delta2    : Speed dependence of the line-shift in cm-1.   
+    #      Delta2    : Quadratic speed dependence parameter of the line-shift in cm-1.   
     #      NuOptRe   : Real part of the complex Dicke parameter in cm-1.
     #      NuOptIm   : Imaginary part of the complex Dicke parameter in cm-1.    
     #      nu        : Current WaveNumber in cm-1.
