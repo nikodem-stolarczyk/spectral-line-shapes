@@ -13,6 +13,13 @@ function w42 = cpf_accurate(x, y)
     %    --------------------
     %    (1) : Complex probability function
     % ---------------------------------------- 
+    arguments (Input)
+        x   (1,1) double
+        y   (1,1) double
+    end
+    arguments (Output)
+        w42 (1,1) double
+    end
 
     rp  = 1.772453850905516; % Root square of pi 
     L   = 5.449631621480024; % The pre-calculated Weideman constant for N = 42
