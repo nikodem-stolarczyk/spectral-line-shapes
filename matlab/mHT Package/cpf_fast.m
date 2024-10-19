@@ -13,6 +13,13 @@ function res = cpf_fast(x, y)
     %    --------------------
     %    (1) : Complex probability function.
     % ---------------------------------------- 
+    arguments (Input)
+        x   (1,1) double
+        y   (1,1) double
+    end
+    arguments (Output)
+        res (1,1) double
+    end
     
     rp  = 1.772453850905516; % Root square of pi 
     hum1_threshold = 15.0;   % The border of the first Humlicek's region
