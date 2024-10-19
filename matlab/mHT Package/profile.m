@@ -51,7 +51,7 @@ function [real_part, imag_part] = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, D
     sln2    = 0.8325546111576977; % Root square of natural logarithm of 2
     num0    = 1.0e-15;            % Numerical zero
     numinf  = 4000;               % Numerical infinity
-    cpf     = @cpf_accurate;      % cpf choice
+    cpf     = @cpf_accurate;      % CPF choice
 
     % Ternary operator
     ternary = @(varargin) varargin{length(varargin)-varargin{1}}; 
