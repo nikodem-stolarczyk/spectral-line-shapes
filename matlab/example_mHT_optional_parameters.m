@@ -10,9 +10,9 @@ format long;
 nu0     = 112265.5949; % Unperturbed line position in cm-1.
 GamD    =     35.1e-3; % Doppler broadening in cm-1.
 Gamma0  =     11.3e-3; % Speed-averaged line-width in cm-1.
-Gamma2  =     37.4e-5; % Speed dependence of the line-width in cm-1.
+Gamma2  =     37.4e-5; % Quadratic speed dependence parameter of the line-width in cm-1.
 Delta0  =    -26.4e-3; % Speed-averaged line-shift in cm-1.
-Delta2  =     17.8e-3; % Speed dependence of the line-shift in cm-1.
+Delta2  =     17.8e-3; % Quadratic speed dependence parameter of the line-shift in cm-1.
 NuOptRe =     72.1e-3; % Real part of the Dicke parameter in cm-1.
 NuOptIm =    -16.1e-3; % Imaginary part of the Dicke parameter in cm-1.
 
