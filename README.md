@@ -1,6 +1,6 @@
 # spectral-line-shapes
 
-The spectral-line-shapes repository hosts the implementations of the modified Hartman-Tran (`mHT`) spectral line-shape profile. The mHT is a variation of the Hartman-Tran profile (HT or HTP, introduced in 10.1016/j.jqsrt.2013.06.015). The article describing the mHT spectral lineshape function is currently under preparation. The mHT is a function with complex output. Its real and imaginary parts are the absorbtion and dispersion profiles, respectively.
+The spectral-line-shapes repository hosts the implementations of the modified Hartman-Tran (`mHT`) spectral line-shape profile. The mHT is a variation of the Hartman-Tran profile (HT or HTP, introduced in 10.1016/j.jqsrt.2013.06.015). The article describing the mHT spectral lineshape function is currently under preparation. By default, the mHT function returns the real part of the line profile (absorbtion profile). The dispersion profile can be accessed through running the function with the additional parameter, depending on the implementation.
 
 The spectral-line-shapes repository features the implementations of the complex problability function (cpf), which are used to calculate the mHT. Though optimized specifically to work with the mHT, the cpf functions can also be used separately. The repository features two cpf functions: `cpf_accurate` (maintaining high accuracy, based on highly-modified 64-term Weideman algorithm jstor.org/stable/2158232), and `cpf_fast` (faster but less accurate, utilizing Humlicek's aproach in its first subregion, 10.1016/0022-4073(82)90078-4, and 24-term Weideman approach elsewhere jstor.org/stable/2158232). The detailed description of the modifications of the cpf functions will be summarized in the upcoming article.
 
@@ -21,7 +21,7 @@ Depending on the implementation, the following program versions are required
 
 ### python
 - Python 3.X
-- numpy and matplotlib (used solely in example_plots.py, the mHT and cpf functions do not need these libraries)
+- numpy and matplotlib (used solely in example_plots.py, the mHT and cpf functions do not require these libraries)
 ### Fortran
 - **Fortran Standard**: The code is written in Fortran 90 (compatible with later standards). It's important to use a compiler that supports at least Fortran 90.
 - **Recommended Compilers**: 
@@ -39,8 +39,38 @@ Depending on the implementation, the following program versions are required
 ## Usage
 
 ### python
-The `example_absorption.py` and `example_dispersion.py` files present the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.py` presents the syntax with the optional parameters.
-The `example_plots.py` file generates two plots:
+
+The following usage examples demonstrate the application of the python implementation for purposes:
+
+#### Example: Absorption Profile
+
+**File:** `example_absorption.py`
+
+This example demonstrates how to calculate the absorption profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Dispersion Profile
+
+**File:** `example_dispersion.py`
+
+This example demonstrates how to calculate the dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Complex Probability Function (CPF)
+
+**File:** `example_cpf.py`
+
+This example provides two function calls for `cpf_accurate` and `cpf_fast` for trivial arguments (1, 1).
+
+#### Example: mHT with Optional Parameters
+
+**File:** `example_mHT_optional_parameters.py`
+
+This example provides the absorption and dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> with additional parameters passed to the `profile` function: the real and imaginary parts of the line-mixing coefficient, and the perturber-to-absorber mass ratio.
+
+#### Example: Plotting Absorption and Dispersion Profiles
+
+**File:** `example_plots.py`
+
+This example generates plots of the spectral profiles of the Ar- and He-perturbed 3-0 S(1) lines in H<sub>2</sub>. 
 - the absorption and dispersion profiles of the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> (see [Stolarczyk et al.](https://doi.org/10.1063/5.0139229))
 
 ![plot1](media/example_plot_1.svg)
@@ -64,7 +94,7 @@ This example demonstrates how to calculate the absorption profile at a single fr
 
 **File:** `example_dispersion.f90`
 
-This example demonstrates how to calculate the absorption profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+This example demonstrates how to calculate the dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
 
 #### Example: Complex Probability Function (CPF)
 
@@ -121,10 +151,42 @@ If you wish to compile all the examples at once, you can use the `make all` comm
 This command will sequentially compile all the usage examples and create an executable for each one. Executables will be named according to their respective examples, as specified in the Makefile.
 
 ### MATLAB
-The `example_*.m` files contains sections that add `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth needing to move the functions or package. All files displaying outputs in the terminal include a format specification to showcase the full double representation. While it is not necessary to achieve this precision, it ensures the full precision is displayed in the terminal. The workspace variable is double-precision regardless.
 
-The `example_absorption.m` and `example_dispersion.m` files demonstrate the basic syntax and usage of the mHT function to calculate absorption and dispersion of a spectral line. The `example_mHT_optional_parameters.m` file presents the syntax with optional parameters and examples of calling some or all of them at simultaneously. The `example_plots.m` file generates the same plots as in `python` usage example. The `example_cpf` file demonstrates the syntax for the `cpf_accurate` and `cpf_fast` functions.
+The following usage examples demonstrate the application of the MATLAB implementation for purposes:
 
+#### Example: Absorption Profile
+
+**File:** `example_absorption.m`
+
+This example demonstrates how to calculate the absorption profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Dispersion Profile
+
+**File:** `example_dispersion.m`
+
+This example demonstrates how to calculate the dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub>.
+
+#### Example: Complex Probability Function (CPF)
+
+**File:** `example_cpf.m`
+
+This example provides two function calls for `cpf_accurate` and `cpf_fast` for trivial arguments (1, 1).
+
+#### Example: mHT with Optional Parameters
+
+**File:** `example_mHT_optional_parameters.m`
+
+This example provides the absorption and dispersion profile at a single frequency for the Ar-perturbed 3-0 S(1) line in H<sub>2</sub> with additional parameters passed to the `profile` function: the real and imaginary parts of the line-mixing coefficient, and the perturber-to-absorber mass ratio.
+
+#### Example: Generating Profiles for Plotting
+
+**File:** `example_plots.m`
+
+This example generates plots of the spectral profiles of the Ar- and He-perturbed 3-0 S(1) lines in H<sub>2</sub>. 
+
+#### Adding the Files to PATH
+
+Each of the `example_*.m` files contains sections that add `mHT Package` catalog to the PATH. This allows the mHT functions be used in any path withouth needing to move the functions or package.
 ### mathematica
 
 ### labview
@@ -134,11 +196,11 @@ The `example_absorption.m` and `example_dispersion.m` files demonstrate the basi
 
 The `mHT` function requires the following arguments:
 - `nu0` - Unperturbed line position in cm-1.
-- `GamD` - Doppler broadening in cm-1
-- `Gam0` - Speed-averaged line-width in cm-1.
-- `Gam2` - Speed dependence of the line-width in cm-1.
-- `Shift0` - Speed-averaged line-shift in cm-1.
-- `Shift2` - Speed dependence of the line-shift in cm-1.
+- `GammaD` - Doppler broadening in cm-1
+- `Gamma0` - Speed-averaged line-width in cm-1.
+- `Gamma2` - Speed dependence of the line-width in cm-1.
+- `Delta0` - Speed-averaged line-shift in cm-1.
+- `Delta2` - Speed dependence of the line-shift in cm-1.
 - `NuOptRe` - Real part of the Dicke parameter in cm-1.
 - `NuOptIm` - Imaginary part of the Dicke parameter in cm-1.
 - `nu` - Current WaveNumber of the Computation in cm-1.
@@ -147,10 +209,11 @@ The following arguments are optional:
 - `Ylm` - Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 - `Xlm` - Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 - `alpha` - Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless.
+- `disp` - `False` by default, if set to `True`, the `mHT` will return the dispersion profile instead of the default absorption profile.
 
 ### cpf
 
-Both `cpf_accurate` and `cpf_fast` functions require two arguments, `x` and `y`. The meaning of `x` and `y` input values varies, depending on the application of the cpf. In the spectral line-shape context, `y` is the ratio between Lorentian and Doppler broadening (y=sqrt(log(2))*Gam0/GamD), and `x` is the normalized detuning from the line center (x=sqrt(log(2))*(nu-nu0)/GamD). The `x` and `y` values are dimensionless.    
+Both `cpf_accurate` and `cpf_fast` functions require two arguments, `x` and `y`. The meaning of `x` and `y` input values varies, depending on the application of the cpf. In the spectral line-shape context, `y` is the ratio between Lorentian and Doppler broadening (y=sqrt(log(2))*Gamma0/GammaD), and `x` is the normalized detuning from the line center (x=sqrt(log(2))*(nu-nu0)/GammaD). The `x` and `y` values are dimensionless.    
 
 ## Contributing
 
