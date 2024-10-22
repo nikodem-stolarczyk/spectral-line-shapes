@@ -1,3 +1,7 @@
+22/10/2024
+# Merged Python-refurbishing, 40-fortran-update-request and MATLAB-refurbishing
+# - changed parameter names (i.e. Shift->Delta, Gam->Gamma)
+# - changed the default output from complex to absorbrion profile only.
 9/8/2024
 # Merged nikodem-stolarczyk/SuoWick-MATLAB-Refurb
 # - added examples of usage to MATLAB implementation
