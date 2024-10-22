@@ -18,7 +18,7 @@ module spectral_module
 !----------------------------------------------------------------------!
    contains
 !----------------------------------------------------------------------!
-   function beta(GamD, NuOptRe, alpha) result(beta_result)
+   function beta(GammaD, NuOptRe, alpha) result(beta_result)
       !----------------------------------------------------------------!
       ! "beta": Beta-Correction  
       ! Subroutine to compute beta-correction used for hard-collision
@@ -29,15 +29,15 @@ module spectral_module
       !
       ! Input/Output Parameters of Routine (Arguments or Common)
       ! ---------------------------------------------------------------!
-      ! GamD      : Doppler HWHM in cm-1 (Input) 
-      ! NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
-      ! alpha     : Mass ratio in the molecule. Applicable up to alpha=5.
+      ! GammaD   : Doppler HWHM in cm-1 (Input) 
+      ! NuOptRe  : Real part of the Dicke parameter in cm-1 (Input).
+      ! alpha    : Mass ratio in the molecule. Applicable up to alpha=5.
       !
       ! The function provides one output:
       ! ---------------------------------------------------------------!
       ! (1): Value of the beta correction 
       !----------------------------------------------------------------!
-      real(dp), intent(in) :: GamD, NuOptRe, alpha
+      real(dp), intent(in) :: GammaD, NuOptRe, alpha
       real(dp) :: beta_result
       !----------------------------------------------------------------!
       ! the mass ratio for which the beta correction becomes negligible
@@ -54,7 +54,7 @@ module spectral_module
          c = -0.0546_dp + 0.0672_dp * alpha - 0.0125_dp * alpha**2.0_dp&
            + 0.0003_dp * alpha**3.0_dp
          d =  0.9466_dp - 0.1585_dp * exp(-0.4510_dp * alpha)
-         beta_result = a * tanh(b * log10(0.5_dp * NuOptRe / GamD) + c)&
+         beta_result = a * tanh(b * log10(0.5_dp * NuOptRe / GammaD)+c)&
            + d
          !-------------------------------------------------------------!
       else
@@ -65,8 +65,9 @@ module spectral_module
       !----------------------------------------------------------------!
    end function beta
 !----------------------------------------------------------------------!
-   function profile(nu0,GamD,Gam0,Gam2,Shift0,Shift2,NuOptRe,NuOptIm,nu,&
-      Ylm_opt,Xlm_opt,alpha_opt) result(mHT_profile)
+   function profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,    &
+      NuOptIm,nu,Ylm_opt,Xlm_opt,alpha_opt,calculate_dispersion_opt)   &
+      result(mHT_profile)
       !----------------------------------------------------------------!
       ! "PROFILE_mHT": modified Hartman Tran profile
       ! Subroutine to compute the complex normalized spectral shape of an 
@@ -75,32 +76,44 @@ module spectral_module
       ! Input/Output Parameters of Routine (Arguments or Common)
       ! ---------------------------------------------------------------!
       ! nu0       : Unperturbed line position in cm-1 (Input).
-      ! GamD      : Doppler HWHM in cm-1 (Input)
-      ! Gam0      : Speed-averaged line-width in cm-1 (Input).       
-      ! Gam2      : Speed dependence of the line-width in cm-1 (Input).
-      ! Shift0    : Speed-averaged line-shift in cm-1 (Input).
-      ! Shift2    : Speed dependence of the line-shift in cm-1 (Input)   
+      ! GammaD    : Doppler HWHM in cm-1 (Input)
+      ! Gamma0    : Speed-averaged line-width in cm-1 (Input).       
+      ! Gamma2    : Speed dependence of the line-width in cm-1 (Input).
+      ! Delta0    : Speed-averaged line-shift in cm-1 (Input).
+      ! Delta2    : Speed dependence of the line-shift in cm-1 (Input)   
       ! NuOptRe   : Real part of the Dicke parameter in cm-1 (Input).
       ! NuOptIm   : Imaginary part of the Dicke parameter in cm-1 (Input).    
       ! nu        : Current WaveNumber of the Computation in cm-1 (Input).
-      ! Ylm       : Imaginary part of the 1st order (Rosenkranz) line
-      !             mixing coefficients, dimensionless (Input)
-      ! Xlm       : Real part of the 1st order (Rosenkranz) line mixing
-      !             coefficients, dimensionless (Input)
-      ! alpha     : Mass ratio in the molecule for calculating
-      !             beta-correction. Applicable up to alpha=5.
+      ! Ylm_opt   : Imaginary part of the 1st order (Rosenkranz) line
+      !             mixing coefficients, dimensionless (Input, optional).
+      ! Xlm_opt   : Real part of the 1st order (Rosenkranz) line mixing
+      !             coefficients, dimensionless (Input, optional).
+      ! alpha_opt : Mass ratio in the molecule for calculating
+      !             beta-correction (Input, optional). Applicable up
+      !             to alpha=5.
+      ! calculate_dispersion_opt : (Input, optional) false by default:
+      !             "mHT_profile" returns the real part of the mHT
+      !             profile (absorption). If true, "mHT_profile" returns
+      !             the imaginary part of the profile (dispersion).
       !
-      ! The function provides one, complex output:
+      ! The function provides one output:
       ! ---------------------------------------------------------------!
-      ! (1) the normalized spectral shape (cm)
+      ! (1) the normalized spectral shape (cm):
+      !     - if "calculate_dispersion" is false (default), the function
+      !       returns the absorption profile.
+      !     - if "calculate_dispersion" is true, the function returns
+      !       the dispersion profile.
       !----------------------------------------------------------------!
-      real(dp), intent(in) :: nu0, GamD, Gam0, Gam2, Shift0, Shift2,   &
-         NuOptRe, NuOptIm, nu
+      real(dp), intent(in) :: nu0, GammaD, Gamma0, Gamma2, Delta0,     &
+         Delta2, NuOptRe, NuOptIm, nu
       real(dp), intent(in), optional :: Ylm_opt, Xlm_opt, alpha_opt
-      complex(dp) :: mHT_profile
+      logical, intent(in), optional :: calculate_dispersion_opt
+      real(dp) :: mHT_profile
       !----------------------------------------------------------------!
       real(dp), parameter :: small_threshold = 3e-8_dp
       !----------------------------------------------------------------!
+      complex(dp) :: calculated_profile
+      logical :: calculate_dispersion
       real(dp) :: Ylm, Xlm, alpha
       real(dp) :: nuD, nuR
       complex(dp) :: c2, c0, LM, X, Y, csqY, z1, z2, w1, w2, wX, A,    &
@@ -122,12 +135,18 @@ module spectral_module
          alpha = alpha_opt
       else
          alpha = 10.0_dp
+      endif
+      !----------------------------------------------------------------!
+      if (present(calculate_dispersion_opt)) then
+         calculate_dispersion = calculate_dispersion_opt
+      else
+         calculate_dispersion = .false.
       endif 
       !----------------------------------------------------------------!
-      nuD = GamD / sqrt_ln2
-      nuR = NuOptRe*beta(GamD,NuOptRe,alpha)
-      c2  = cmplx(Gam2, Shift2, kind=dp)
-      c0  = cmplx(Gam0, Shift0, kind=dp) - 1.5_dp*c2 + nuR             &
+      nuD = GammaD / sqrt_ln2
+      nuR = NuOptRe*beta(GammaD,NuOptRe,alpha)
+      c2  = cmplx(Gamma2, Delta2, kind=dp)
+      c0  = cmplx(Gamma0, Delta0, kind=dp) - 1.5_dp*c2 + nuR           &
           + cmplx(0.0_dp, NuOptIm, kind=dp)
       LM  = cmplx(1.0_dp + Xlm, Ylm, kind=dp)
       !----------------------------------------------------------------!
@@ -135,8 +154,8 @@ module spectral_module
          !-------------------------------------------------------------!
          X    = (cmplx(0_dp, nu0-nu, kind=dp) + c0) / c2
          Y    = 0.25_dp*(nuD/c2)**2.0_dp
-         csqY = 0.5_dp*nuD*cmplx(Gam2, -Shift2, kind=dp)               &
-              /(Gam2**2.0_dp + Shift2**2.0_dp)
+         csqY = 0.5_dp*nuD*cmplx(Gamma2, -Delta2, kind=dp)             &
+              /(Gamma2**2.0_dp + Delta2**2.0_dp)
          if ( abs( Y )  > abs( X  ) * numerical_zero ) then
             !----------------------------------------------------------!
             z2 = (X+Y)**0.5_dp + csqY
@@ -168,9 +187,15 @@ module spectral_module
          A = w*square_root_pi/nuD
          !-------------------------------------------------------------!
       endif
-      
-      mHT_profile = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
-
+      !----------------------------------------------------------------!
+      calculated_profile  = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
+      !----------------------------------------------------------------!
+      if (calculate_dispersion) then
+         mHT_profile = aimag(calculated_profile)
+      else
+         mHT_profile = real(calculated_profile)
+      endif
+      !----------------------------------------------------------------!
    end function profile 
 
 end module spectral_module
