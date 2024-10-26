@@ -1,0 +1,46 @@
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NotebookEvaluate", "[", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<mHT\\\\CPF.nb\>\""}], 
+   "]"}], "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Example", " ", "parameters", " ", "for", " ", "the", " ", "cpf", " ", 
+    "function"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"x", " ", "=", " ", "1"}], ";"}], " ", 
+  RowBox[{"(*", " ", "Dimensionless", " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", " ", "=", " ", "1"}], ";"}], " ", 
+  RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n"}], "\n", 
+ RowBox[{"Print", "[", "\"\<The output of the CPFAccurate function:\>\"", 
+  "]"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"InputForm", "[", 
+    RowBox[{"CPFAccurate", "[", 
+     RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}], "\n"}], "\n", 
+ RowBox[{"Print", "[", "\"\<The output of the CPFFast function:\>\"", 
+  "]"}], "\n", 
+ RowBox[{"Print", "[", 
+  RowBox[{"InputForm", "[", 
+   RowBox[{"CPFFast", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}]}], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.938924804340744*^9, 3.938924908035364*^9}, {
+  3.938925086884632*^9, 3.938925094606798*^9}, {3.9389283427320576`*^9, 
+  3.93892834818079*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
+},
+WindowSize->{1428, 741.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9347df77-cba2-ea4d-8f39-5a569fe4a921"
+]
+
