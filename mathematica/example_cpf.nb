@@ -1,0 +1,63 @@
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Evaluating", " ", "the", " ", "notebook", " ", "containing", " ", "the", 
+    " ", "CPFs", " ", "if", " ", "the", " ", "functions", " ", "are", " ", 
+    "not", " ", "yet", " ", "in", " ", "the", " ", "memory"}], " ", "*)"}], 
+  "\n", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"Or", "[", 
+      RowBox[{
+       RowBox[{"Not", "[", 
+        RowBox[{"ValueQ", "[", 
+         RowBox[{"CPFAccurate", "[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+       RowBox[{"Not", "[", 
+        RowBox[{"ValueQ", "[", 
+         RowBox[{"CPFFast", "[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
+     RowBox[{"NotebookEvaluate", "[", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<mHT\\\\CPF.nb\>\""}], "]"}]}], "]"}], "\n", "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Example", " ", "parameters", " ", "for", " ", "the", " ", "cpf", " ", 
+     "function"}], " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"x", " ", "=", " ", "1"}], ";"}], " ", 
+   RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"y", " ", "=", " ", "1"}], ";"}], " ", 
+   RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", "\n", 
+   RowBox[{
+   "Print", "[", "\"\<The output of the CPFAccurate function:\>\"", "]"}], 
+   "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"InputForm", "[", 
+     RowBox[{"CPFAccurate", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}], "\n", "\n", 
+   RowBox[{"Print", "[", "\"\<The output of the CPFFast function:\>\"", "]"}],
+    "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"InputForm", "[", 
+     RowBox[{"CPFFast", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}]}]}]], "Code",
+ InitializationCell->False,
+ CellChangeTimes->{{3.938924804340744*^9, 3.938924908035364*^9}, {
+  3.938925086884632*^9, 3.938925094606798*^9}, {3.938928342732058*^9, 
+  3.93892834818079*^9}, {3.9401410531875896`*^9, 3.940141071407101*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
+},
+WindowSize->{2293.2, 1228.2},
+WindowMargins->{{1440, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9347df77-cba2-ea4d-8f39-5a569fe4a921"
+]
+
