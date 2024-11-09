@@ -71,7 +71,7 @@ mHTProfile[nu0_?NumberQ,GammaD_?NumberQ,Gamma0_?NumberQ,Gamma2_?NumberQ,Delta0_?
     Delta2    : Quadratic speed dependence parameter of the line-shift in cm-1.   
     NuOptRe   : Real part of the complex Dicke parameter in cm-1.
     NuOptIm   : Imaginary part of the complex Dicke parameter in cm-1.    
-    nu        : Current WaveNumber in cm-1.
+    nu        : Current wavenumber of the computation in cm-1.
     
     Optional Input Parameters:
     --------------------
