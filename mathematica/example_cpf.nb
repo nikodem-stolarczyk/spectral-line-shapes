@@ -8,22 +8,25 @@ Cell[BoxData[
     "not", " ", "yet", " ", "in", " ", "the", " ", "memory"}], " ", "*)"}], 
   "\n", 
   RowBox[{
-   RowBox[{"If", "[", 
-    RowBox[{
-     RowBox[{"Or", "[", 
-      RowBox[{
-       RowBox[{"Not", "[", 
-        RowBox[{"ValueQ", "[", 
-         RowBox[{"CPFAccurate", "[", 
-          RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-       RowBox[{"Not", "[", 
-        RowBox[{"ValueQ", "[", 
-         RowBox[{"CPFFast", "[", 
-          RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
-     RowBox[{"NotebookEvaluate", "[", 
-      RowBox[{
-       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-       "\"\<mHT\\\\CPF.nb\>\""}], "]"}]}], "]"}], "\n", "\n", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"Or", "[", 
+       RowBox[{
+        RowBox[{"Not", "[", 
+         RowBox[{"ValueQ", "[", 
+          RowBox[{"CPFAccurate", "[", 
+           RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+        RowBox[{"Not", "[", 
+         RowBox[{"ValueQ", "[", 
+          RowBox[{"CPFFast", "[", 
+           RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
+          "\"\<CPF.nb\>\""}], "}"}], "]"}], "]"}]}], "]"}], ";"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Example", " ", "parameters", " ", "for", " ", "the", " ", "cpf", " ", 
@@ -48,13 +51,10 @@ Cell[BoxData[
      RowBox[{"CPFFast", "[", 
       RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.938924804340744*^9, 3.938924908035364*^9}, {
-  3.938925086884632*^9, 3.938925094606798*^9}, {3.938928342732058*^9, 
-  3.93892834818079*^9}, {3.9401410531875896`*^9, 3.940141071407101*^9}},
- CellLabel->"In[6]:=",ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
+ CellLabel->"In[226]:=",ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
 },
-WindowSize->{2293.2, 1228.2},
-WindowMargins->{{1440, Automatic}, {Automatic, 0}},
+WindowSize->{1440, 747.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",

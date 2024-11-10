@@ -8,18 +8,22 @@ Cell[BoxData[
     "not", " ", "yet", " ", "in", " ", "the", " ", "memory"}], " ", "*)"}], 
   "\n", 
   RowBox[{
-   RowBox[{"If", "[", 
-    RowBox[{
-     RowBox[{"Not", "[", 
-      RowBox[{"ValueQ", "[", 
-       RowBox[{"mHTProfile", "[", 
-        RowBox[{
-        "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", 
-         "1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-     RowBox[{"NotebookEvaluate", "[", 
-      RowBox[{
-       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-       "\"\<mHT\\\\profile.nb\>\""}], "]"}]}], "]"}], "\n", "\n", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"Not", "[", 
+       RowBox[{"ValueQ", "[", 
+        RowBox[{"mHTProfile", "[", 
+         RowBox[{
+         "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",",
+           "1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
+          "\"\<profile.nb\>\""}], "}"}], "]"}], "]"}]}], "]"}], ";"}], "\n", 
+   "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"Example", " ", "parameters", " ", "of", " ", "the", " ", "S", 
@@ -119,22 +123,12 @@ Cell[BoxData[
      "absorption", " ", "profile", " ", "by", " ", 
      RowBox[{"default", "."}]}], " ", "*)"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.938924804340744*^9, 3.938924908035364*^9}, {
-   3.938925086884632*^9, 3.938925094606798*^9}, {3.938928342732058*^9, 
-   3.93892834818079*^9}, {3.940130530710921*^9, 3.940130565296288*^9}, {
-   3.9401306392636433`*^9, 3.9401307991451836`*^9}, {3.9401308690440826`*^9, 
-   3.940130908152621*^9}, {3.940130969658139*^9, 3.940130971260435*^9}, {
-   3.940131676773854*^9, 3.940131680189745*^9}, {3.940131881844786*^9, 
-   3.9401318819733076`*^9}, {3.9401399334829693`*^9, 3.940139954446413*^9}, 
-   3.9401408044994736`*^9, {3.9401408357703958`*^9, 3.9401408734055405`*^9}, {
-   3.940140912118323*^9, 3.9401409502203655`*^9}, {3.940141813396353*^9, 
-   3.940141835435448*^9}, 
-   3.940142462674324*^9},ExpressionUUID->"953e8230-1895-a443-beef-\
-9e776c28b763"]
+ CellLabel->"In[40]:=",ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
 },
 WindowSize->{1428, 735.75},
-WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+Magnification:>1. Inherited,
 FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"9347df77-cba2-ea4d-8f39-5a569fe4a921"
