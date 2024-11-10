@@ -1,5 +1,5 @@
 (* Evaluating the notebook containing the CPFs if the functions are not yet in the memory *)
-If[Or[Not[ValueQ[CPFAccurate[1,1]]],Not[ValueQ[CPFFast[1,1]]]],NotebookEvaluate[NotebookDirectory[]<>"CPF.nb"]]
+If[Or[Not[ValueQ[CPFAccurate[1,1]]],Not[ValueQ[CPFFast[1,1]]]],NotebookEvaluate[FileNameJoin[{NotebookDirectory[],"CPF.nb"}]]]
 
 (* Chosing the CPF used for the profile calculation *)
 CPF := ({CPFAccurate,CPFFast})[[1]]
