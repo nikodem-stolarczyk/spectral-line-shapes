@@ -1,6 +1,6 @@
 % Add subfolders to PATH variable (can be deleted if package is already in
 % folder within PATH or files are in the same catalog as this script).
-addpath(fullfile(fileparts(which(mfilename)),"mHT_Package"));
+addpath(fullfile(fileparts(which(mfilename)),"mHT"));
 
 % Example parameters of the S(1) 3-0 line of H2 perturbed by Ar. 
 % Reference: 10.1063/5.0139229.
