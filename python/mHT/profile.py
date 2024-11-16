@@ -29,10 +29,10 @@ def beta(GammaD,NuOptRe,alpha):
     """
     max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
     if alpha < max_alpha:
-        a = 0.0534 + 0.1585*e**(-0.4510*alpha)
-        b = 1.9595 - 0.1258*alpha + 0.0056*alpha**2 + 0.0050*alpha**3
-        c =-0.0546 + 0.0672*alpha - 0.0125*alpha**2 + 0.0003*alpha**3
-        d = 0.9466 - 0.1585*e**(-0.4510*alpha)
+        a = 0.0534 + 0.1585*pow(e,-0.4510*alpha)
+        b = 1.9595 - 0.1258*alpha + 0.0056*pow(alpha,2) + 0.0050*pow(alpha,3)
+        c =-0.0546 + 0.0672*alpha - 0.0125*pow(alpha,2) + 0.0003*pow(alpha,3)
+        d = 0.9466 - 0.1585*pow(e,-0.4510*alpha)
         return a*tanh(b*log10(0.5*NuOptRe/GammaD)+c)+d
     else:
         return 1.0
@@ -82,17 +82,17 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     
     if abs(c2) > num0:
         X    = ((nu0-nu)*1j + c0) / c2
-        Y    = 0.25*(nuD/c2)**2
-        csqY = 0.50*nuD*(Gamma2 - Delta2*1j)/(Gamma2**2 + Delta2**2)
+        Y    = 0.25*pow((nuD/c2),2)
+        csqY = 0.50*nuD*(Gamma2 - Delta2*1j)/(pow(Gamma2,2) + pow(Delta2,2))
         if abs(Y)>abs(X)*num0:
-            z2 = (X+Y)**0.5 + csqY   
+            z2 = pow((X+Y),0.5) + csqY   
             z1 = z2 - 2*csqY if abs(X)>abs(Y)*3e-8 else ((nu0-nu)*1j + c0) / nuD    
             w1 = cpf(-z1.imag,z1.real)
             w2 = cpf(-z2.imag,z2.real)
             A  = rp/nuD*(w1-w2)
         else:
             if abs(X**0.5) < numinf:
-                rX = X**0.5
+                rX = pow(X,0.5)
                 wX = cpf(-rX.imag,rX.real)
                 A  = 2*(1 - rp*rX*wX)/c2
             else:
