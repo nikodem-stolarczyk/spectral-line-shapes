@@ -1,6 +1,6 @@
 % Add subfolders to PATH variable (can be deleted if package is already in
 % folder within PATH or files are in the same catalog as this script).
-addpath(fullfile(fileparts(which(mfilename)),"mHT_Package"));
+addpath(fullfile(fileparts(which(mfilename)),"mHT"));
 
 % Specifing display format output to double precision
 format long;
