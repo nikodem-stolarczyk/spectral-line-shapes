@@ -1,3 +1,8 @@
+19/11/2024
+# Merged Python CPF Efficiency Corrections, Python profile with pow(x,y), Matlab subfolders path update, M14 prerelease
+# - added mathematica implementation
+# - optimized the codes for python
+# - fixed a bug where matlab implementation can't load the mHT directory on macOS
 22/10/2024
 # Merged Python-refurbishing, 40-fortran-update-request and MATLAB-refurbishing
 # - changed parameter names (i.e. Shift->Delta, Gam->Gamma)
