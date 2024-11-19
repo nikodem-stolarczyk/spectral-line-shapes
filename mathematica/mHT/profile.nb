@@ -1,0 +1,123 @@
+(* Evaluating the notebook containing the CPFs if the functions are not yet in the memory *)
+If[Or[Not[ValueQ[CPFAccurate[1,1]]],Not[ValueQ[CPFFast[1,1]]]],NotebookEvaluate[FileNameJoin[{NotebookDirectory[],"CPF.nb"}]]]
+
+(* Chosing the CPF used for the profile calculation *)
+CPF := ({CPFAccurate,CPFFast})[[1]]
+
+\[Beta]Correction[GammaD_?NumberQ, NuOptRe_?NumberQ, alpha_?NumberQ] :=
+ (* ----------------------------------------
+    Beta-Correction function
+    Subroutine to compute beta-correction used for hard-collision based line-shape profiles
+    To correct NuOptRe value in the profile . Applicable up to alpha = 5.0, for higher alpha
+    values correction neglected. 
+    Source: 10.1016/j.jqsrt.2019.106784
+    
+    Standard Input Parameters:
+    --------------------
+    GammaD  : Doppler broadening in cm-1. 
+    NuOptRe : Real part of the Dicke parameter in cm-1.
+    alpha   : Mass ratio in the molecule, applicable up to alpha = 5.0, dimensionless.
+   
+    The function has one output:
+    --------------------
+    (1)     : Value of the beta correction, dimensionless. 
+    ---------------------------------------- *)
+Block[{a,b,c,d},
+    If[alpha < 5.0 (*  Maximum applicable alpha value *),
+	    {a,b,c,d} = \[Beta]CorrectionABCD[alpha];
+	    a Tanh[b Log10[0.5 NuOptRe/GammaD] + c] + d,
+		1.0
+	]
+]
+	
+\[Beta]CorrectionABCD[alpha_?NumberQ] := \[Beta]CorrectionABCD[alpha] =
+ (* ----------------------------------------
+    Subfunction to calculate Beta-Correction Function ABCD parameters.
+	Function saves calculated values to memory, thus enabling to not calculate
+	these parameters each time the mHT function is called.
+    Source: 10.1016/j.jqsrt.2019.106784
+    
+    Standard Input Parameters:
+    --------------------
+    alpha   : Mass ratio in the molecule, applicable up to alpha = 5.0, dimensionless.
+   
+    The function has four outputs:
+    --------------------
+    (1)     : Value of parameter a of the Beta-Correction function, dimensionless.
+    (2)     : Value of parameter b of the Beta-Correction function, dimensionless.
+    (3)     : Value of parameter c of the Beta-Correction function, dimensionless.
+    (4)     : Value of parameter d of the Beta-Correction function, dimensionless.
+    ---------------------------------------- *) 
+Block[{a,b,c,d},
+	a = + 0.0534` + 0.1585` Exp[-0.4510` alpha];
+	b = + 1.9595` - 0.1258` alpha + 0.0056` alpha^2 + 0.0050` alpha^3;
+	c = - 0.0546` + 0.0672` alpha - 0.0125` alpha^2 + 0.0003` alpha^3;
+	d = + 0.9466` - 0.1585` Exp[-0.4510` alpha];
+	{a,b,c,d}
+ ]
+	
+mHTProfile[nu0_?NumberQ,GammaD_?NumberQ,Gamma0_?NumberQ,Gamma2_?NumberQ,Delta0_?NumberQ,Delta2_?NumberQ,NuOptRe_?NumberQ,NuOptIm_?NumberQ,nu_?NumberQ,Ylm:_?NumberQ:0,Xlm:_?NumberQ:0,alpha:_?NumberQ:10,disp:_?BooleanQ:False] :=
+ (* ----------------------------------------
+    Modified Hartman Tran profile function
+	Subroutine to compute the complex normalized spectral-line shape using mHT model
+    
+    Standard Input Parameters:
+    --------------------
+    nu0       : Unperturbed line position in cm-1.
+    GammaD    : Doppler broadening in cm-1.
+    Gamma0    : Speed-averaged line-width in cm-1.       
+    Gamma2    : Quadratic speed dependence parameter of the line-width in cm-1.
+    Delta0    : Speed-averaged line-shift in cm-1.
+    Delta2    : Quadratic speed dependence parameter of the line-shift in cm-1.   
+    NuOptRe   : Real part of the complex Dicke parameter in cm-1.
+    NuOptIm   : Imaginary part of the complex Dicke parameter in cm-1.    
+    nu        : Current wavenumber of the computation in cm-1.
+    
+    Optional Input Parameters:
+    --------------------
+    Ylm       : Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
+    Xlm       : Real part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless (default: 0.0).
+    alpha     : Mass ratio in the molecule for calculating beta-correction, applicable up to alpha=5, dimensionless (default: 10.0).
+    disp      : Boolean trigger for including dispersion profile in the output (default: False).
+    
+    The function has one outputs:
+    --------------------
+    (1)       : Real or imaginary (depending on disp value) part of the normalized spectral shape in cm.
+    ---------------------------------------- *)
+Block[{
+    pi     = 3.141592653589793`  (* Pi number *),
+    rp     = 1.772453850905516`  (* root square of pi *),
+    sln2   = 0.8325546111576977` (* root square of natural logarithm of 2 *),
+    Num0   = 1.`*^-15            (* Numerical zero *),
+    NumInf = 4.`*^3              (* numerical infinity *),
+    nuD,nuR,c0,c2,LM,X,Y,csqY,z1,z2,w1,w2,rX,wX,z,w,A,ImHT},
+    nuD = GammaD / sln2;
+    nuR = NuOptRe \[Beta]Correction[GammaD,NuOptRe,alpha];
+    c2  = Gamma2 + I Delta2;
+    c0  = Gamma0 + I Delta0 - 1.5 c2 + nuR + I NuOptIm;
+    LM  = 1 + Xlm + I Ylm;
+    If[Abs[c2] > Num0,
+        X    = (I (nu0 - nu) + c0) / c2;
+        Y    = 0.25 (nuD / c2)^2.;
+        csqY = 0.50 nuD (Gamma2 - I Delta2) / (Gamma2^2.+ Delta2^2.);
+        If[Abs[Y]>Abs[X] Num0,
+            z2 = Sqrt[X + Y] + csqY;
+            z1 = If[Abs[X] > Abs[Y] 3.`*^-8, z2 - 2 csqY, (I (nu0 - nu) + c0) / nuD ];
+            w1 = CPF[-Im[z1],Re[z1]];
+            w2 = CPF[-Im[z2],Re[z2]];
+            A  = rp / nuD (w1 - w2);,
+            If[Abs[Sqrt[X]] < NumInf,
+                rX = Sqrt[X];
+                wX = CPF[-Im[rX],Re[rX]];
+                A  = 2 (1 - rp rX wX) / c2;,
+                A  = (1 / X - 1.5 / X^2.) / c2;
+            ];
+        ],
+        z = (I (nu0 - nu) + c0) / nuD;
+        w = CPF[-Im[z],Re[z]];
+        A = w rp / nuD;
+    ];
+    ImHT = LM / pi A / (1 - A (nuR + I NuOptIm));
+    If[Not[disp],Re[ImHT],Im[ImHT]]
+]
+
