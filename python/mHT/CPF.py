@@ -19,7 +19,6 @@ def cpf_accurate(x,y):
     #      (1): Complex probability function
     # ----------------------------------------
     """
-    p = 0 
     z = -y + x*1j
     L = 5.449631621480024 # The pre-calculated Weideman constant for N = 42
     Z = (L+z)/(L-z)
@@ -33,8 +32,9 @@ def cpf_accurate(x,y):
            1.857036333535562E-01,  3.455278077566057E-01,  5.882708203344523E-01,  9.230959991941070E-01, 
            1.342044484596932E+00,  1.814714451499866E+00,  2.288734169675538E+00,  2.697763665856064E+00, 
            2.975931371735470E+00] # The pre-calculated table of FFT constant terms (truncated from the begining)
-    for i in range(37): p+=a[i]*Z**(36 - i)
-    return 2*p/(L-z)**2 + inverse_sqrt_pi/(L-z)
+    p = a[0] 
+    for i in range(36): p=p*Z+a[i+1]
+    return 2*p/pow((L-z),2) + inverse_sqrt_pi/(L-z)
 
 def cpf_fast(x,y):
     """    
@@ -57,9 +57,8 @@ def cpf_fast(x,y):
     hum1_threshold = 15.0 # the border of the first Humlicek's region
     if abs(x)+y>hum1_threshold:
         t = y-x*1j
-        return inverse_sqrt_pi*t/(0.5+t**2)
+        return inverse_sqrt_pi*t/(0.5+pow(t,2))
     else: 
-        p = 0
         z = -y + x*1j
         L = 4.119534287814236 # the pre-calculated Weideman constant for N = 24
         Z = (L+z)/(L-z)
@@ -70,5 +69,6 @@ def cpf_fast(x,y):
                3.372336685531603E-02,  1.083872348456673E-01,  2.654963959880772E-01,  5.361139535729116E-01,
                9.257087138588670E-01,  1.394819673379119E+00,  1.856286499205540E+00,  2.197858936531542E+00] 
             # the pre-calculated table of FFT constant terms
-        for i in range(24): p+=a[i]*Z**(23 - i)
-        return 2*p/(L-z)**2 + inverse_sqrt_pi/(L-z)  
+        p = a[0]
+        for i in range(23): p=p*Z+a[i+1]
+        return 2*p/pow((L-z),2) + inverse_sqrt_pi/(L-z)  
