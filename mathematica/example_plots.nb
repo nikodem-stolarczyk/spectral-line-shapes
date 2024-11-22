@@ -174,13 +174,13 @@ Cell[BoxData[
       RowBox[{
        RowBox[{"mHTProfile", "[", 
         RowBox[{
-        "nu0", ",", "GammaD", ",", "Gamma0Ar", ",", "Gamma2Ar", ",", 
-         "Delta0Ar", ",", "Delta2Ar", ",", "NuOptReAr", ",", "NuOptImAr", ",",
+        "nu0", ",", "GammaD", ",", "Gamma0He", ",", "Gamma2He", ",", 
+         "Delta0He", ",", "Delta2He", ",", "NuOptReHe", ",", "NuOptImHe", ",",
           "nu"}], "]"}], ",", "\n", "    ", 
        RowBox[{"mHTProfile", "[", 
         RowBox[{
-        "nu0", ",", "GammaD", ",", "Gamma0Ar", ",", "Gamma2Ar", ",", 
-         "Delta0Ar", ",", "Delta2Ar", ",", "NuOptReAr", ",", "NuOptImAr", ",",
+        "nu0", ",", "GammaD", ",", "Gamma0He", ",", "Gamma2He", ",", 
+         "Delta0He", ",", "Delta2He", ",", "NuOptReHe", ",", "NuOptImHe", ",",
           "nu", ",", "True"}], "]"}]}], "}"}], ",", "\n", "    ", 
      RowBox[{"{", 
       RowBox[{"nu", ",", 
@@ -200,7 +200,7 @@ Cell[BoxData[
          RowBox[{
          "\"\<Frequency [\!\(\*SuperscriptBox[\(cm\), \(-1\)]\)]\>\"", ",", 
           "\"\<The first example\\nAbsorption (blue) and dispersion (orange) \
-part for mHT output for \!\(\*SubscriptBox[\(H\), \(2\)]\)-Ar\>\""}], "}"}]}],
+part for mHT output for \!\(\*SubscriptBox[\(H\), \(2\)]\)-He\>\""}], "}"}]}],
         "}"}]}]}], "]"}], "\n", "    ", "\n", 
    RowBox[{"Plot", "[", 
     RowBox[{
@@ -240,12 +240,13 @@ part for mHT output for \!\(\*SubscriptBox[\(H\), \(2\)]\)-Ar\>\""}], "}"}]}],
 \!\(\*SubscriptBox[\(H\), \(2\)]\)-Ar (blue) and \!\(\*SubscriptBox[\(H\), \
 \(2\)]\)-He (orange).\>\""}], "}"}]}], "}"}]}]}], "]"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.9410132769093943`*^9, 
-  3.941013312458544*^9}},ExpressionUUID->"953e8230-1895-a443-beef-\
+ CellChangeTimes->{{3.9410132769093943`*^9, 3.941013312458544*^9}, {
+  3.94127605971173*^9, 
+  3.941276099839115*^9}},ExpressionUUID->"953e8230-1895-a443-beef-\
 9e776c28b763"]
 },
 WindowSize->{1428, 735},
-WindowMargins->{{42, Automatic}, {Automatic, 69}},
+WindowMargins->{{42, Automatic}, {Automatic, 106}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"

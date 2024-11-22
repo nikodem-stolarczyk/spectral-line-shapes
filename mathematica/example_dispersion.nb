@@ -30,10 +30,11 @@ Cell[BoxData[
       RowBox[{"(", "1", ")"}], " ", "3"}], "-", 
      RowBox[{
      "0", " ", "line", " ", "of", " ", "H2", " ", "perturbed", " ", "by", " ",
-       "Ar", " ", 
+       "He", " ", 
       RowBox[{"(", 
        RowBox[{"reference", " ", 
-        RowBox[{"10.1063", "/", "5.0139229"}]}], ")"}]}]}], " ", "*)"}], "\n", 
+        RowBox[{"10.1103", "/", "PhysRevA"}], ".101", ".052705"}], ")"}]}]}], 
+    " ", "*)"}], "\n", 
    RowBox[{
     RowBox[{"nu0", "     ", "=", "  ", "112265.5949"}], " ", 
     RowBox[{"(*", " ", 
@@ -48,14 +49,14 @@ Cell[BoxData[
       RowBox[{"Doppler", " ", "broadening", " ", "in", " ", "cm"}], "-", 
       "1."}], " ", "*)"}], ";"}], "\n", 
    RowBox[{
-    RowBox[{"Gamma0", "  ", "=", "  ", "11.3*^-3"}], "    ", 
+    RowBox[{"Gamma0", "  ", "=", "  ", "11.7*^-3"}], "    ", 
     RowBox[{"(*", " ", 
      RowBox[{"Speed", "-", 
       RowBox[{"averaged", " ", "line"}], "-", 
       RowBox[{"width", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], 
     ";"}], "\n", 
    RowBox[{
-    RowBox[{"Gamma2", "  ", "=", "  ", "0.374*^-3"}], "   ", 
+    RowBox[{"Gamma2", "  ", "=", "  ", "5.4*^-3"}], "     ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -64,15 +65,14 @@ Cell[BoxData[
       RowBox[{"width", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], 
     ";"}], "\n", 
    RowBox[{
-    RowBox[{"Delta0", "  ", "=", " ", 
-     RowBox[{"-", "26.4*^-3"}]}], "    ", 
+    RowBox[{"Delta0", "  ", "=", "  ", "30.5*^-3"}], "    ", 
     RowBox[{"(*", " ", 
      RowBox[{"Speed", "-", 
       RowBox[{"averaged", " ", "line"}], "-", 
       RowBox[{"shift", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], 
     ";"}], "\n", 
    RowBox[{
-    RowBox[{"Delta2", "  ", "=", "  ", "17.8*^-3"}], "    ", 
+    RowBox[{"Delta2", "  ", "=", "  ", "12.4*^-3"}], "    ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -81,7 +81,7 @@ Cell[BoxData[
       RowBox[{"shift", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], 
     ";"}], "\n", 
    RowBox[{
-    RowBox[{"NuOptRe", " ", "=", "  ", "72.1*^-3"}], "    ", 
+    RowBox[{"NuOptRe", " ", "=", "  ", "38.0*^-3"}], "    ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -90,7 +90,7 @@ Cell[BoxData[
    "\n", 
    RowBox[{
     RowBox[{"NuOptIm", " ", "=", " ", 
-     RowBox[{"-", "16.1*^-3"}]}], "    ", 
+     RowBox[{"-", "17.5*^-3"}]}], "    ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -125,12 +125,12 @@ Cell[BoxData[
       "other", " ", "Numerical", " ", "optional", " ", "parameters"}]}], " ", 
     "*)"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.941011953417986*^9, 
-  3.941011967609406*^9}},ExpressionUUID->"953e8230-1895-a443-beef-\
+ CellChangeTimes->{{3.941011953417986*^9, 3.941011967609406*^9}, 
+   3.941276021305949*^9},ExpressionUUID->"953e8230-1895-a443-beef-\
 9e776c28b763"]
 },
 WindowSize->{1428, 735},
-WindowMargins->{{42, Automatic}, {Automatic, 69}},
+WindowMargins->{{42, Automatic}, {Automatic, 106}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"

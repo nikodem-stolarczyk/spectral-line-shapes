@@ -36,11 +36,11 @@ end
 % Plotting primary example
 fig1 = figure(1);
 fig1.Position = [100 100 640 340];
-plot(x,yR_Ar)
+plot(x,yR_He)
 hold on
-plot(x,yI_Ar)
+plot(x,yI_He)
 hold off
-title("Primary example","Absorption (blue) and dispersion (orange) part for mHT output for H_2-Ar")
+title("The first example","Absorption (blue) and dispersion (orange) part for mHT output for H_2-He")
 xlabel("Frequency [cm^-^1]")
 ylabel("mHT")
 grid on
@@ -52,7 +52,7 @@ plot(x,yR_Ar)
 hold on
 plot(x,yR_He)
 hold off
-title("Secondary example","Absorption mHT profiles for H_2-Ar (blue) and H_2-He (orange).")
+title("The second example","Absorption mHT profiles for H_2-Ar (blue) and H_2-He (orange).")
 xlabel("Frequency [cm^-^1]")
 ylabel("mHT")
 grid on

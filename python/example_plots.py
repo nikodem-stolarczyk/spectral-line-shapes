@@ -32,14 +32,14 @@ alpha_He = 2 # Perturber-to-absorber mass ratio, dimensionless.
 # Preparing tables for plotting 
 x        = nu0 + np.linspace(-5*GammaD,+5*GammaD,1001)
 y_Ar_Abs = [mHT.profile(nu0,GammaD,Gamma0_Ar,Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Ylm=Ylm,Xlm=Xlm,alpha=alpha_Ar,disp=False) for nu in x]
-y_Ar_Dis = [mHT.profile(nu0,GammaD,Gamma0_Ar,Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,nu,Ylm=Ylm,Xlm=Xlm,alpha=alpha_Ar,disp=True) for nu in x]
+y_He_Dis = [mHT.profile(nu0,GammaD,Gamma0_He,Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,nu,Ylm=Ylm,Xlm=Xlm,alpha=alpha_He,disp=True) for nu in x]
 y_He_Abs = [mHT.profile(nu0,GammaD,Gamma0_He,Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,nu,Ylm=Ylm,Xlm=Xlm,alpha=alpha_He,disp=False) for nu in x]
 
-# Plotting absorption and dispersion profile of the H2-Ar system 
-plt.plot(x,y_Ar_Abs)
-plt.plot(x,y_Ar_Dis)
+# Plotting absorption and dispersion profile of the H2-He system 
+plt.plot(x,y_He_Abs)
+plt.plot(x,y_He_Dis)
 plt.grid(True)
-plt.title("Absorption (blue) and dispersion (orange) part for mHT output for H$_2$-Ar")
+plt.title("Absorption (blue) and dispersion (orange) part for mHT output for H$_2$-He")
 plt.xlabel("Frequency [cm^(-1)]")
 plt.ylabel("mHT")
 plt.gca().set_aspect(0.0075)
