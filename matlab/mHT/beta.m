@@ -30,7 +30,7 @@ function res = beta(GammaD, NuOptRe, alpha)
         b   =  1.9595 - 0.1258*alpha + 0.0056*alpha^2 + 0.0050*alpha^3;
         c   = -0.0546 + 0.0672*alpha - 0.0125*alpha^2 + 0.0003*alpha^3;
         d   =  0.9466 - 0.1585*exp(-0.4510*alpha);
-        res = a*tanh(b*log10(0.5*NuOptRe/GammaD)+c)+d;
+        res = a*tanh(b*log10(NuOptRe/GammaD)+c)+d;
     else
         res = 1.0;
     end
