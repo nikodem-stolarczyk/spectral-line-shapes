@@ -30,8 +30,8 @@ def beta(GammaD,NuOptRe,alpha):
     max_alpha = 5.0 # the mass ratio up to which the beta correction is applicable
     if alpha < max_alpha:
         a = 0.0534 + 0.1585*pow(e,-0.4510*alpha)
-        b = 1.9595 - 0.1258*alpha + 0.0056*pow(alpha,2) + 0.0050*pow(alpha,3)
-        c =-0.0546 + 0.0672*alpha - 0.0125*pow(alpha,2) + 0.0003*pow(alpha,3)
+        b = 1.9595 + alpha*(-0.1258 + alpha*( 0.0056 + alpha*0.0050))
+        c =-0.0546 + alpha*( 0.0672 + alpha*(-0.0125 + alpha*0.0003))
         d = 0.9466 - 0.1585*pow(e,-0.4510*alpha)
         return a*tanh(b*log10(0.5*NuOptRe/GammaD)+c)+d
     else:
