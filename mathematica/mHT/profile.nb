@@ -25,7 +25,7 @@ CPF := ({CPFAccurate,CPFFast})[[1]]
 Block[{a,b,c,d},
     If[alpha < 5.0 (*  Maximum applicable alpha value *),
 	    {a,b,c,d} = \[Beta]CorrectionABCD[alpha];
-	    a Tanh[b Log10[0.5 NuOptRe/GammaD] + c] + d,
+	    a Tanh[b Log10[NuOptRe/GammaD] + c] + d,
 		1.0
 	]
 ]
