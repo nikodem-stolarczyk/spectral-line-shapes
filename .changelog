@@ -1,3 +1,8 @@
+25/11/2024
+# - fixed beta correction bug
+# - updated fortran implementation
+# - added fortran 77 implementation
+# - added labview implementation
 19/11/2024
 # Merged Python CPF Efficiency Corrections, Python profile with pow(x,y), Matlab subfolders path update, M14 prerelease
 # - added mathematica implementation
