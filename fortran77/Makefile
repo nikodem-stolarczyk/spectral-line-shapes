@@ -1,0 +1,49 @@
+F90 = gfortran  # compile with gfortran
+
+SRC_DIR   = src
+SRC_FILES = ${SRC_DIR}/cpf.o ${SRC_DIR}/profile.o
+
+# List of usage examples:
+ABSORPTION_OBJ = example_absorption.o
+DISPERSION_OBJ = example_dispersion.o
+CPF_OBJ = example_cpf.o
+OPTIONAL_PARAMETERS_OBJ = example_mHT_optional_parameters.o
+PROFILES_OBJ = example_profiles.o
+
+ABSORPTION = $(SRC_FILES) $(ABSORPTION_OBJ)
+DISPERSION = $(SRC_FILES) $(DISPERSION_OBJ)
+CPF = $(SRC_FILES) $(CPF_OBJ)
+OPTIONAL_PARAMETERS = $(SRC_FILES) $(OPTIONAL_PARAMETERS_OBJ)
+PROFILES = $(SRC_FILES) $(PROFILES_OBJ)
+
+CMPLFLG = -g -c -O3 -fdefault-real-8 -I${SRC_DIR}
+
+.SUFFIXES: .f .o
+
+.PHONY: cpf
+
+all: absorption dispersion cpf optional_parameters profiles clean
+
+absorption: $(ABSORPTION)
+	$(F90) $(ABSORPTION) -o example_absorption.x
+
+dispersion: $(DISPERSION)
+	$(F90) $(DISPERSION) -o example_dispersion.x
+
+cpf: $(CPF)
+	$(F90) $(CPF) -o example_cpf.x
+
+optional_parameters: $(OPTIONAL_PARAMETERS)
+	$(F90) $(OPTIONAL_PARAMETERS) -o example_mHT_optional_parameters.x
+
+profiles: $(PROFILES)
+	$(F90) $(PROFILES) -o example_profiles.x
+
+clean:
+	rm -rf *.o ${SRC_DIR}/*.o
+
+remove_executables:
+	rm -rf *.x
+
+%.o: %.f
+	$(F90) $(CMPLFLG) -c -o $@ $<
