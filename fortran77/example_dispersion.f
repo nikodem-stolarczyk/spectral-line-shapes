@@ -1,5 +1,5 @@
       program example_dispersion
-c example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference 10.1063/5.0139229)
+c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
       implicit none
       real*8 :: mHT, profile
       real*8 :: nu0 = 112265.5949d0 ! Unperturbed line position in cm-1.
