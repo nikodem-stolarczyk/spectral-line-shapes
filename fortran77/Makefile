@@ -1,6 +1,5 @@
 F90 = gfortran  # compile with gfortran
 
-MOD_DIR   = mod
 SRC_DIR   = mHT
 SRC_FILES = ${SRC_DIR}/cpf.o ${SRC_DIR}/profile.o
 
@@ -17,11 +16,11 @@ CPF = $(SRC_FILES) $(CPF_OBJ)
 OPTIONAL_PARAMETERS = $(SRC_FILES) $(OPTIONAL_PARAMETERS_OBJ)
 PROFILES = $(SRC_FILES) $(PROFILES_OBJ)
 
-CMPLFLG = -g -c -O3 -fdefault-real-8 -I${MOD_DIR}
+CMPLFLG = -g -c -O3 -fdefault-real-8 -I${SRC_DIR}
 
-.SUFFIXES: .f90 .o
+.SUFFIXES: .f .o
 
-.PHONY: all absorption dispersion cpf optional_parameters profiles clean remove_executables
+.PHONY: cpf
 
 all: absorption dispersion cpf optional_parameters profiles clean
 
@@ -41,11 +40,10 @@ profiles: $(PROFILES)
 	$(F90) $(PROFILES) -o example_profiles.x
 
 clean:
-	rm -rf *.o ${MOD_DIR}/*.mod ${SRC_DIR}/*.o
+	rm -rf *.o ${SRC_DIR}/*.o
 
 remove_executables:
 	rm -rf *.x
 
-%.o: %.f90
-	mkdir -p $(MOD_DIR)
-	$(F90) $(CMPLFLG) -J$(MOD_DIR) -c -o $@ $<
+%.o: %.f
+	$(F90) $(CMPLFLG) -c -o $@ $<

@@ -1,7 +1,7 @@
 F90 = gfortran  # compile with gfortran
 #
 MOD_DIR   = mod
-SRC_DIR   = src
+SRC_DIR   = mHT
 SRC_FILES = ${SRC_DIR}/cpf.o ${SRC_DIR}/profile.o
 PROGRAM   = usage_example.o
 #
