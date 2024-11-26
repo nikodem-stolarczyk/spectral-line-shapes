@@ -54,8 +54,7 @@ module spectral_module
          c = -0.0546_dp + 0.0672_dp * alpha - 0.0125_dp * alpha**2.0_dp&
            + 0.0003_dp * alpha**3.0_dp
          d =  0.9466_dp - 0.1585_dp * exp(-0.4510_dp * alpha)
-         beta_result = a * tanh(b * log10(NuOptRe / GammaD)+c)&
-           + d
+         beta_result = a * tanh(b * log10(NuOptRe / GammaD)+c)+d
          !-------------------------------------------------------------!
       else
          !-------------------------------------------------------------!
