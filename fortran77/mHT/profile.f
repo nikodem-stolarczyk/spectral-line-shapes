@@ -46,7 +46,7 @@ c-----------------------------------------------------------------------
       function profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,
      &   NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
 c-----------------------------------------------------------------------
-c "PROFILE_mHT": modified Hartman Tran profile
+c "PROFILE_mHT": modified Hartmann Tran profile
 c Subroutine to compute the complex normalized spectral shape of an 
 c isolated line by the mHT model
 c
