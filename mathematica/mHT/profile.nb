@@ -58,7 +58,7 @@ Block[{a,b,c,d},
 	
 mHTProfile[nu0_?NumberQ,GammaD_?NumberQ,Gamma0_?NumberQ,Gamma2_?NumberQ,Delta0_?NumberQ,Delta2_?NumberQ,NuOptRe_?NumberQ,NuOptIm_?NumberQ,nu_?NumberQ,Ylm:_?NumberQ:0,Xlm:_?NumberQ:0,alpha:_?NumberQ:10,disp:_?BooleanQ:False] :=
  (* ----------------------------------------
-    Modified Hartman Tran profile function
+    Modified Hartmann Tran profile function
 	Subroutine to compute the complex normalized spectral-line shape using mHT model
     
     Standard Input Parameters:
