@@ -68,7 +68,7 @@ module spectral_module
       NuOptIm,nu,Ylm_opt,Xlm_opt,alpha_opt,calculate_dispersion_opt)   &
       result(mHT_profile)
       !----------------------------------------------------------------!
-      ! "PROFILE_mHT": modified Hartman Tran profile
+      ! "PROFILE_mHT": modified Hartmann-Tran profile
       ! Subroutine to compute the complex normalized spectral shape of an 
       ! isolated line by the mHT model
       !
