@@ -1,7 +1,7 @@
 function [real_part, imag_part] = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha)
     % ---------------------------------------- 
     %    Subroutine to compute the complex normalized spectral shape of an 
-    %    isolated line by the modified Hartman Tran (mHT) model
+    %    isolated line by the modified Hartmann Tran (mHT) model
     %
     %    Standard Input Parameters:
     %    --------------------
