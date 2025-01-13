@@ -1,4 +1,4 @@
-program example_absorption
+program example_dispersion
 
 ! Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
    use, intrinsic :: iso_fortran_env, only: int32, dp => real64
@@ -21,4 +21,4 @@ program example_absorption
    
    write(*,'(A, F22.15)') "The output of the mHT function (dispersion,"&
       // " He-perturbed S(1) 3-0 line in H2):", mHT
-end program example_absorption
+end program example_dispersion
