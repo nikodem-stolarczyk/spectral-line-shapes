@@ -41,7 +41,7 @@ def beta(GammaD,NuOptRe,alpha):
 def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     """
     # ----------------------------------------
-    #      "PROFILE": modified Hartman Tran profile
+    #      "PROFILE": modified Hartmann Tran profile
     #      Subroutine to compute the complex normalized spectral-line shape using mHT model
     #
     #      Standard Input Parameters:
@@ -109,7 +109,7 @@ def profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
 def profile_vector(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu,**kwargs):
     """
     # ----------------------------------------
-    #      "PROFILE": modified Hartman Tran profile
+    #      "PROFILE": modified Hartmann Tran profile
     #      Subroutine to compute the complex normalized spectral-line shape using mHT model
     #
     #      Standard Input Parameters:
