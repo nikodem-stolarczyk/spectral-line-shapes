@@ -1,7 +1,7 @@
       program example_mHT_optional_parameters
 c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
       implicit none
-      real*8 :: mHT, profile
+      real*8 :: absorption, dispersion, profile
       real*8 :: nu0 = 112265.5949d0 ! Unperturbed line position in cm-1.
       real*8 :: GammaD = 35.1d-3 ! Doppler broadening in cm-1.
       real*8 :: Gamma0 = 11.7d-3 ! Speed-averaged line-width in cm-1.
@@ -9,7 +9,7 @@ c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1
       real*8 :: Delta0 = 30.5d-3 ! Speed-averaged line-shift in cm-1.
       real*8 :: Delta2 = 12.4d-3 ! Speed dependence of the line-shift in cm-1.
       real*8 :: NuOptRe = 38.0d-3 ! Real part of the Dicke parameter in cm-1.
-      real*8 :: NuOptIm = -17.7d-3 ! Imaginary part of the Dicke parameter in cm-1.
+      real*8 :: NuOptIm = -17.5d-3 ! Imaginary part of the Dicke parameter in cm-1.
       real*8 :: nu ! Current wavenumber of the computation in cm-1.
       real*8 :: Ylm = 0d0 ! Imaginary part of the 1st order (Rosenkranz) line mixing coefficients
       real*8 :: Xlm = 0d0 ! Real part of the 1st order (Rosenkranz) line mixing coefficients

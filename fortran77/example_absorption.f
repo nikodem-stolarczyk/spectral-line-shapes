@@ -9,7 +9,7 @@ c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1
       real*8 :: Delta0 = 30.5d-3 ! Speed-averaged line-shift in cm-1.
       real*8 :: Delta2 = 12.4d-3 ! Speed dependence of the line-shift in cm-1.
       real*8 :: NuOptRe = 38.0d-3 ! Real part of the Dicke parameter in cm-1.
-      real*8 :: NuOptIm = -17.7d-3 ! Imaginary part of the Dicke parameter in cm-1.
+      real*8 :: NuOptIm = -17.5d-3 ! Imaginary part of the Dicke parameter in cm-1.
       real*8 :: nu ! Current wavenumber of the computation in cm-1.
       real*8 :: Ylm = 0d0 ! Imaginary part of the 1st order (Rosenkranz) line mixing coefficients
       real*8 :: Xlm = 0d0 ! Real part of the 1st order (Rosenkranz) line mixing coefficients
