@@ -48,13 +48,13 @@ module spectral_module
       !----------------------------------------------------------------!
       if (alpha < max_alpha) then
          !-------------------------------------------------------------!
-         a =  0.0534_dp + 0.1585_dp * exp(-0.4510_dp * alpha)
+         a =  0.0534_dp + 0.1585_dp * dexp(-0.4510_dp * alpha)
          b =  1.9595_dp - 0.1258_dp * alpha + 0.0056_dp * alpha**2.0_dp&
            + 0.0050_dp * alpha**3.0_dp
          c = -0.0546_dp + 0.0672_dp * alpha - 0.0125_dp * alpha**2.0_dp&
            + 0.0003_dp * alpha**3.0_dp
-         d =  0.9466_dp - 0.1585_dp * exp(-0.4510_dp * alpha)
-         beta_result = a * tanh(b * log10(NuOptRe / GammaD)+c)+d
+         d =  0.9466_dp - 0.1585_dp * dexp(-0.4510_dp * alpha)
+         beta_result = a * dtanh(b * dlog10(NuOptRe / GammaD)+c)+d
          !-------------------------------------------------------------!
       else
          !-------------------------------------------------------------!
@@ -163,15 +163,15 @@ module spectral_module
             else
                z1 = (cmplx(0.0_dp, nu0-nu, kind=dp) + c0) / nuD    
             endif
-            w1 = cpf_accurate(-aimag(z1),real(z1))
-            w2 = cpf_accurate(-aimag(z2),real(z2))
+            w1 = cpf_accurate(-dimag(z1),dreal(z1))
+            w2 = cpf_accurate(-dimag(z2),dreal(z2))
             A  = square_root_pi/nuD*(w1-w2)
             !----------------------------------------------------------!
          else
             !----------------------------------------------------------!
             X_sqrt = (X)**0.5_dp
             if (  abs(X) < numerical_infty ) then
-               wX = cpf_accurate(-aimag(X_sqrt),real(X_sqrt))
+               wX = cpf_accurate(-dimag(X_sqrt),dreal(X_sqrt))
                A  = 2.0_dp*(1.0_dp - square_root_pi*X_sqrt*wX)/c2
             else
                A  = (1.0_dp/X - 1.5_dp/X**2.0_dp)/c2
@@ -182,7 +182,7 @@ module spectral_module
       else
          !-------------------------------------------------------------!
          z = (cmplx(0.0_dp, nu0-nu, kind=dp) + c0) / nuD
-         w = cpf_accurate(-aimag(z),real(z))
+         w = cpf_accurate(-dimag(z),dreal(z))
          A = w*square_root_pi/nuD
          !-------------------------------------------------------------!
       endif
@@ -190,9 +190,9 @@ module spectral_module
       calculated_profile  = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
       !----------------------------------------------------------------!
       if (calculate_dispersion) then
-         mHT_profile = aimag(calculated_profile)
+         mHT_profile = dimag(calculated_profile)
       else
-         mHT_profile = real(calculated_profile)
+         mHT_profile = dreal(calculated_profile)
       endif
       !----------------------------------------------------------------!
    end function profile 

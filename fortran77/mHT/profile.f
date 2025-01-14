@@ -17,23 +17,23 @@ c The function provides one output:
 c-----------------------------------------------------------------------
 c (1): Value of the beta correction 
 c-----------------------------------------------------------------------
-      real*8 :: GammaD, NuOptRe, alpha, beta
+      double precision :: GammaD, NuOptRe, alpha, beta
 c-----------------------------------------------------------------------
 c the mass ratio for which the beta correction becomes negligible
 c-----------------------------------------------------------------------
       parameter (alpha_max = 5.0d0)
 c-----------------------------------------------------------------------
-      real*8 :: a, b, c, d
+      double precision :: a, b, c, d
 c-----------------------------------------------------------------------
       if (alpha < alpha_max) then
 c-----------------------------------------------------------------------
-         a =  0.0534d0 + 0.1585d0 * exp(-0.4510d0 * alpha)
+         a =  0.0534d0 + 0.1585d0 * dexp(-0.4510d0 * alpha)
          b =  1.9595d0 - 0.1258d0 * alpha + 0.0056d0 * alpha**2.0d0
      &     + 0.0050d0 * alpha**3.0d0
          c = -0.0546d0 + 0.0672d0 * alpha - 0.0125d0 * alpha**2.0d0
      &     + 0.0003d0 * alpha**3.0d0
-         d =  0.9466d0 - 0.1585d0 * exp(-0.4510d0 * alpha)
-         beta = a * tanh(b * log10(NuOptRe / GammaD)+c) + d
+         d =  0.9466d0 - 0.1585d0 * dexp(-0.4510d0 * alpha)
+         beta = a * dtanh(b * dlog10(NuOptRe / GammaD)+c) + d
 c-----------------------------------------------------------------------
       else
 c-----------------------------------------------------------------------
@@ -83,29 +83,29 @@ c       the dispersion profile.
 c-----------------------------------------------------------------------
       include 'constants.inc'
 c-----------------------------------------------------------------------
-      real*8 :: nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe,
-     &   NuOptIm, nu, Ylm, Xlm, alpha, profile
+      double precision :: nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2,
+     &   NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha, profile
       logical :: calculate_dispersion
       !----------------------------------------------------------------!
       parameter (small_threshold = 3.0d-8)
       !----------------------------------------------------------------!
-      complex*16 :: calculated_profile, cpf_accurate
-      real*8 :: nuD, nuR
-      complex*16 :: c2, c0, LM, X, Y, csqY, z1, z2, w1, w2, wX, A,
+      double complex :: calculated_profile, cpf_accurate
+      double precision :: nuD, nuR, beta
+      double complex :: c2, c0, LM, X, Y, csqY, z1, z2, w1, w2, wX, A,
      &   X_sqrt, z, w
 c-----------------------------------------------------------------------
       nuD = GammaD / sqrt_ln2
       nuR = NuOptRe*beta(GammaD,NuOptRe,alpha)
-      c2  = cmplx(Gamma2, Delta2)
-      c0  = cmplx(Gamma0, Delta0) - 1.5d0*c2 + nuR
-     &    + cmplx(0.0d0, NuOptIm)
-      LM  = cmplx(1.0d0 + Xlm, Ylm)
+      c2  = dcmplx(Gamma2, Delta2)
+      c0  = dcmplx(Gamma0, Delta0) - 1.5d0*c2 + nuR
+     &    + dcmplx(0.0d0, NuOptIm)
+      LM  = dcmplx(1.0d0 + Xlm, Ylm)
 c-----------------------------------------------------------------------
       if ( abs(c2) > numerical_zero ) then
 c-----------------------------------------------------------------------
-         X    = (cmplx(0.0d0, nu0-nu) + c0) / c2
+         X    = (dcmplx(0.0d0, nu0-nu) + c0) / c2
          Y    = 0.25d0*(nuD/c2)**2.0d0
-         csqY = 0.5d0*nuD*cmplx(Gamma2, -Delta2)
+         csqY = 0.5d0*nuD*dcmplx(Gamma2, -Delta2)
      &        /(Gamma2**2.0d0 + Delta2**2.0d0)
          if ( abs( Y )  > abs( X  ) * numerical_zero ) then
 c-----------------------------------------------------------------------
@@ -113,17 +113,17 @@ c-----------------------------------------------------------------------
             if  ( abs(X)  > abs(Y)  * small_threshold ) then
                z1 = z2 - 2.0d0 * csqY
             else
-               z1 = (cmplx(0.0d0, nu0-nu) + c0) / nuD    
+               z1 = (dcmplx(0.0d0, nu0-nu) + c0) / nuD    
             endif
-            w1 = cpf_accurate(-aimag(z1),real(z1))
-            w2 = cpf_accurate(-aimag(z2),real(z2))
+            w1 = cpf_accurate(-dimag(z1),dreal(z1))
+            w2 = cpf_accurate(-dimag(z2),dreal(z2))
             A  = square_root_pi/nuD*(w1-w2)
 c-----------------------------------------------------------------------
          else
 c-----------------------------------------------------------------------
             X_sqrt = (X)**0.5d0
             if (  abs(X) < numerical_infty ) then
-               wX = cpf_accurate(-aimag(X_sqrt),real(X_sqrt))
+               wX = cpf_accurate(-dimag(X_sqrt),dreal(X_sqrt))
                A  = 2.0d0*(1.0d0 - square_root_pi*X_sqrt*wX)/c2
             else
                A  = (1.0d0/X - 1.5d0/X**2.0d0)/c2
@@ -133,18 +133,18 @@ c-----------------------------------------------------------------------
 c-----------------------------------------------------------------------
       else
 c-----------------------------------------------------------------------
-         z = (cmplx(0.0d0, nu0-nu) + c0) / nuD
-         w = cpf_accurate(-aimag(z),real(z))
+         z = (dcmplx(0.0d0, nu0-nu) + c0) / nuD
+         w = cpf_accurate(-dimag(z),dreal(z))
          A = w*square_root_pi/nuD
 c-----------------------------------------------------------------------
       endif
 c-----------------------------------------------------------------------
-      calculated_profile  = LM/pi*A/(1-(nuR + cmplx(0.0d0, NuOptIm))*A)
+      calculated_profile  = LM/pi*A/(1-(nuR + dcmplx(0.0d0, NuOptIm))*A)
 c-----------------------------------------------------------------------
       if (calculate_dispersion) then
-         profile = aimag(calculated_profile)
+         profile = dimag(calculated_profile)
       else
-         profile = real(calculated_profile)
+         profile = dreal(calculated_profile)
       endif
 c-----------------------------------------------------------------------
       end function profile

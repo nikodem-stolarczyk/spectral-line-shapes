@@ -10,10 +10,10 @@ c Output:
 c   Complex probability function
 c----------------------------------------------------------------------
       include 'constants.inc'
-      real*8 x, y
-      real*8 weidemann_constant_42, fft_constant_terms(37)
+      double precision x, y
+      double precision weidemann_constant_42, fft_constant_terms(37)
       integer i, number_of_fft_terms
-      complex*16 cpf_accurate, z, z_ratio, cpf_z
+      double complex cpf_accurate, z, z_ratio, cpf_z
 
       parameter (number_of_fft_terms = 37)
       parameter (weidemann_constant_42 = 5.449631621480024d0)
@@ -38,9 +38,9 @@ c----------------------------------------------------------------------
      &   1.814714451499866d0,    2.288734169675538d0,
      &   2.697763665856064d0,    2.975931371735470d0 /
 
-      z = cmplx(-y, x)
+      z = dcmplx(-y, x)
       z_ratio = (weidemann_constant_42 + z)/(weidemann_constant_42 - z)
-      cpf_z = cmplx(0.0d0, 0.0d0)
+      cpf_z = dcmplx(0.0d0, 0.0d0)
 
       do i = 1, number_of_fft_terms
          cpf_z = cpf_z + fft_constant_terms(i) * z_ratio** 
@@ -62,11 +62,11 @@ c Output:
 c   Complex probability function
 c----------------------------------------------------------------------
       include 'constants.inc'
-      real*8 x, y
-      real*8 hum1_threshold, weidemann_constant_24,
+      double precision x, y
+      double precision hum1_threshold, weidemann_constant_24,
      &           fft_constant_terms(24)
       integer i, number_of_fft_terms
-      complex*16 cpf_fast, z, z_ratio, cpf_z, t
+      double complex cpf_fast, z, z_ratio, cpf_z, t
 
       parameter (number_of_fft_terms = 24)
       parameter (hum1_threshold = 15.0d0)
@@ -87,13 +87,13 @@ c----------------------------------------------------------------------
      &   2.197858936531542d0 /
 
       if (abs(x) + y > hum1_threshold) then
-         t = cmplx(y, -x)
+         t = dcmplx(y, -x)
          cpf_z = inverse_sqrt_pi * t / (0.5d0 + t**2.0d0)
       else
-         z = cmplx(-y, x)
+         z = dcmplx(-y, x)
          z_ratio = (weidemann_constant_24 + z)
      &             / (weidemann_constant_24 - z)
-         cpf_z = cmplx(0.0d0, 0.0d0)
+         cpf_z = dcmplx(0.0d0, 0.0d0)
 
          do i = 1, number_of_fft_terms
             cpf_z = cpf_z + fft_constant_terms(i) * z_ratio**
