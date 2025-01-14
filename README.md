@@ -23,7 +23,7 @@ Depending on the implementation, the following program versions are required
 - Python 3.X
 - numpy and matplotlib (used solely in example_plots.py, the mHT and cpf functions do not require these libraries)
 ### Fortran
-- **Fortran Standard**: The code is written in Fortran 90 (compatible with later standards), and requires a compiler that supports Fortran 90 or newer.
+- Two code versions are provided: Fortran 77 and Fortran 90 (compatible with later standards).
 - **Recommended Compilers**: 
   - [GNU Fortran Compiler (gfortran)](https://gcc.gnu.org/wiki/GFortran)
   - [Intel Fortran Compiler (ifort)](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/fortran-compiler.html)
