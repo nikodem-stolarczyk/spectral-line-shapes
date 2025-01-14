@@ -3,3 +3,4 @@ fortran/*.x
 fortran77/*.o
 fortran77/*.txt
 fortran77/*.x
+python/mHT/__pycache__/*
