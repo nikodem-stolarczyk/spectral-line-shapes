@@ -58,7 +58,7 @@ module cpf_module
       complex(dp) :: z, z_ratio
       integer(int32) :: i
       !----------------------------------------------------------------!
-      z       = cmplx(-y, x)
+      z       = dcmplx(-y, x)
       z_ratio = (weidemann_constant_42 + z) / (weidemann_constant_42 - z)
       cpf_z   = (0.0_dp, 0.0_dp)
       do i = 1, number_of_fft_terms
@@ -110,12 +110,12 @@ module cpf_module
       !----------------------------------------------------------------!
       if (abs(x) + y > hum1_threshold) then
          !-------------------------------------------------------------!
-         t = cmplx(y, -x)
+         t = dcmplx(y, -x)
          cpf_z = inverse_sqrt_pi * t / (0.5_dp + t**2.0_dp)
          !-------------------------------------------------------------!
       else
          !-------------------------------------------------------------!
-         z       = cmplx(-y, x)
+         z       = dcmplx(-y, x)
          z_ratio = (weidemann_constant_24 + z) / (weidemann_constant_24 - z)
          cpf_z   = (0.0_dp, 0.0_dp)
          do i = 1, number_of_fft_terms

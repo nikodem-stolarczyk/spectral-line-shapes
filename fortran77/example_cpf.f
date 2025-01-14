@@ -3,9 +3,9 @@
       include 'constants.inc'
       
       ! Declare variables
-      real*8 cpf_input_real, cpf_input_imag
-      complex*16 cpf_accurate, cpf_fast
-      complex*16 cpf_accurate_output, cpf_fast_output
+      double precision cpf_input_real, cpf_input_imag
+      double complex cpf_accurate, cpf_fast
+      double complex cpf_accurate_output, cpf_fast_output
 
       ! Initialize example parameters for the CPF functions
       cpf_input_real = 1.0d0  ! dimensionless
