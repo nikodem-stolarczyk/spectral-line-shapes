@@ -32,9 +32,8 @@ def cpf_accurate(x,y):
            1.857036333535562E-01,  3.455278077566057E-01,  5.882708203344523E-01,  9.230959991941070E-01, 
            1.342044484596932E+00,  1.814714451499866E+00,  2.288734169675538E+00,  2.697763665856064E+00, 
            2.975931371735470E+00] # The pre-calculated table of FFT constant terms (truncated from the begining)
-    p = a[0] 
-    for i in range(36): p=p*Z+a[i+1]
-    return 2*p/pow((L-z),2) + inverse_sqrt_pi/(L-z)
+    p= a[36] + (a[35] + (a[34] + (a[33] + (a[32] + (a[31] + (a[30] + (a[29] + (a[28] + (a[27] + (a[26] + (a[25] + (a[24] + (a[23] + (a[22] + (a[21] + (a[20] + (a[19] + (a[18] + (a[17] + (a[16] + (a[15] + (a[14] + (a[13] +(a[12] +  (a[11] + (a[10] + (a[9] + (a[8] + (a[7] + (a[6] + (a[5] + (a[4] + (a[3] + (a[2] + (a[1] + a[0] * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z)* Z
+    return (2*p/(L-z) + inverse_sqrt_pi)/(L-z)
 
 def cpf_fast(x,y):
     """    
@@ -69,6 +68,5 @@ def cpf_fast(x,y):
                3.372336685531603E-02,  1.083872348456673E-01,  2.654963959880772E-01,  5.361139535729116E-01,
                9.257087138588670E-01,  1.394819673379119E+00,  1.856286499205540E+00,  2.197858936531542E+00] 
             # the pre-calculated table of FFT constant terms
-        p = a[0]
-        for i in range(23): p=p*Z+a[i+1]
-        return 2*p/pow((L-z),2) + inverse_sqrt_pi/(L-z)  
+        p = a[23] + (a[22] + (a[21] + (a[20] + (a[19] + (a[18] + (a[17] + (a[16] + (a[15] + (a[14] + (a[13] +(a[12] +  (a[11] + (a[10] + (a[9] + (a[8] + (a[7] + (a[6] + (a[5] + (a[4] + (a[3] + (a[2] + (a[1] + a[0] * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z) * Z
+        return (2*p/(L-z) + inverse_sqrt_pi)/(L-z)
