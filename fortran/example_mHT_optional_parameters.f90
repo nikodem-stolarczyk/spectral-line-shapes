@@ -1,6 +1,6 @@
 program example_mHT_optional_parameters
    use, intrinsic :: iso_fortran_env, only: int32, dp => real64
-   use spectral_module, only: profile
+   use spectral_module, only: mHTprofile
    implicit none
    real(dp) :: absorption, dispersion
 ! Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
@@ -19,22 +19,22 @@ program example_mHT_optional_parameters
    logical  :: calculate_dispersion  ! The mHT function will return either the dispersion or absorption profile.
    
    nu  = nu0 + 1.0_dp
-   absorption = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,&
-      NuOptIm,nu)
+   absorption = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,     &
+      NuOptRe,NuOptIm,nu)
    calculate_dispersion = .true.
-   dispersion = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,&
-      NuOptIm,nu,calculate_dispersion_opt=calculate_dispersion)
+   dispersion = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,     &
+      NuOptRe,NuOptIm,nu,calculate_dispersion_opt=calculate_dispersion)
    write(*, '(A, 25X, 2F22.15)') "The output of the mHT function "     &
       // "(He-perturbed S(1) 3-0 line in H2):", absorption, dispersion
 ! optional parameters
    Ylm = 1.0e-3_dp
    Xlm = 0.5e-3_dp
-   alpha = 20.0_dp
+   alpha = 2.0_dp
 
-   absorption = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,&
-      NuOptIm,nu,Ylm,Xlm,alpha)
-   dispersion = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,&
-      NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
+   absorption = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,     &
+      NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha)
+   dispersion = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,     &
+      NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
 
    write(*, '(A, 2F22.15)') "The output of the mHT function with "     &
       // "optional parameters (He-perturbed S(1) 3-0 line in H2):",    &

@@ -2,7 +2,7 @@ program example_absorption
 
 ! Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
    use, intrinsic :: iso_fortran_env, only: int32, dp => real64
-   use spectral_module, only: profile
+   use spectral_module, only: mHTprofile
    implicit none
    real(dp) :: mHT
    real(dp) :: nu0 = 112265.5949_dp ! Unperturbed line position in cm-1.
@@ -15,7 +15,7 @@ program example_absorption
    real(dp) :: NuOptIm = -17.5e-3_dp ! Imaginary part of the Dicke parameter in cm-1.
    real(dp) :: nu ! Current wavenumber of the computation in cm-1.
    nu  = nu0 + 1.0_dp
-   mHT = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu)
+   mHT = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,NuOptIm,nu)
    
    write(*,'(A, F22.15)') "The output of the mHT function (absorption,"&
       // " He-perturbed S(1) 3-0 line in H2):", mHT
