@@ -43,8 +43,8 @@ c-----------------------------------------------------------------------
 c-----------------------------------------------------------------------
       end function beta
 c-----------------------------------------------------------------------
-      function profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,
-     &   NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
+      function mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
+     &   NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
 c-----------------------------------------------------------------------
 c "PROFILE_mHT": modified Hartmann Tran profile
 c Subroutine to compute the complex normalized spectral shape of an 
@@ -84,7 +84,7 @@ c-----------------------------------------------------------------------
       include 'constants.inc'
 c-----------------------------------------------------------------------
       double precision :: nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2,
-     &   NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha, profile
+     &   NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha, mHTprofile
       logical :: calculate_dispersion
       !----------------------------------------------------------------!
       parameter (small_threshold = 3.0d-8)
@@ -142,9 +142,9 @@ c-----------------------------------------------------------------------
       calculated_profile  = LM/pi*A/(1-(nuR + dcmplx(0.0d0, NuOptIm))*A)
 c-----------------------------------------------------------------------
       if (calculate_dispersion) then
-         profile = dimag(calculated_profile)
+         mHTprofile = dimag(calculated_profile)
       else
-         profile = dreal(calculated_profile)
+         mHTprofile = dreal(calculated_profile)
       endif
 c-----------------------------------------------------------------------
-      end function profile
+      end function mHTprofile

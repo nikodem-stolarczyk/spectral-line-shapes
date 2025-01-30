@@ -86,8 +86,7 @@ module cpf_module
          * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)        &
          * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)        &
          * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)        &
-         * z_ratio) * z_ratio) * z_ratio
-      
+         * z_ratio) * z_ratio) * z_ratio    
       cpf_z = ( 2.0_dp * cpf_z / (weidemann_constant_42 - z)           &
          + inverse_sqrt_pi) / (weidemann_constant_42 - z)
       !----------------------------------------------------------------!
@@ -140,7 +139,6 @@ module cpf_module
          !-------------------------------------------------------------!
          z       = dcmplx(-y, x)
          z_ratio = (weidemann_constant_24 + z) / (weidemann_constant_24 - z)
-
          cpf_z   =                                                     &
              fft_constant_terms(24) + (fft_constant_terms(23) +        &
             (fft_constant_terms(22) + (fft_constant_terms(21) +        &
@@ -159,7 +157,6 @@ module cpf_module
             * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)     &
             * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)     &
             * z_ratio) * z_ratio
-
          cpf_z = ( 2.0_dp * cpf_z / (weidemann_constant_24 - z)        &
             + inverse_sqrt_pi ) / (weidemann_constant_24 - z)
          !-------------------------------------------------------------!
