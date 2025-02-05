@@ -1,7 +1,7 @@
       program example_mHT_optional_parameters
 c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
       implicit none
-      double precision :: absorption,dispersion, profile
+      double precision :: absorption,dispersion, mHTprofile
       double precision :: nu0 = 112265.5949d0 ! Unperturbed line position in cm-1.
       double precision :: GammaD = 35.1d-3 ! Doppler broadening in cm-1.
       double precision :: Gamma0 = 11.7d-3 ! Speed-averaged line-width in cm-1.
@@ -17,10 +17,10 @@ c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1
       logical :: calculate_dispersion=.false. ! Only the absorption profile will be calculated
    
       nu  = nu0 + 1d0
-      absorption = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
+      absorption = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
      &            NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
       calculate_dispersion = .true.
-      dispersion = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
+      dispersion = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
      &            NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
       write(*, 101) absorption, dispersion
  101  format('The output of the mHT function (He-perturbed S(1)',
@@ -28,14 +28,14 @@ c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1
 c optional parameters
       Ylm = 1.0d-3
       Xlm = 0.5d-3
-      alpha = 20.0d0
+      alpha = 2.0d0
       calculate_dispersion = .false.
       
-      absorption = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
+      absorption = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
      &            NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
      
       calculate_dispersion = .true.
-      dispersion = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
+      dispersion = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,
      &            NuOptRe,NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
 
       write(*, 102) absorption, dispersion

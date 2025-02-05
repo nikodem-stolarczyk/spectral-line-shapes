@@ -4,7 +4,7 @@
       double precision :: nu_tabulated(number_of_points) ! Frequency grid in cm-1.
       double precision :: absorption_tabulated(number_of_points),
      &          dispersion_tabulated(number_of_points)
-      double precision :: profile
+      double precision :: mHTprofile
       double precision :: nu0 ! Unperturbed line position in cm-1.
       double precision :: GammaD ! Doppler broadening in cm-1.
       double precision :: Gamma0_He, Gamma0_Ar ! Speed-averaged line-width in cm-1.
@@ -51,11 +51,11 @@ c Generate the mHT profile from -5 GammaD to +5 GammaD and save to an external f
    
       do point = 1, number_of_points
          nu_tabulated(point) = nu0 - 5*GammaD + (point-1) * nu_step
-         absorption_tabulated(point) = profile(nu0,GammaD,Gamma0_Ar,
+         absorption_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_Ar,
      &      Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,
      &      nu_tabulated(point),Ylm,Xlm,alpha_Ar,
      &      not_calculate_dispersion)
-         dispersion_tabulated(point) = profile(nu0,GammaD,Gamma0_Ar,
+         dispersion_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_Ar,
      &      Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,
      &      nu_tabulated(point),Ylm,Xlm,alpha_Ar,calculate_dispersion)
 
@@ -87,11 +87,11 @@ c example parameters of the S(1) 3-0 line of H2 perturbed by He (reference 10.11
      &     'Imag(mHT)'
 
       do point = 1, number_of_points
-         absorption_tabulated(point) = profile(nu0,GammaD,Gamma0_He,
+         absorption_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_He,
      &      Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,
      &      nu_tabulated(point),Ylm,Xlm,alpha_He,
      &      not_calculate_dispersion)
-         dispersion_tabulated(point) = profile(nu0,GammaD,Gamma0_He,
+         dispersion_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_He,
      &      Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,
      &      nu_tabulated(point),Ylm,Xlm,alpha_He,calculate_dispersion)
       write(unit_, '(F15.8, 2F22.15)') nu_tabulated(point),

@@ -1,7 +1,7 @@
       program example_absorption
 c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
       implicit none
-      double precision :: mHT, profile
+      double precision :: mHT, mHTprofile
       double precision :: nu0 = 112265.5949d0 ! Unperturbed line position in cm-1.
       double precision :: GammaD = 35.1d-3 ! Doppler broadening in cm-1.
       double precision :: Gamma0 = 11.7d-3 ! Speed-averaged line-width in cm-1.
@@ -17,8 +17,8 @@ c Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1
       logical :: calculate_dispersion=.false. ! Only the absorption profile will be calculated
 
       nu  = nu0 + 1.0d0
-      mHT = profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,
-     &              NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
+      mHT = mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,
+     &                 NuOptIm,nu,Ylm,Xlm,alpha,calculate_dispersion)
    
       write(*,101) mHT
  101  format('The output of the mHT function (absorption, He-perturbed',

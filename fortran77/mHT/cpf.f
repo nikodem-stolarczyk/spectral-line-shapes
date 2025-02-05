@@ -40,15 +40,36 @@ c----------------------------------------------------------------------
 
       z = dcmplx(-y, x)
       z_ratio = (weidemann_constant_42 + z)/(weidemann_constant_42 - z)
-      cpf_z = dcmplx(0.0d0, 0.0d0)
-
-      do i = 1, number_of_fft_terms
-         cpf_z = cpf_z + fft_constant_terms(i) * z_ratio** 
-     &             (number_of_fft_terms - i)
-      end do
-      cpf_accurate = 2.0d0 * cpf_z  
-     &             / (weidemann_constant_42 - z)**2.0d0
-     &             + inverse_sqrt_pi / (weidemann_constant_42 - z)
+      cpf_z   =                                                      
+     &    fft_constant_terms(37) + (fft_constant_terms(36) +
+     &   (fft_constant_terms(35) + (fft_constant_terms(34) +
+     &   (fft_constant_terms(33) + (fft_constant_terms(32) +
+     &   (fft_constant_terms(31) + (fft_constant_terms(30) +
+     &   (fft_constant_terms(29) + (fft_constant_terms(28) +
+     &   (fft_constant_terms(27) + (fft_constant_terms(26) +
+     &   (fft_constant_terms(25) + (fft_constant_terms(24) +
+     &   (fft_constant_terms(23) + (fft_constant_terms(22) +
+     &   (fft_constant_terms(21) + (fft_constant_terms(20) +
+     &   (fft_constant_terms(19) + (fft_constant_terms(18) +
+     &   (fft_constant_terms(17) + (fft_constant_terms(16) +
+     &   (fft_constant_terms(15) + (fft_constant_terms(14) +
+     &   (fft_constant_terms(13) + (fft_constant_terms(12) +
+     &   (fft_constant_terms(11) + (fft_constant_terms(10) +
+     &   (fft_constant_terms(9)  + (fft_constant_terms(8)  +
+     &   (fft_constant_terms(7)  + (fft_constant_terms(6)  +
+     &   (fft_constant_terms(5)  + (fft_constant_terms(4)  +
+     &   (fft_constant_terms(3)  + (fft_constant_terms(2)  +
+     &   fft_constant_terms(1) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &   * z_ratio) * z_ratio) * z_ratio
+      cpf_accurate = ( 2.0d0 * cpf_z  
+     &             / (weidemann_constant_42 - z)
+     &             + inverse_sqrt_pi ) / (weidemann_constant_42 - z)
       end function cpf_accurate
 c----------------------------------------------------------------------
       function cpf_fast(x, y)
@@ -93,16 +114,27 @@ c----------------------------------------------------------------------
          z = dcmplx(-y, x)
          z_ratio = (weidemann_constant_24 + z)
      &             / (weidemann_constant_24 - z)
-         cpf_z = dcmplx(0.0d0, 0.0d0)
-
-         do i = 1, number_of_fft_terms
-            cpf_z = cpf_z + fft_constant_terms(i) * z_ratio**
-     &                (number_of_fft_terms - i)
-         end do
-
-         cpf_z = 2.0d0 * cpf_z
-     &         / (weidemann_constant_24 - z)**2.0d0
-     &         + inverse_sqrt_pi / (weidemann_constant_24 - z)
+         cpf_z   =
+     &       fft_constant_terms(24) + (fft_constant_terms(23) +
+     &      (fft_constant_terms(22) + (fft_constant_terms(21) +
+     &      (fft_constant_terms(20) + (fft_constant_terms(19) +
+     &      (fft_constant_terms(18) + (fft_constant_terms(17) +
+     &      (fft_constant_terms(16) + (fft_constant_terms(15) +
+     &      (fft_constant_terms(14) + (fft_constant_terms(13) +
+     &      (fft_constant_terms(12) + (fft_constant_terms(11) +
+     &      (fft_constant_terms(10) + (fft_constant_terms(9)  +
+     &      (fft_constant_terms(8)  + (fft_constant_terms(7)  +
+     &      (fft_constant_terms(6)  + (fft_constant_terms(5)  +
+     &      (fft_constant_terms(4)  + (fft_constant_terms(3)  +
+     &      (fft_constant_terms(2)  + fft_constant_terms(1) * z_ratio)
+     &      * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &      * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &      * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &      * z_ratio) * z_ratio) * z_ratio) * z_ratio) * z_ratio)
+     &      * z_ratio) * z_ratio
+         cpf_z = ( 2.0d0 * cpf_z
+     &         / (weidemann_constant_24 - z)
+     &         + inverse_sqrt_pi ) / (weidemann_constant_24 - z)
       endif
 
       cpf_fast = cpf_z

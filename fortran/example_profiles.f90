@@ -1,6 +1,6 @@
 program example_profiles
    use, intrinsic :: iso_fortran_env, only: int32, dp => real64
-   use spectral_module, only: profile
+   use spectral_module, only: mHTprofile
    implicit none
    real(dp), allocatable :: nu_tabulated(:) ! Frequency grid in cm-1.
    real(dp), allocatable :: absorption_tabulated(:), dispersion_tabulated(:)
@@ -54,10 +54,10 @@ program example_profiles
    
    do point = 1, 1001
       nu_tabulated(point) = nu0 - 5*GammaD + (point-1) * nu_step
-      absorption_tabulated(point) = profile(nu0,GammaD,Gamma0_Ar,      &
+      absorption_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_Ar,   &
          Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,          &
          nu_tabulated(point),Ylm,Xlm,alpha_Ar)
-      dispersion_tabulated(point) = profile(nu0,GammaD,Gamma0_Ar,      &
+      dispersion_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_Ar,   &
          Gamma2_Ar,Delta0_Ar,Delta2_Ar,NuOptRe_Ar,NuOptIm_Ar,          &
          nu_tabulated(point),Ylm,Xlm,alpha_Ar,calculate_dispersion_opt=&
          calculate_dispersion)
@@ -86,10 +86,10 @@ program example_profiles
    write(unit_,'(A)')'# Frequency         Real(mHT)             Imag(mHT)'
 
    do point = 1, 1001
-      absorption_tabulated(point) = profile(nu0,GammaD,Gamma0_He,      &
+      absorption_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_He,   &
          Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,          &
          nu_tabulated(point),Ylm,Xlm,alpha_He)
-      dispersion_tabulated(point) = profile(nu0,GammaD,Gamma0_He,      &
+      dispersion_tabulated(point) = mHTprofile(nu0,GammaD,Gamma0_He,   &
          Gamma2_He,Delta0_He,Delta2_He,NuOptRe_He,NuOptIm_He,          &
          nu_tabulated(point),Ylm,Xlm,alpha_He,calculate_dispersion)
       write(unit_, '(F15.8, 2F22.15)') nu_tabulated(point),            &

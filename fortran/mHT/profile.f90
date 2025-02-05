@@ -64,9 +64,8 @@ module spectral_module
       !----------------------------------------------------------------!
    end function beta
 !----------------------------------------------------------------------!
-   function profile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe,    &
-      NuOptIm,nu,Ylm_opt,Xlm_opt,alpha_opt,calculate_dispersion_opt)   &
-      result(mHT_profile)
+   function mHTprofile(nu0,GammaD,Gamma0,Gamma2,Delta0,Delta2,NuOptRe, &
+      NuOptIm,nu,Ylm_opt,Xlm_opt,alpha_opt,calculate_dispersion_opt)
       !----------------------------------------------------------------!
       ! "PROFILE_mHT": modified Hartmann-Tran profile
       ! Subroutine to compute the complex normalized spectral shape of an 
@@ -91,8 +90,8 @@ module spectral_module
       !             beta-correction (Input, optional). Applicable up
       !             to alpha=5.
       ! calculate_dispersion_opt : (Input, optional) false by default:
-      !             "mHT_profile" returns the real part of the mHT
-      !             profile (absorption). If true, "mHT_profile" returns
+      !             "mHTprofile" returns the real part of the mHT
+      !             profile (absorption). If true, "mHTprofile" returns
       !             the imaginary part of the profile (dispersion).
       !
       ! The function provides one output:
@@ -107,7 +106,7 @@ module spectral_module
          Delta2, NuOptRe, NuOptIm, nu
       real(dp), intent(in), optional :: Ylm_opt, Xlm_opt, alpha_opt
       logical, intent(in), optional :: calculate_dispersion_opt
-      real(dp) :: mHT_profile
+      real(dp) :: mHTprofile
       !----------------------------------------------------------------!
       real(dp), parameter :: small_threshold = 3e-8_dp
       !----------------------------------------------------------------!
@@ -190,11 +189,11 @@ module spectral_module
       calculated_profile  = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
       !----------------------------------------------------------------!
       if (calculate_dispersion) then
-         mHT_profile = dimag(calculated_profile)
+         mHTprofile = dimag(calculated_profile)
       else
-         mHT_profile = dreal(calculated_profile)
+         mHTprofile = dreal(calculated_profile)
       endif
       !----------------------------------------------------------------!
-   end function profile 
+   end function mHTprofile 
 
 end module spectral_module
