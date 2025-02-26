@@ -1,29 +1,45 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5863,        165]
+NotebookOptionsPosition[      5474,        150]
+NotebookOutlinePosition[      5882,        166]
+CellTagsIndexPosition[      5839,        163]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
+   RowBox[{"Include", " ", "package", " ", "with", " ", "mHT", " ", 
+    RowBox[{"definitions", "."}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
    RowBox[{
-   "Evaluate", " ", "the", " ", "notebook", " ", "containing", " ", "the", 
-    " ", "profile", " ", "function", " ", "if", " ", "it", " ", "is", " ", 
-    "not", " ", "already", " ", "loaded", " ", "into", " ", 
-    RowBox[{"memory", "."}]}], " ", "*)"}], "\n", 
+    RowBox[{
+     RowBox[{"Alternatively", " ", "."}], "/", "mHT"}], " ", "folder", " ", 
+    "can", " ", "be", " ", "added", " ", "to", " ", "$Path", " ", "variable", 
+    " ", "and", " ", "call", " ", 
+    RowBox[{"only", ":", " ", 
+     RowBox[{"Needs", "[", "\"\<mHT`\>\"", "]"}]}]}], " ", "*)"}], "\n", 
   RowBox[{
    RowBox[{
-    RowBox[{"If", "[", 
-     RowBox[{
-      RowBox[{"Not", "[", 
-       RowBox[{"ValueQ", "[", 
-        RowBox[{"mHTProfile", "[", 
-         RowBox[{
-         "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",",
-           "1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-      RowBox[{"NotebookEvaluate", "[", 
-       RowBox[{"FileNameJoin", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
-          "\"\<profile.nb\>\""}], "}"}], "]"}], "]"}]}], "]"}], ";"}], "\n", 
-   "\n", 
+    RowBox[{"Needs", "[", 
+     RowBox[{"\"\<mHT`\>\"", ",", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
+         "\"\<mHT.m\>\""}], "}"}], "]"}]}], "]"}], ";"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"Example", " ", "parameters", " ", "of", " ", "the", " ", "S", 
@@ -89,8 +105,8 @@ Cell[BoxData[
        "parameter", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], ";"}], 
    "\n", 
    RowBox[{
-    RowBox[{"NuOptIm", " ", "=", " ", 
-     RowBox[{"-", "17.5*^-3"}]}], "    ", 
+    RowBox[{"NuOptIm", " ", "=", "  ", 
+     RowBox[{"-", "17.5*^-3"}]}], "   ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -98,8 +114,8 @@ Cell[BoxData[
        "parameter", " ", "in", " ", "cm"}], "-", "1."}], " ", "*)"}], ";"}], 
    "\n", 
    RowBox[{
-    RowBox[{"nu", " ", "=", " ", 
-     RowBox[{"nu0", " ", "+", " ", "1"}]}], "           ", 
+    RowBox[{"nu", "      ", "=", "  ", 
+     RowBox[{"nu0", " ", "+", " ", "1"}]}], "     ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{"Current", " ", "wavenumber", " ", "in", " ", "cm"}], "-", 
@@ -110,29 +126,50 @@ Cell[BoxData[
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "True"}], 
-      "]"}], "]"}], "]"}], "\n", 
-   RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{"disp", " ", "variable"}], ",", " ", 
-     RowBox[{
-      RowBox[{"as", " ", "only", " ", "boolean"}], "-", 
-      RowBox[{"defined", " ", "variable"}]}], ",", " ", 
-     RowBox[{
-     "can", " ", "be", " ", "called", " ", "without", " ", "using", " ", 
-      "other", " ", "Numerical", " ", "optional", " ", "parameters"}]}], " ", 
-    "*)"}]}]}]], "Code",
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "True"}], 
+       "}"}], "]"}], "]"}], "]"}], " ", "\n", "\n", 
+   RowBox[{
+   "Print", "[", 
+    "\"\<\\nThe output of the mHT function - dispersion (alternative call):\>\
+\"", "]"}], "\n", 
+   RowBox[{"Print", "[", 
+    RowBox[{"InputForm", "[", 
+     RowBox[{"mHTProfile", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
+        "0", ",", "10", ",", "True"}], "}"}], "]"}], "]"}], "]"}], 
+   " "}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.941011953417986*^9, 3.941011967609406*^9}, 
-   3.941276021305949*^9},ExpressionUUID->"953e8230-1895-a443-beef-\
-9e776c28b763"]
+ CellChangeTimes->{{3.9495673198324986`*^9, 3.949567349336569*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8"]
 },
-WindowSize->{1428, 735},
-WindowMargins->{{42, Automatic}, {Automatic, 106}},
-PrivateNotebookOptions->{"FileOutlineCache"->False},
-FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+WindowSize->{1150.8, 594.6},
+WindowMargins->{{-4.8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1583d74b-be8c-4843-a531-fcb5fed97954"
 ]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4912, 128, 357, "Code",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8",
+ InitializationCell->False]
+}
+]
+*)
+
+(* End of internal cache information *)
 
