@@ -1,62 +1,96 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2898,         86]
+NotebookOptionsPosition[      2510,         71]
+NotebookOutlinePosition[      2918,         87]
+CellTagsIndexPosition[      2875,         84]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
+   RowBox[{"Include", " ", "package", " ", "with", " ", "mHT", " ", 
+    RowBox[{"definitions", "."}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
    RowBox[{
-   "Evaluate", " ", "the", " ", "notebook", " ", "containing", " ", "the", 
-    " ", "profile", " ", "function", " ", "if", " ", "it", " ", "is", " ", 
-    "not", " ", "already", " ", "loaded", " ", "into", " ", 
-    RowBox[{"memory", "."}]}], " ", "*)"}], "\n", 
+    RowBox[{
+     RowBox[{"Alternatively", " ", "."}], "/", "mHT"}], " ", "folder", " ", 
+    "can", " ", "be", " ", "added", " ", "to", " ", "$Path", " ", "variable", 
+    " ", "and", " ", "call", " ", 
+    RowBox[{"only", ":", " ", 
+     RowBox[{"Needs", "[", "\"\<mHT`\>\"", "]"}]}]}], " ", "*)"}], "\n", 
   RowBox[{
    RowBox[{
-    RowBox[{"If", "[", 
-     RowBox[{
-      RowBox[{"Or", "[", 
-       RowBox[{
-        RowBox[{"Not", "[", 
-         RowBox[{"ValueQ", "[", 
-          RowBox[{"CPFAccurate", "[", 
-           RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-        RowBox[{"Not", "[", 
-         RowBox[{"ValueQ", "[", 
-          RowBox[{"CPFFast", "[", 
-           RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}], ",", 
-      RowBox[{"NotebookEvaluate", "[", 
-       RowBox[{"FileNameJoin", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
-          "\"\<CPF.nb\>\""}], "}"}], "]"}], "]"}]}], "]"}], ";"}], "\n", "\n", 
+    RowBox[{"Needs", "[", 
+     RowBox[{"\"\<mHT`\>\"", ",", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
+         "\"\<mHT.m\>\""}], "}"}], "]"}]}], "]"}], ";"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Example", " ", "parameters", " ", "for", " ", "the", " ", "cpf", " ", 
      "function"}], " ", "*)"}], "\n", 
    RowBox[{
-    RowBox[{"x", " ", "=", " ", "1"}], ";", " ", 
-    RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", 
-    RowBox[{"y", " ", "=", " ", "1"}], ";", " ", 
-    RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", "\n", 
-    RowBox[{
-    "Print", "[", "\"\<The output of the CPFAccurate function:\>\"", "]"}]}], 
+    RowBox[{"x", " ", "=", " ", "1"}], ";"}], " ", 
+   RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"y", " ", "=", " ", "1"}], ";"}], " ", 
+   RowBox[{"(*", " ", "Dimensionless", " ", "*)"}], "\n", "\n", 
+   RowBox[{
+   "Print", "[", "\"\<The output of the CPFAccurate function:\>\"", "]"}], 
    "\n", 
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"CPFAccurate", "[", 
-      RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}], "\n", "\n", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], "]"}], "]"}], "]"}], "\n", "\n", 
    RowBox[{"Print", "[", "\"\<The output of the CPFFast function:\>\"", "]"}],
     "\n", 
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"CPFFast", "[", 
-      RowBox[{"x", ",", "y"}], "]"}], "]"}], "]"}]}]}]], "Code",
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], "]"}], "]"}], "]"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{
-  3.941013354651175*^9},ExpressionUUID->"953e8230-1895-a443-beef-9e776c28b763"]
+ CellChangeTimes->{{3.9495673198324986`*^9, 3.949567349336569*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8"]
 },
-WindowSize->{1440, 747},
-WindowMargins->{{42, Automatic}, {Automatic, 69}},
-PrivateNotebookOptions->{"FileOutlineCache"->False},
-FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+WindowSize->{1150.8, 594.6},
+WindowMargins->{{-4.8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1583d74b-be8c-4843-a531-fcb5fed97954"
 ]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1948, 49, 238, "Code",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8",
+ InitializationCell->False]
+}
+]
+*)
+
+(* End of internal cache information *)
 
