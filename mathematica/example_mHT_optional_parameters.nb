@@ -1,29 +1,27 @@
+(* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
+   RowBox[{"Include", " ", "package", " ", "with", " ", "mHT", " ", 
+    RowBox[{"definitions", "."}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
    RowBox[{
-   "Evaluate", " ", "the", " ", "notebook", " ", "containing", " ", "the", 
-    " ", "profile", " ", "function", " ", "if", " ", "it", " ", "is", " ", 
-    "not", " ", "already", " ", "loaded", " ", "into", " ", 
-    RowBox[{"memory", "."}]}], " ", "*)"}], "\n", 
+    RowBox[{
+     RowBox[{"Alternatively", " ", "."}], "/", "mHT"}], " ", "folder", " ", 
+    "can", " ", "be", " ", "added", " ", "to", " ", "$Path", " ", "variable", 
+    " ", "and", " ", "call", " ", 
+    RowBox[{"only", ":", " ", 
+     RowBox[{"Needs", "[", "\"\<mHT`\>\"", "]"}]}]}], " ", "*)"}], "\n", 
   RowBox[{
    RowBox[{
-    RowBox[{"If", "[", 
-     RowBox[{
-      RowBox[{"Not", "[", 
-       RowBox[{"ValueQ", "[", 
-        RowBox[{"mHTProfile", "[", 
-         RowBox[{
-         "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",",
-           "1", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-      RowBox[{"NotebookEvaluate", "[", 
-       RowBox[{"FileNameJoin", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
-          "\"\<profile.nb\>\""}], "}"}], "]"}], "]"}]}], "]"}], ";"}], "\n", 
-   "\n", 
+    RowBox[{"Needs", "[", 
+     RowBox[{"\"\<mHT`\>\"", ",", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<mHT\>\"", ",", 
+         "\"\<mHT.m\>\""}], "}"}], "]"}]}], "]"}], ";"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"Example", " ", "parameters", " ", "of", " ", "the", " ", "S", 
@@ -107,7 +105,7 @@ Cell[BoxData[
    RowBox[{"(*", " ", 
     RowBox[{"Optional", " ", "parameters"}], " ", "*)"}], "\n", 
    RowBox[{
-    RowBox[{"Ylm", "   ", "=", " ", "1.*^-3"}], " ", 
+    RowBox[{"Ylm", "   ", "=", " ", "1.*^-3"}], "         ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -117,7 +115,7 @@ Cell[BoxData[
        "coefficients"}], ",", " ", "dimensionless"}], " ", "*)"}], ";"}], 
    "\n", 
    RowBox[{
-    RowBox[{"Xlm", "   ", "=", " ", ".5*^-3"}], " ", 
+    RowBox[{"Xlm", "   ", "=", " ", ".5*^-3"}], "         ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -127,7 +125,7 @@ Cell[BoxData[
        "coefficients"}], ",", " ", "dimensionless"}], " ", "*)"}], ";"}], 
    "\n", 
    RowBox[{
-    RowBox[{"alpha", " ", "=", " ", "20."}], "    ", 
+    RowBox[{"alpha", " ", "=", " ", "1.98573285442"}], "  ", 
     RowBox[{"(*", " ", 
      RowBox[{
       RowBox[{
@@ -153,10 +151,11 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu"}], "]"}], "]"}], 
-    "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu"}], "}"}], "]"}], 
+     "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The absorption output of the mHT function with optional parameters \
@@ -164,10 +163,11 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm"}], 
-      "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm"}], 
+       "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The absorption output of the mHT function with optional parameters \
@@ -175,10 +175,11 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
-       "0", ",", "alpha"}], "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
+        "0", ",", "alpha"}], "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The absorption output of the mHT function with optional parameters \
@@ -186,10 +187,11 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",", 
-       "Ylm", ",", "alpha"}], "]"}], "]"}], "]"}], "\n", "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",",
+         "Ylm", ",", "alpha"}], "}"}], "]"}], "]"}], "]"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Printing", " ", "the", " ", "examples", " ", "for", " ", "dispersion", 
@@ -211,17 +213,19 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "True"}], 
-      "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "True"}], 
+       "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
-       "0", ",", "10", ",", "True"}], "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
+        "0", ",", "10", ",", "True"}], "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The dispersion output of the mHT function with optional parameters \
@@ -229,17 +233,19 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",", 
-       "True"}], "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",",
+         "True"}], "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",", 
-       "0", ",", "10", ",", "True"}], "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",",
+         "0", ",", "10", ",", "True"}], "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The dispersion output of the mHT function with optional parameters \
@@ -247,10 +253,11 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
-       "0", ",", "alpha", ",", "True"}], "]"}], "]"}], "]"}], "\n", 
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "0", ",", 
+        "0", ",", "alpha", ",", "True"}], "}"}], "]"}], "]"}], "]"}], "\n", 
    RowBox[{
    "Print", "[", 
     "\"\<The dispersion output of the mHT function with optional parameters \
@@ -258,20 +265,20 @@ parameters:\>\"", "]"}], "\n",
    RowBox[{"Print", "[", 
     RowBox[{"InputForm", "[", 
      RowBox[{"mHTProfile", "[", 
-      RowBox[{
-      "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",", 
-       "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",", 
-       "Ylm", ",", "alpha", ",", "True"}], "]"}], "]"}], "]"}]}]}]], "Code",
+      RowBox[{"{", 
+       RowBox[{
+       "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",",
+         "Ylm", ",", "alpha", ",", "True"}], "}"}], "]"}], "]"}], 
+    "]"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.941012046154163*^9, 3.941012056057523*^9}, {
-   3.941012165184628*^9, 3.94101216589598*^9}, 
-   3.941276037400811*^9},ExpressionUUID->"953e8230-1895-a443-beef-\
-9e776c28b763"]
+ CellChangeTimes->{{3.9495673198324986`*^9, 3.949567349336569*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8"]
 },
-WindowSize->{1428, 735},
-WindowMargins->{{42, Automatic}, {Automatic, 106}},
-PrivateNotebookOptions->{"FileOutlineCache"->False},
-FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
-StyleDefinitions->"Default.nb"
+WindowSize->{1150.8, 594.6},
+WindowMargins->{{-4.8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1583d74b-be8c-4843-a531-fcb5fed97954"
 ]
-
+(* End of Notebook Content *)
