@@ -9,28 +9,14 @@ function res = beta(GammaD, NuOptRe, alpha)
     %    --------------------
     %    GammaD    : Doppler HWHM in cm-1. 
     %    NuOptRe   : Real part of the Dicke parameter in cm-1.
-    %    alpha     : Mass ratio in the molecule. Applicable up to alpha=5, dimensionless.
+    %    alpha     : Mass ratio in the molecule. Applicable up to alpha=5.0, dimensionless.
     %
     %    The function has one output:
     %    --------------------
     %    (1)       : Value of the beta correction, dimensionless.
     % ----------------------------------------
-    arguments (Input)
-        GammaD  (1,1) double
-        NuOptRe (1,1) double
-        alpha   (1,1) double
-    end
-    arguments (Output)
-        res (1,1) double
-    end
-
-    max_alpha = 5.0; % The mass ratio up to which the beta correction is applicable
-    if alpha<max_alpha
-        a   =  0.0534 + 0.1585*exp(-0.4510*alpha);
-        b   =  1.9595 - 0.1258*alpha + 0.0056*alpha^2 + 0.0050*alpha^3;
-        c   = -0.0546 + 0.0672*alpha - 0.0125*alpha^2 + 0.0003*alpha^3;
-        d   =  0.9466 - 0.1585*exp(-0.4510*alpha);
-        res = a*tanh(b*log10(NuOptRe/GammaD)+c)+d;
+    if alpha < 5.0 % The mass ratio up to which the beta correction is applicable
+        res = (0.0534 + 0.1585*exp(-0.4510*alpha)) *tanh( (1.9595 + alpha*(-0.1258 + alpha*( 0.0056 + alpha*0.0050))) *log10(NuOptRe/GammaD)+ (-0.0546 + alpha*( 0.0672 + alpha*(-0.0125 + alpha*0.0003))) ) + (0.9466 - 0.1585*exp(-0.4510*alpha));
     else
         res = 1.0;
     end
