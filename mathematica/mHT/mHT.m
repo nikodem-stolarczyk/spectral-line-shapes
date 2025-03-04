@@ -229,6 +229,7 @@ Block[{
 CPFVector := ({CPFAccurateVector,CPFFastVector})[[CPFChoice]];
 
 
+(* Modified Hartmann Tran profile function rewritted to allow vector input *)
 mHTProfileVector[{nu0_,GammaD_,Gamma0_,Gamma2_,Delta0_,Delta2_,NuOptRe_,NuOptIm_,nu_,Ylm_:0,Xlm_:0,alpha_:10,disp_:False}] :=
 Block[{nuD = 1.2011224087864498` GammaD,
     nuR,c0,c2,LM,X,Y,csqY,z1,z2,w1,w2,rX,wX,z,w,A,ImHT},
