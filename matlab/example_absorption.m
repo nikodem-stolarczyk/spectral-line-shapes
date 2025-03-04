@@ -20,7 +20,7 @@ NuOptIm =    -17.5e-3; % Imaginary part of the Dicke parameter in cm-1.
 nu = nu0 + 1; % Current wavenumber in cm-1.
 
 % Displaying mHT function output:
-outRe = profile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu);
+outRe = mHTprofile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu);
 disp('The output of the mHT function - absorption:');
 disp(outRe);
 
