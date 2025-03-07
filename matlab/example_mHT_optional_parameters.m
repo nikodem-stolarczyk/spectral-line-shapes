@@ -25,21 +25,21 @@ Xlm   = 0.5e-3; % Dimensionless
 alpha = 2 ;     % Dimensionless
 
 % Displaying mHT function output with no optional parameters
-[outRe, outIm]  = profile(nu0, GamD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu);
+[outRe, outIm]  = mHTprofile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu);
 disp('The output of the mHT function with optional parameters:');
 disp([outRe, outIm]);
 
 % Displaying mHT function output with Ylm optional parameter only
-[outRe, outIm]  = profile(nu0, GamD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm);
+[outRe, outIm]  = mHTprofile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm);
 disp('The output of the mHT function with optional parameters (Ylm):');
 disp([outRe, outIm]);
 
 % Displaying mHT function output with alpha optional parameter only
-[outRe, outIm]  = profile(nu0, GamD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, 0.0, 0.0, alpha);
+[outRe, outIm]  = mHTprofile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, 0.0, 0.0, alpha);
 disp('The output of the mHT function with optional parameters (alpha):');
 disp([outRe, outIm]);
 
 % Displaying mHT function output with optional parameters
-[outRe, outIm]  = profile(nu0, GamD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha);
+[outRe, outIm]  = mHTprofile(nu0, GammaD, Gamma0, Gamma2, Delta0, Delta2, NuOptRe, NuOptIm, nu, Ylm, Xlm, alpha);
 disp('The output of the mHT function with optional parameters (all):');
 disp([outRe, outIm]);
