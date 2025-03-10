@@ -1,10 +1,10 @@
-from numba import jit
+from numba import jit as numba_jit
 from numba import float64 as numba_f8
 from numba import complex128 as numba_c16
 from numpy import array as numpy_array
 from numpy import empty as numpy_empty
 
-@jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
+@numba_jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
 def cpf_accurate(x: float, y: float) -> complex:
   """ Accurate CPF algorithm
   =====
@@ -32,7 +32,7 @@ def cpf_accurate(x: float, y: float) -> complex:
           Z*(+6.430136110306704E-12+Z*(-2.069163661083667E-12+Z*(-1.184560208678836E-12+Z*(+1.790586243645278E-13+Z*(+1.951777029849348E-13+Z*(-1.188364999909099E-14-\
           Z*3.129493160727961E-14))))))))))))))))))))))))))))))))))))/(5.449631621480024-z)+0.5641895835477563)/(5.449631621480024-z)
       
-@jit(numba_c16[:](numba_f8[:], numba_f8[:]), nopython=True, cache=True)
+@numba_jit(numba_c16[:](numba_f8[:], numba_f8[:]), nopython=True, cache=True)
 def cpf_accurate_vector(x, y):
   """ Accurate CPF algorithm (vectorized version)
   =====
@@ -60,7 +60,7 @@ def cpf_accurate_vector(x, y):
           Z*(+6.430136110306704E-12+Z*(-2.069163661083667E-12+Z*(-1.184560208678836E-12+Z*(+1.790586243645278E-13+Z*(+1.951777029849348E-13+Z*(-1.188364999909099E-14-\
           Z*3.129493160727961E-14))))))))))))))))))))))))))))))))))))/(5.449631621480024-z)+0.5641895835477563)/(5.449631621480024-z)
 
-@jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
+@numba_jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
 def cpf_fast(x: float, y: float) -> complex:
   """ Fast CPF algorithm
   =====
@@ -89,7 +89,7 @@ def cpf_fast(x: float, y: float) -> complex:
             Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
             Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
 			Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z)        
-            
+      
 def cpf_fast_vector(x, y):
   """ Fast CPF algorithm (vectorized version)
   =====
