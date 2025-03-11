@@ -92,6 +92,22 @@ def cpf_fast(x: float, y: float) -> complex:
 
 @numba_njit(cache=True)
 def cpf_fast_vector(x: numpy_ndarray, y: numpy_ndarray) -> numpy_ndarray:
+  """ Fast CPF algorithm (vectorized version)
+  =====
+  Computes the complex probability function using Humlicek's algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) and using a rational series with 24 terms in other subregions (Source: jstor.org/stable/2158232).
+  
+  Parameters
+  ----------
+  x : float
+    Real part of input complex parameter
+  y : float
+    Imaginary part of input complex parameter
+  
+  Returns
+  -------
+  complex
+    Complex probability function
+  """
   result = []
   for xi, yi in zip(x,y):
     if abs(xi) + yi > 15.0:
