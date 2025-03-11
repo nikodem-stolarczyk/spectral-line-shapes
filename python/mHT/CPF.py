@@ -89,27 +89,86 @@ def cpf_fast(x: float, y: float) -> complex:
             Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
             Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
 			Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z)        
-      
+
+import numpy as np
+@numba_jit(numba_c16[:](numba_f8[:], numba_f8[:]), nopython=True, cache=True)     
 def cpf_fast_vector(x, y):
-  """ Fast CPF algorithm (vectorized version)
-  =====
-  Computes the complex probability function using Humlicek's algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) and using a rational series with 24 terms in other subregions (Source: jstor.org/stable/2158232).
-  
-  Parameters
-  ----------
-  x : float
-    Real part of input complex parameter
-  y : float
-    Imaginary part of input complex parameter
-  
-  Returns
-  -------
-  complex
-    Complex probability function
-  """
-  # x = numpy_array(x,dtype=float).flatten()
-  # y = numpy_array(y,dtype=float).flatten()
-  # o = numpy_empty(len(x),dtype=complex);
-  # for i in range(len(x)): o[i] = cpf_fast(x[i],y[i])
-  # return o
-  return(cpf_accurate_vector(x,y))
+    """Vector-only, Numba-jitted CPF calculation.
+
+    Computes the complex probability function using Humlicek's algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) and using a rational series with 24 terms in other subregions (Source: jstor.org/stable/2158232).
+
+    Parameters
+    ----------
+    x : 
+    y : 
+
+    Returns
+    -------
+        Complex probability function values.
+    """
+
+    result = np.empty_like(x, dtype=np.complex128)
+
+    for i in range(x.size):
+        xi = x[i]
+        yi = y[i]
+
+        if abs(xi) + yi > 15.0:
+            t = complex(yi, -xi)
+            result[i] = t*0.5641895835477563/(0.5+t*t)
+            
+        else:
+            z = complex(-yi, xi)
+            Z = (4.119534287814236 + z) / (4.119534287814236 - z)
+
+            result[i] = (2*(+2.197858936531542E+00+Z*(+1.856286499205540E+00+Z*(+1.394819673379119E+00+Z*(+9.257087138588670E-01+Z*(+5.361139535729116E-01+Z*(+2.654963959880772E-01+\
+            Z*(+1.083872348456673E-01+Z*(+3.372336685531603E-02+Z*(+6.215006362949147E-03+Z*(-4.936426901286291E-04+Z*(-7.816642995626165E-04+Z*(-2.074843151143828E-04+\
+            Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
+            Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
+			Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z)  
+
+    return result
+
+
+from numba import njit
+@njit(cache=True)
+def cpf_fast_vector_based_on_numpy(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    """Vector-only, Numba-jitted CPF calculation.
+
+    Computes the complex probability function using Humlicek's algorithm in its first subregion (Source: 10.1016/0022-4073(82)90078-4) and using a rational series with 24 terms in other subregions (Source: jstor.org/stable/2158232).
+
+    Parameters
+    ----------
+    x : np.ndarray
+        Real parts of input complex parameters.
+    y : np.ndarray
+        Imaginary parts of input complex parameters.
+
+    Returns
+    -------
+    np.ndarray
+        Complex probability function values.
+    """
+
+    result = np.empty_like(x, dtype=np.complex128)
+
+    #for i in range(x.size):
+    for i in range(len(x)):
+        xi = x[i]
+        yi = y[i]
+
+        if abs(xi) + yi > 15.0:
+            t = complex(yi, -xi)
+            result[i] = t*0.5641895835477563/(0.5+t*t)
+            
+        else:
+            z = complex(-yi, xi)
+            Z = (4.119534287814236 + z) / (4.119534287814236 - z)
+
+            result[i] = (2*(+2.197858936531542E+00+Z*(+1.856286499205540E+00+Z*(+1.394819673379119E+00+Z*(+9.257087138588670E-01+Z*(+5.361139535729116E-01+Z*(+2.654963959880772E-01+\
+            Z*(+1.083872348456673E-01+Z*(+3.372336685531603E-02+Z*(+6.215006362949147E-03+Z*(-4.936426901286291E-04+Z*(-7.816642995626165E-04+Z*(-2.074843151143828E-04+\
+            Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
+            Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
+			Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z)  
+
+    return result
