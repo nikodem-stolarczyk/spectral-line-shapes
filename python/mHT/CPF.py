@@ -40,14 +40,14 @@ def cpf_accurate_vector(x, y):
 
   Parameters
   ----------
-  x : float
+  x : numpy.ndarray
     Real part of input complex parameter
-  y : float
+  y : numpy.ndarray
     Imaginary part of input complex parameter
 
   Returns
   -------
-  complex
+  numpy.ndarray
     Complex probability function
   """
   z = -y + x*1j
@@ -98,14 +98,14 @@ def cpf_fast_vector(x: numpy_ndarray, y: numpy_ndarray) -> numpy_ndarray:
   
   Parameters
   ----------
-  x : float
+  x : numpy.ndarray
     Real part of input complex parameter
-  y : float
+  y : numpy.ndarray
     Imaginary part of input complex parameter
   
   Returns
   -------
-  complex
+  numpy.ndarray
     Complex probability function
   """
   result = []
