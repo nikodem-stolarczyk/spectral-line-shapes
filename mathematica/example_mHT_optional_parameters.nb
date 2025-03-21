@@ -1,3 +1,21 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11583,        312]
+NotebookOptionsPosition[     11193,        297]
+NotebookOutlinePosition[     11601,        313]
+CellTagsIndexPosition[     11558,        310]
+WindowFrame->Normal*)
+
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
@@ -190,8 +208,8 @@ parameters:\>\"", "]"}], "\n",
       RowBox[{"{", 
        RowBox[{
        "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
-         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",",
-         "Ylm", ",", "alpha"}], "}"}], "]"}], "]"}], "]"}], "\n", "\n", 
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",",
+         "Xlm", ",", "alpha"}], "}"}], "]"}], "]"}], "]"}], "\n", "\n", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Printing", " ", "the", " ", "examples", " ", "for", " ", "dispersion", 
@@ -268,12 +286,14 @@ parameters:\>\"", "]"}], "\n",
       RowBox[{"{", 
        RowBox[{
        "nu0", ",", "GammaD", ",", "Gamma0", ",", "Gamma2", ",", "Delta0", ",",
-         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Xlm", ",",
-         "Ylm", ",", "alpha", ",", "True"}], "}"}], "]"}], "]"}], 
+         "Delta2", ",", "NuOptRe", ",", "NuOptIm", ",", "nu", ",", "Ylm", ",",
+         "Xlm", ",", "alpha", ",", "True"}], "}"}], "]"}], "]"}], 
     "]"}]}]}]], "Code",
  InitializationCell->False,
- CellChangeTimes->{{3.9495673198324986`*^9, 3.949567349336569*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8"]
+ CellChangeTimes->{{3.9495673198324986`*^9, 3.949567349336569*^9}, {
+  3.951559440110161*^9, 
+  3.9515594703372593`*^9}},ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-\
+be4f834557d8"]
 },
 WindowSize->{1150.8, 594.6},
 WindowMargins->{{-4.8, Automatic}, {Automatic, 0}},
@@ -282,3 +302,19 @@ StyleDefinitions->"Default.nb",
 ExpressionUUID->"1583d74b-be8c-4843-a531-fcb5fed97954"
 ]
 (* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10631, 275, 765, "Code",ExpressionUUID->"41f2ab6e-1d4f-0e44-a7dd-be4f834557d8",
+ InitializationCell->False]
+}
+]
+*)
+

@@ -162,7 +162,7 @@ Block[{nuD = 1.2011224087864498` GammaD,
     nuR = NuOptRe \[Beta][{GammaD,NuOptRe,alpha}];
     c2  = Gamma2 + I Delta2;
     c0  = Gamma0 + I Delta0 - 1.5 c2 + nuR + I NuOptIm;
-    LM  = 1 + Xlm + I Ylm;
+    LM  = 1 + Xlm - I Ylm;
     If[Abs[c2] > (1.0`*^-9) (* Limit where speed dependence impact is lower than numerical noise level *), 
         X    = (I (nu0 - nu) + c0) / c2;
         Y    = 0.25 (nuD / c2)^2;
@@ -184,7 +184,7 @@ Block[{nuD = 1.2011224087864498` GammaD,
         A = w 1.772453850905516` / nuD;
     ];
     ImHT = 0.3183098861837907` LM A / (1 - A (nuR + I NuOptIm));
-    If[Not[disp],Re[ImHT],Im[ImHT]]
+    If[Not[disp],Re[ImHT],-Im[ImHT]]
 ]/;
 NumericQ[nu0] && NumericQ[GammaD] && NumericQ[Gamma0] && NumericQ[Gamma2] && NumericQ[Delta0] && NumericQ[Delta2] &&\
 NumericQ[NuOptRe] && NumericQ[NuOptIm] && NumericQ[Ylm] && NumericQ[Xlm] && NumericQ[alpha]
@@ -229,14 +229,13 @@ Block[{
 CPFVector := ({CPFAccurateVector,CPFFastVector})[[CPFChoice]];
 
 
-(* Modified Hartmann Tran profile function rewritted to allow vector input *)
 mHTProfileVector[{nu0_,GammaD_,Gamma0_,Gamma2_,Delta0_,Delta2_,NuOptRe_,NuOptIm_,nu_,Ylm_:0,Xlm_:0,alpha_:10,disp_:False}] :=
 Block[{nuD = 1.2011224087864498` GammaD,
     nuR,c0,c2,LM,X,Y,csqY,z1,z2,w1,w2,rX,wX,z,w,A,ImHT},
     nuR = NuOptRe \[Beta][{GammaD,NuOptRe,alpha}];
     c2  = Gamma2 + I Delta2;
     c0  = Gamma0 + I Delta0 - 1.5 c2 + nuR + I NuOptIm;
-    LM  = 1 + Xlm + I Ylm;
+    LM  = 1 + Xlm - I Ylm;
     If[Abs[c2] > (1.0`*^-9) (* Limit where speed dependence impact is lower than numerical noise level *), 
         X    = (I (nu0 - nu) + c0) / c2;
         Y    = 0.25 (nuD / c2)^2;
@@ -258,7 +257,7 @@ Block[{nuD = 1.2011224087864498` GammaD,
         A = w 1.772453850905516` / nuD;
     ];
     ImHT = 0.3183098861837907` LM A / (1 - A (nuR + I NuOptIm));
-    If[Not[disp],Re[ImHT],Im[ImHT]]
+    If[Not[disp],Re[ImHT],-Im[ImHT]]
 ]/;
 NumericQ[nu0] && NumericQ[GammaD] && NumericQ[Gamma0] && NumericQ[Gamma2] && NumericQ[Delta0] && NumericQ[Delta2] &&\
 NumericQ[NuOptRe] && NumericQ[NuOptIm] && NumericQ[Ylm] && NumericQ[Xlm] && NumericQ[alpha]
