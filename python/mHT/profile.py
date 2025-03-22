@@ -1,10 +1,15 @@
 from math import tanh as math_tanh
 from math import log10 as math_log10
 from cmath import sqrt as cmath_sqrt
-from numpy import array as numpy_array
-from numpy import median as numpy_median
+try: 
+  from numpy import array as numpy_array
+  from numpy import median as numpy_median
+except ImportError as msg: 
+  raise SystemExit (str(msg) + '\nprofile.py:  Numpy not found. Numpy module is needed to run the code!')
 
+# -----------------------------------  
 # Choice of CPF, comment one of below
+# -----------------------------------
 from mHT.CPF import cpf_accurate_vector as cpf_vector, cpf_accurate as cpf
 # from mHT.CPF import cpf_fast_vector as cpf_vector, cpf_fast as cpf
 
@@ -53,19 +58,19 @@ def mHTprofile(nu0: float, GammaD: float, Gamma0: float, Gamma2: float, Delta0: 
     case 4:
       disp  = args[3]
       nuR   = NuOptRe*beta(GammaD,NuOptRe,args[2])
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 3:
       disp  = False
       nuR   = NuOptRe*beta(GammaD,NuOptRe,args[2])
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 2:
       disp  = False
       nuR   = NuOptRe
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 1:
       disp  = False
       nuR   = NuOptRe
-      LM    = 1.0 + args[0]*1j
+      LM    = 1.0 - args[0]*1j
     case _:
       disp  = False
       nuR   = NuOptRe
@@ -97,7 +102,7 @@ def mHTprofile(nu0: float, GammaD: float, Gamma0: float, Gamma2: float, Delta0: 
     
   match disp:
     case True:
-      return I.imag
+      return -I.imag
     case _: # If disp variable was defined as not boolean its equivalent to not(True)
       return I.real          
 
@@ -147,19 +152,19 @@ def mHTprofile_vector(nu0: float, GammaD: float, Gamma0: float, Gamma2: float, D
     case 4:
       disp  = args[3]
       nuR   = NuOptRe*beta(GammaD,NuOptRe,args[2])
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 3:
       disp  = False
       nuR   = NuOptRe*beta(GammaD,NuOptRe,args[2])
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 2:
       disp  = False
       nuR   = NuOptRe
-      LM    = args[1] + 1.0 + args[0]*1j
+      LM    = args[1] + 1.0 - args[0]*1j
     case 1:
       disp  = False
       nuR   = NuOptRe
-      LM    = 1.0 + args[0]*1j
+      LM    = 1.0 - args[0]*1j
     case _:
       disp  = False
       nuR   = NuOptRe
@@ -196,7 +201,7 @@ def mHTprofile_vector(nu0: float, GammaD: float, Gamma0: float, Gamma2: float, D
   
   match disp:
     case True:
-      return I.imag
+      return -I.imag
     case _: # If disp variable was defined as not boolean its equivalent to not(True)
       return I.real 
 
@@ -220,7 +225,7 @@ def beta(GammaD: float, NuOptRe: float, alpha: float) -> float:
     Value of the beta correction, dimensionless.
   """
   if alpha<5.0: # the mass ratio up to which the beta correction is applicable
-    # [a] *math_tanh( [b] *math_log10(NuOptRe/GammaD)+ [c] )+ [d]
+    # <a> *math_tanh( <b> *math_log10(NuOptRe/GammaD)+ <c> )+ <d>
     return (0.0534+0.1585*2.718281828459045**(-0.4510*alpha))\
            *math_tanh(\
            (1.9595+alpha*(-0.1258+alpha*(0.0056+alpha*0.0050)))\
