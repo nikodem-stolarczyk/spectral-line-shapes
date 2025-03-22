@@ -11,7 +11,7 @@ try:
 except ImportError as msg: 
   raise SystemExit (str(msg) + '\nexample_plots.py: Matplotlib not found. Matplotlib module is needed to run this example.')
 
-# Example parameters of the S(1) 3-0 line of H2 perturbed by Ar (reference: 10.1063/5.0139229)
+# Example parameters of the S(1) 3-0 line of H2 perturbed by Ar (Source: 10.1063/5.0139229)
 nu0        = 112265.5949 # Unperturbed line position in cm-1.
 GammaD     = 35.1e-3     # Doppler broadening in cm-1
 Gamma0_Ar  = 11.3e-3     # Speed-averaged line-width in cm-1.
@@ -27,7 +27,7 @@ Xlm      = 1.0e-3 # Real part of the 1st order (Rosenkranz) line mixing coeffici
 Ylm      = 0.5e-3 # Imaginary part of the 1st order (Rosenkranz) line mixing coefficients, dimensionless.
 alpha_Ar = 20     # Perturber-to-absorber mass ratio, dimensionless.
 
-# Example parameters of the S(1) 3-0 line of H2 perturbed by He (reference: 10.1103/PhysRevA.101.052705)
+# Example parameters of the S(1) 3-0 line of H2 perturbed by He (Source: 10.1103/PhysRevA.101.052705)
 Gamma0_He  = 11.7e-3  # Speed-averaged line-width in cm-1.
 Gamma2_He  = 5.4e-3   # Quadratic speed dependence parameter of the line-width in cm-1.
 Delta0_He  = 30.5e-3  # Speed-averaged line-shift in cm-1.
