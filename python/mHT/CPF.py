@@ -4,13 +4,13 @@ try:
   from numba import float64    as numba_f8
   from numba import complex128 as numba_c16
 except ImportError as msg: 
-  raise SystemExit (str(msg) + '\nCPF.py:  Numba not found. Numba package is needed to run the code!')
+  raise SystemExit (str(msg) + '\nCPF.py:  Numba not found. Numba module is needed to run the code!')
 try: 
   from numpy import ndarray    as numpy_ndarray
   from numpy import empty_like as numpy_empty_like
   from numpy import complex128 as numpy_complex128
 except ImportError as msg: 
-  raise SystemExit (str(msg) + '\nCPF.py:  Numpy not found. Numpy package is needed to run the code!')
+  raise SystemExit (str(msg) + '\nCPF.py:  Numpy not found. Numpy module is needed to run the code!')
 
 @numba_jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
 def cpf_accurate(x: float, y: float) -> complex:
