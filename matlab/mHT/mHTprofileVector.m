@@ -33,30 +33,25 @@ function [real_part, imag_part] = mHTprofileVector(nu0, GammaD, Gamma0, Gamma2, 
     %    real_part : Real part of the normalized spectral shape in cm.
     %    imag_part : Imaginary part of the normalized spectral shape in cm.
     % ---------------------------------------- 
-    if nargin >=12
-        Ylm   = varargin{1};
-        Xlm   = varargin{2};
-        alpha = varargin{3};
-    elseif nargin == 11
-        Ylm   = varargin{1};
-        Xlm   = varargin{2};
-        alpha = 10.0;
-    elseif nargin == 10
-        Ylm   = varargin{1};
-        Xlm   = 0.0;
-        alpha = 10.0;
-    else
-        Ylm   = 0.0;
-        Xlm   = 0.0;
-        alpha = 10.0;
-    end
-  
-    % The function
     nuD = 1.2011224087864498*GammaD;
-    nuR = NuOptRe*beta(GammaD, NuOptRe, alpha);
+
+    switch nargin-9 % Number of optional parameters
+        case 0 
+            LM  = 1.0;
+            nuR = NuOptRe;
+        case 1
+            LM  = 1-varargin{1}*1i;
+            nuR = NuOptRe;
+        case 2
+            LM  = 1+varargin{2}-varargin{1}*1i;
+            nuR = NuOptRe;
+        otherwise
+            LM  = 1+varargin{2}-varargin{1}*1i;
+            nuR = NuOptRe*beta(GammaD, NuOptRe, varargin{3});
+    end
+
     c2  = Gamma2+Delta2*1i;
     c0  = Gamma0+Delta0*1i-1.5*c2+nuR+NuOptIm*1i;
-    LM  = 1+Xlm+Ylm*1i;
     if abs(c2) > 1.0e-9 % Limit where speed dependence impact is lower than numerical noise level
         X    = ((nu0-nu)*1i+c0)/c2;
         Y    = 0.25*(nuD/c2)^2;
@@ -99,5 +94,5 @@ function [real_part, imag_part] = mHTprofileVector(nu0, GammaD, Gamma0, Gamma2, 
     
     % Output
     real_part = real(I);
-    imag_part = imag(I);
+    imag_part = -imag(I);
 end
