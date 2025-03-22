@@ -1,8 +1,10 @@
-from numba import jit as numba_jit
-from numba import njit as numba_njit
-from numba import float64 as numba_f8
+from numba import jit        as numba_jit
+from numba import njit       as numba_njit
+from numba import float64    as numba_f8
 from numba import complex128 as numba_c16
-from numpy import ndarray as numpy_ndarray
+from numpy import ndarray    as numpy_ndarray
+from numpy import empty_like as numpy_empty_like
+from numpy import complex128 as numpy_complex128
 
 @numba_jit(numba_c16(numba_f8,numba_f8), nopython=True, cache=True)
 def cpf_accurate(x: float, y: float) -> complex:
@@ -108,17 +110,19 @@ def cpf_fast_vector(x: numpy_ndarray, y: numpy_ndarray) -> numpy_ndarray:
   numpy.ndarray
     Complex probability function
   """
-  result = []
-  for xi, yi in zip(x,y):
+  res = numpy_empty_like(x, dtype=numpy_complex128)
+  for i in range(x.size):
+    xi = x[i]
+    yi = y[i]
     if abs(xi) + yi > 15.0:
-      t = yi - 1j*xi
-      result.append(t*0.5641895835477563/(0.5+t*t))
+      t      = yi - 1j*xi
+      res[i] = t*0.5641895835477563/(0.5+t*t)
     else:
-      z = -yi + 1j*xi
-      Z = (4.119534287814236 + z) / (4.119534287814236 - z)
-      result.append((2*(+2.197858936531542E+00+Z*(+1.856286499205540E+00+Z*(+1.394819673379119E+00+Z*(+9.257087138588670E-01+Z*(+5.361139535729116E-01+Z*(+2.654963959880772E-01+\
-                     Z*(+1.083872348456673E-01+Z*(+3.372336685531603E-02+Z*(+6.215006362949147E-03+Z*(-4.936426901286291E-04+Z*(-7.816642995626165E-04+Z*(-2.074843151143828E-04+\
-                     Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
-                     Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
-		     Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z))
-  return result
+      z      = -yi + 1j*xi
+      Z      = (4.119534287814236 + z) / (4.119534287814236 - z)
+      res[i] = (2*(+2.197858936531542E+00+Z*(+1.856286499205540E+00+Z*(+1.394819673379119E+00+Z*(+9.257087138588670E-01+Z*(+5.361139535729116E-01+Z*(+2.654963959880772E-01+\
+                Z*(+1.083872348456673E-01+Z*(+3.372336685531603E-02+Z*(+6.215006362949147E-03+Z*(-4.936426901286291E-04+Z*(-7.816642995626165E-04+Z*(-2.074843151143828E-04+\
+                Z*(+2.433141546207148E-05+Z*(+3.047106608295325E-05+Z*(+4.139461724429617E-06+Z*(-3.038893184366094E-06+Z*(-1.085647579417637E-06+Z*(+2.568264135399530E-07+\
+                Z*(+1.873834346505099E-07+Z*(-1.912225887484805E-08+Z*(-3.008282344381996E-08+Z*(+1.331045329581992E-09+Z*(+4.904820407381768E-09-\
+      	        Z*1.513747622620502E-10)))))))))))))))))))))))/(4.119534287814236-z)+0.5641895835477563)/(4.119534287814236-z)  
+  return res
