@@ -1,3 +1,5 @@
+26/03/2025
+# - fixed a bug: changed the sign of the dispersion part of mHT to "-"
 25/02/2025
 # - added mHTprofile_vector function
 13/01/2025
