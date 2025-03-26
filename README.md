@@ -20,8 +20,10 @@ This will clone all the implementations.
 Depending on the implementation, the following program versions are required
 
 ### python
-- Python 3.X
-- numpy and matplotlib (used solely in example_plots.py, the mHT and cpf functions do not require these libraries)
+- Python 3.10 or higher
+- numpy module (tested on numpy version 2.0.2)
+- numba module (tested on numba version 0.60.0)
+- matplotlib module (used solely in example_plots.py, the mHT and cpf functions do not require this library)
 ### Fortran
 - Two code versions are provided: Fortran 77 and Fortran 90 (compatible with later standards).
 - **Recommended Compilers**: 
