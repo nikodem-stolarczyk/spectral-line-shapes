@@ -99,7 +99,7 @@ c-----------------------------------------------------------------------
       c2  = dcmplx(Gamma2, Delta2)
       c0  = dcmplx(Gamma0, Delta0) - 1.5d0*c2 + nuR
      &    + dcmplx(0.0d0, NuOptIm)
-      LM  = dcmplx(1.0d0 + Xlm, Ylm)
+      LM  = dcmplx(1.0d0 + Xlm, -Ylm)
 c-----------------------------------------------------------------------
       if ( abs(c2) > numerical_zero ) then
 c-----------------------------------------------------------------------
@@ -142,7 +142,7 @@ c-----------------------------------------------------------------------
       calculated_profile  = LM/pi*A/(1-(nuR + dcmplx(0.0d0, NuOptIm))*A)
 c-----------------------------------------------------------------------
       if (calculate_dispersion) then
-         mHTprofile = dimag(calculated_profile)
+         mHTprofile = -dimag(calculated_profile)
       else
          mHTprofile = dreal(calculated_profile)
       endif

@@ -146,7 +146,7 @@ module spectral_module
       c2  = cmplx(Gamma2, Delta2, kind=dp)
       c0  = cmplx(Gamma0, Delta0, kind=dp) - 1.5_dp*c2 + nuR           &
           + cmplx(0.0_dp, NuOptIm, kind=dp)
-      LM  = cmplx(1.0_dp + Xlm, Ylm, kind=dp)
+      LM  = cmplx(1.0_dp + Xlm, -Ylm, kind=dp)
       !----------------------------------------------------------------!
       if ( abs(c2) > numerical_zero ) then
          !-------------------------------------------------------------!
@@ -189,7 +189,7 @@ module spectral_module
       calculated_profile  = LM/pi*A/(1-(nuR + cmplx(0.0_dp, NuOptIm, kind=dp))*A)
       !----------------------------------------------------------------!
       if (calculate_dispersion) then
-         mHTprofile = dimag(calculated_profile)
+         mHTprofile = -dimag(calculated_profile)
       else
          mHTprofile = dreal(calculated_profile)
       endif
