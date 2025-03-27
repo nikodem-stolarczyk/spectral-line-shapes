@@ -246,14 +246,15 @@ This example demonstrates how to calculate the dispersion profile at a single fr
 
 #### Example: Complex Probability Function (CPF)
 
-**File:** `example_cpf.nb`
+**File:** `example_cpf.vi`
 
 This example provides two function calls for `cpf_accurate` and `cpf_fast` for example arguments (1, 1).
 
 #### Example: Plotting Absorption and Dispersion Profiles
 
-This example generates plots of the spectral profiles of the Ar- and He-perturbed 3-0 S(1) lines in H<sub>2</sub>. 
+**File:** `example_plots.vi`
 
+This example generates plots of the spectral profiles of the Ar- and He-perturbed 3-0 S(1) lines in H<sub>2</sub>. 
 
 ## Data Format
 
